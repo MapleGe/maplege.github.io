@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux下使用privoxy将socks转换为http代理]]></title>
+    <url>%2F2017%2F09%2F04%2FsocksTOhttp%2F</url>
+    <content type="text"><![CDATA[shadowsocks是socks5代理，但有的程序不支持socks代理（终端），只支持HTTP代理，怎么办呢？这个时候我们就需要将socks代理转换为http代理了。 linux下使用privoxy将socks转为http代理privoxy具有将socks代理转为http代理的功能。 1.开启shadowsocks根据自己SS的配置来 2.安装privoxy。1$ sudo apt-get install privoxy 3.更改provoxy配置12345位置在“/etc/privoxy/config”。$ sudo vim /etc/privoxy/config在里面添加：forward-socks5 / 127.0.0.1:1080 .listen-address localhost:8118 4.重启privoxy。1$ service privoxy restart 5.现在就可以使用http代理1http_proxy=http://localhost:8118 curl ip.gs 查看当前ip。 终端想使用代理就在每条命令前加上“http_proxy=http://localhost:8118”即可]]></content>
+      <categories>
+        <category>代理配置</category>
+      </categories>
+      <tags>
+        <tag>代理</tag>
+        <tag>privoxy</tag>
+        <tag>shadowsocks</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vi使用笔记]]></title>
     <url>%2F2017%2F09%2F04%2Fvi-sum-up%2F</url>
     <content type="text"><![CDATA[如题 VI使用笔记文本查找12345678910111213/ 向下查找，输入n可以按相同的方向继续查找，N向相反的方向继续查找（notepad用F3）? 向上查找，同上，搜索字符串中如果包含由特殊含义的字符需要在前面加上\f 向下搜索某行中的单个字符F 向上搜索某行中的单个字符t 向下搜索，并把光标定位到匹配字符的前面T 向上搜索，并把光标定位到匹配字符的后面部分特殊字符列表：^ 匹配一行的开头. 匹配一个字符* 匹配0个或多个字符$ 匹配一行的结尾[] 匹配一组字符 移动光标：12h 向左 j 向下 k 向上 l 向右例：普通模式下输入3j，会向下移动3行 复制粘贴：12345yy 复制当前行nyy 复制n行yw 复制一个字（单词）p 将复制的文本粘贴到光标后面P 将复制的文本粘贴到光标前面 文本替换：123:s/search/replace/g 将当前行的所有search替换为replace:n,$s/old/new/g 将从第n行开始到最后一行的所有old替换为new（n若是&quot;.&quot;，表示从当前行开始到最后一行）:n,$s/old/new 将从第n行开始到最后一行的每一行的第一个old替换为new 模式切换：12两次ESC回到普通模式ZZ 保存并退出，方便快捷 插入字符：123456i 光标的前面插入I 当前行的开头插入文本a 光标的后面插入A 当前行的末尾插入文本o 在当前行的下一行插入空行O 在当前行的上一行插入空行 删除字符：1234567x 删除当前光标下的字符X 删除光标前面的字符dw 删除从当前光标到单次解围的字符d^ 删除从当前光标到行首的字符d$ 删除从当前光标到行尾的字符D 删除从当前光标到行尾的字符dd 删除当前光标所在的行，3dd删除3行 修改字符：1234567cc 删除当前行并进入编辑模式C 当前行的光标所在位置清空并进行编辑cw 删除当前字（单词），并进入编辑模式r 替换当前光标下的字符（替换单个字母用）R 从当前光标开始替换字符，按ESC退出s 用输入的字符替换当前字符，并进入编辑模式S 用输入的文本替换当前行，并进入编辑模式 屏幕移动：123H移动到屏幕顶部，nH移动到屏幕第n行的位置M移动到屏幕中间L移动到屏幕底部 文章移动命令：12345678910gg跳到文档开头G跳到文档结尾，1G 或 :1 移动到文件第一行0或|回车，跳到当前行开头$跳到当前行结尾w定位到上一个单词b定位到下一个单词(定位到一句话的开头，句子是以!.?三种符号来界定)定位到一句话的结尾&#123;移动到段落开头&#125;移动到段落结尾 控制命令：1234567ctrl+d 向后滚动半屏ctrl+f 向后滚动全屏ctrl+u 向前滚动半屏ctrl+b 向前滚动整屏ctrl+e 向下滚动一行ctrl+y 向上滚动一行ctrl+I（大写的i）刷新屏幕 高级命令1234567891011121314151617J 将当前行和下一行链接为一行&lt;&lt; 将当前行左移一个单位（一个缩进宽度）&gt;&gt; 将当前行右移一个单位~ 改变当前字符的大小写ctrl+G 可以显示当前文件名和状态U 撤销对当前行所做的修改u 撤销上次操作:f 以百分比的形式显示当前光标在文中的位置、文件名和文件的总行数:f filename 将文件重命名为filename:w filename 保存修改到filename:e filename 打开另一个名为filename的文件:cd dirname 改变当前工作目录到dirname:e # 在的两个打开的文件之间进行切换:n 如果用vi打开了多个文件，切换到下一个文件:p 如果用vi打开了多个文件，切换到上一个文件:r file 读取文件并在当前行的后面插入:nr 读取文件并在第n行后面插入]]></content>

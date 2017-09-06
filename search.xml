@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[7z.exe的简单使用方法]]></title>
+    <url>%2F2017%2F09%2F06%2Ftool7z%2F</url>
+    <content type="text"><![CDATA[如题 7z.exe的简单使用方法-t 指定压缩档案格式。指定压缩档案格式。它们可以是：zip、7z、rar、cab、gzip、bzip2、tar 或其它格式。而 默认值是 7z 格式。 压缩：123456压缩文件夹（保存文件夹结构）：7z.exe a &quot;压缩文件名&quot; &quot;要压缩的文件夹&quot;压缩指定文件类型（exe，无法压缩子文件夹中的文件）：7z.exe a &quot;压缩文件名&quot; &quot;*.exe&quot;参数a： 添加 解压：1234567z x 压缩文件名 -y -aos -o&quot;解压目录&quot;x:完整路径下解压文件-y:所有确认选项都默认为是（即不出现确认提示）-aos:跳过已存在的文件-o:设置输出目录 高级压缩的例子：123456789101112131415161718192021227z a -t7z archive.7z *.exe *.dll -m0=BCJ -m1=LZMA:d=21 -ms -mmt添加 *.exe 及 *.dll 文件到固实压缩档案 archive.7z。使用 LZMA 压缩算法、2 MB 字典大小及 BCJ 转换器。压缩将开启多线程优化(如果可用)。-ms 默认设置固实模式。在创建固实压缩档案模式中，它把压缩档案中的所有文件都当成一个连续数据流来看待。通常情况下，固实压缩可增加压缩比，特别是在添加大量小文件的时候-mmt 默认开启多线程模式。-m0=BCJ -- 第一个备选的压缩算法为BCJ-m1=LZMA:d=21 -- 第二个备选的压缩算法为LZMA，指定字典大小为默认的21(2MB的1次方)2MB。想要使用最大化压缩，可以使用下面的参数选项：7z a -t7z DriverTest_1.7z &quot;I:\t\t1\*&quot; -mx=9 -ms=200m -mf -mhc -mhcf -m0=LZMA:a=2:d=25:mf=bt4b:fb=64 -mmt -r-t7z -- 压缩文件的格式为7z-mx=9 -ms=200m -mf -mhc -mhcf -m0=LZMA:a=2:d=25:mf=bt4b:fb=64 -mmt-- 指定压缩算法选项-mx=9 -- 设置压缩等级为极限压缩（默认为：LZMA 最大算法、32 MB 字典大小、BT4b Match finder、单词大小为 64、BCJ2 过滤器）-ms=200m -- 开启固实模式，设置固实数据流大小为200MB。-mf -- 开启可执行文件压缩过滤器。-mhc -- 开启档案文件头压缩。-mhcf -- 开启档案文件头完全压缩。我所使用的7z版本为4.42&gt;2.30。-m0=LZMA:a=2:d=25:mf=bt4b:fb=64-- 第一个备选压缩算法为LZMA，压缩等级为最大压缩，LZMA算法使用的字典大小为25(2MB的5次方)32MB，算法的匹配器为bt4b(所需要内存为d×9.5 + 34 MB)，压缩算法的紧凑字节为最大模式的64字节。-mmt -- 开启多线程模式。-r -- 递归到所有的子目录。]]></content>
+      <categories>
+        <category>工具使用说明</category>
+      </categories>
+      <tags>
+        <tag>工具使用说明</tag>
+        <tag>7z.exe</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[rar.exe的使用方法]]></title>
     <url>%2F2017%2F09%2F06%2FtoolRar%2F</url>
     <content type="text"><![CDATA[如题 rar.exe的使用方法压缩命令1234567891011121314151617181920212223压缩文件夹（不包含子目录）：rar.exe a &quot;压缩包保存路径文件名&quot; &quot;被压缩的文件夹路径&quot;压缩文件夹（包含子目录）：rar.exe a -r &quot;压缩包保存路径文件名&quot; &quot;被压缩的文件夹路径&quot;压缩文件夹（以时间命名压缩包）：rar.exe a -ag -r -s -ibck &quot;压缩包保存路径（记得在最后加\）&quot; &quot;被压缩的文件夹路径&quot;加密压缩文件夹（以时间命名压缩包，密码：123）：rar.exe a -ag -r -s -ibck -p123 &quot;压缩包保存路径&quot; &quot;被压缩的文件夹路径&quot;带文件头的加密压缩：rar.exe a -ag -r -s -ibck -HP123 &quot;压缩包保存路径&quot; &quot;被压缩的文件夹路径&quot;压缩多个文件（以时间命名压缩包）：rar.exe a -ag -ibck &quot;压缩包保存路径（记得在最后加\）&quot; &quot;文件名1&quot; &quot;文件名2&quot;压缩指定文件类型（exe）：rar.exe a -ag -r -s -ibck &quot;压缩包保存路径（记得在最后加\）&quot; &quot;被压缩的文件夹路径\*.exe&quot;压缩含有指定字符的文件（匹配test）：rar.exe a -ag -r -s -ibck &quot;压缩包保存路径（记得在最后加\）&quot; &quot;被压缩的文件夹路径\*test*&quot; 解压命令1234567891011解压RAR到当前目录（无提示带路径）：rar.exe X -Y &quot;压缩文件名&quot;解压RAR到指定目录（无提示带路径）：rar.exe X -Y &quot;压缩文件名&quot; -AD &quot;指定目录&quot;解压RAR中指定文件类型（exe）到当前目录（无提示带路径）：rar.exe X -Y &quot;压缩文件名&quot; *.exe解压RAR中指定文件类型（exe）到指定目录（无提示带路径）：rar.exe X -Y &quot;压缩文件名&quot; *.exe -AD &quot;指定目录&quot; [语法]123RAR &lt;命令&gt; [ -&lt;开关1&gt; -&lt;开关N&gt; ] &lt;压缩文件&gt; [ &lt;@列表文件...&gt; ]RAR [ &lt;文件...&gt; ] [ &lt;解压路径/&gt; ] 简要参数说明：12345678910111213141516171819a :备份所有文件；-ag :当创建压缩文件时，以格式“YYYYMMDDHHMMSS”附加当前日期字符串,文件名YYYYMMDDHHMMSS.rar；-k :锁定压缩文件；-r:备份目录和子目录；-s :创建固实压缩文件，提高压缩率；-ibck :后台运行；X ：从压缩包中带绝对路径解压指定文件到当前路径-Y ：覆盖已存在文件-p ：加密压缩，解压时需要密码-HP ：带文件头加密，更安全，没有密码无法查看里面的文件列表]]></content>

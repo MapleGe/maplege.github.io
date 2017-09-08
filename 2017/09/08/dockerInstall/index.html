@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MySQL基础," />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="罗列了一些MySQL的常用语句命令，可以进来看看">
-<meta name="keywords" content="MySQL基础">
+<meta name="description" content="如题">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL数据库基础学习">
-<meta property="og:url" content="http://maplege.github.io/2017/08/26/mysql-basic/index.html">
+<meta property="og:title" content="docker的安装、升级与卸载">
+<meta property="og:url" content="http://maplege.github.io/2017/09/08/dockerInstall/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="罗列了一些MySQL的常用语句命令，可以进来看看">
+<meta property="og:description" content="如题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-26T02:36:27.365Z">
+<meta property="og:updated_time" content="2017-09-08T13:07:54.980Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL数据库基础学习">
-<meta name="twitter:description" content="罗列了一些MySQL的常用语句命令，可以进来看看">
+<meta name="twitter:title" content="docker的安装、升级与卸载">
+<meta name="twitter:description" content="如题">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://maplege.github.io/2017/08/26/mysql-basic/"/>
+  <link rel="canonical" href="http://maplege.github.io/2017/09/08/dockerInstall/"/>
 
 
 
 
 
-  <title>MySQL数据库基础学习 | MapleGe</title>
+  <title>docker的安装、升级与卸载 | MapleGe</title>
   
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/08/26/mysql-basic/">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/09/08/dockerInstall/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="暮沉沉">
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL数据库基础学习</h1>
+          <h1 class="post-title" itemprop="name headline">docker的安装、升级与卸载</h1>
         
 
         <div class="post-meta">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T08:27:40+08:00">
-                2017-08-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T20:35:34+08:00">
+                2017-09-08
               </time>
             
 
@@ -356,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,302
+                  2,227
                 </span>
               
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  9
                 </span>
               
             </div>
@@ -425,8 +425,107 @@
       
 
       
-        <p>罗列了一些MySQL的常用语句命令，可以进来看看<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">select user,host,password from mysql,user	<span class="comment">#查看mysql的用户和密码</span></div><div class="line">mysql -hlocalhost -uroot -p     <span class="comment">#连接数据库</span></div><div class="line">show databases;     <span class="comment">#显示数据库</span></div><div class="line">select database();     <span class="comment">#显示当前使用的数据库</span></div><div class="line">select user();    <span class="comment">#显示当前用户</span></div><div class="line">select version():	或者select @@version;		<span class="comment">#显示版本</span></div><div class="line">use 数据库名;		<span class="comment">#选择数据库</span></div><div class="line">select @@basedir;		<span class="comment">#显示mysql安装路径</span></div><div class="line">select @@datadir;		<span class="comment">#显示数据库存放的路径</span></div><div class="line">select @@hostname;		<span class="comment">#显示主机名</span></div><div class="line">select @@version_compile_os;	<span class="comment">#显示mysql操作系统版本</span></div><div class="line">select now();		<span class="comment">#显示当前时间</span></div><div class="line">create database 数据库名 character <span class="built_in">set</span> utf8;  		<span class="comment">#创建数据库</span></div><div class="line">drop database 数据库名;		<span class="comment">#删除数据库</span></div><div class="line"></div><div class="line">create table users</div><div class="line">(id int(10) unsigned not null primary key auto_increment,</div><div class="line"> username varchar(30) not null,</div><div class="line"> email varchar(30) not null,</div><div class="line"> password varchar(32) not null)</div><div class="line">default charset=utf8;		<span class="comment">#创建表（id是无符号整数类型）</span></div><div class="line">create table me like users;	<span class="comment">#创建表me，结构与users表一致</span></div><div class="line"></div><div class="line">show tables;	<span class="comment">#查看表</span></div><div class="line">desc users;	<span class="comment">#查看表结构</span></div><div class="line">insert into users(username,email,password) values(<span class="string">'admin'</span>,<span class="string">'1'</span>,<span class="string">'123'</span>);		<span class="comment">#插入表数据</span></div><div class="line">select hex(<span class="string">'admin'</span>)		<span class="comment">#查看admin字符的16进制，使用时前面加上0x，例：</span></div><div class="line">select * from users <span class="built_in">where</span> user=0x61646d696e;</div><div class="line">select * from users <span class="built_in">limit</span> 2;	<span class="comment">#查询前两条信息</span></div><div class="line">select * from users <span class="built_in">limit</span> 2,2;	<span class="comment">#查询第三条和第四条两条（从第三条开始，查询两条）</span></div><div class="line">select * from users <span class="built_in">where</span> username like <span class="string">'%admin%'</span>;	<span class="comment">#查询用户名包含admin的所有信息（这里的%是like查询中的通配符，用来匹配所有字符，所以用户名中包含admin的全部都能显示出来）</span></div><div class="line">select * from users <span class="built_in">where</span> username=<span class="string">'admin'</span>;		<span class="comment">#查询用户名是admin的信息</span></div><div class="line">update users <span class="built_in">set</span> username=<span class="string">'admin'</span> <span class="built_in">where</span> id=1;	<span class="comment">#修改id为1的用户名为admin</span></div><div class="line">delete from users <span class="built_in">where</span> id=12;		<span class="comment">#删除id为12的数据</span></div><div class="line">select * from users <span class="built_in">where</span> id=1 union select * from users <span class="built_in">where</span> id=3;		<span class="comment">#联合查询，可以查询多条，要求各边查询的列数一致</span></div><div class="line"></div><div class="line">select * from users order by 1; 	<span class="comment">#根据第一列排序（可以以此为查询列数的依据）</span></div><div class="line">select * from users <span class="built_in">where</span> id=-1 union select 1,2,user(),4;	<span class="comment">#联合查询，只显示后面的查询结果，前面的查询结果为空，所以不显示</span></div><div class="line">select * from users <span class="built_in">where</span> id=1 and 1=2 union select 1,2,user(),4;		<span class="comment">#同上</span></div><div class="line"></div><div class="line">create table ec_users(id int(10) primary key auto_increment,username varchar(32) not null,count_tmp <span class="built_in">float</span> not null,dept varchar(32) not null)default charset=utf8;		<span class="comment">#创建表</span></div><div class="line"></div><div class="line">select dept,count(*) from ec_users <span class="built_in">where</span> count_tmp&gt;=90 group by dept having count(dept)&gt;1;		<span class="comment">#统计每个部门成绩大于90的人数</span></div><div class="line">select DISTINCT username from ec_users;		<span class="comment">#distinct用来去除重复数据</span></div><div class="line">select all dept from ec_users		<span class="comment">#all表示查询所有（默认为all，重复的也显示）</span></div><div class="line">select * from ec_users <span class="built_in">where</span> dept is null 	<span class="comment">#查询部门值为空</span></div><div class="line">select * from ec_users <span class="built_in">where</span> dept is not null 		<span class="comment">#查询部门值不为空</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id BETWEEN 3 and 5	<span class="comment">#查询id为3~5之间的数据</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,6)	<span class="comment">#查询id值为1,2,6的数据（过waf有用）</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id=1 or <span class="string">'a'</span> <span class="keyword">in</span> (<span class="string">'b'</span>,<span class="string">'a'</span>);		<span class="comment">#过waf用，后面恒为真，'a'字符存在在in('a')里</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id=1 &amp;&amp; id&lt;3;		<span class="comment">#查询id=1且id&lt;3的</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id=1 | id&lt;3;	<span class="comment">#过waf用一个|或一个&amp;可以显示</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id xor 0;		<span class="comment">#异或，两个均为真显示0，两个不同为1</span></div><div class="line">select * from ec_users <span class="built_in">where</span> id not <span class="keyword">in</span>(1,2,3)		<span class="comment">#not与！是一个用处，可以用在in、like</span></div><div class="line">alter table users add age int(3) not null;		<span class="comment">#添加列</span></div><div class="line">alter table users modify age int(4) 		<span class="comment">#修改列的数据类型为int(4)</span></div><div class="line">alter table users change age age int(3) 		<span class="comment">#同上，也是修改列的数据类型，只是需要写两次列名</span></div><div class="line">alter table users rename ress;		<span class="comment">#修改表名</span></div><div class="line">alter table users rename as ress;		<span class="comment">#同上，也是修改表名</span></div><div class="line">select count(*) from information_schema.tables	<span class="comment">#返回系统表里的数据个数</span></div><div class="line">select rand()						<span class="comment">#返回0~1之间的随机浮点数</span></div><div class="line">select rand()*4						<span class="comment">#返回0~4之间的随机浮点数</span></div><div class="line">select floor(rand()*4)				<span class="comment">#随机生成0~4（不可能是4）之间的整数	</span></div><div class="line">select floor(rand()*4）as dumb		<span class="comment">#并命名为dumb列（as可省略）</span></div><div class="line"></div><div class="line"><span class="comment">#if用法：</span></div><div class="line">select <span class="keyword">if</span> (判断条件,<span class="string">'语句1'</span>,<span class="string">'语句2'</span>)	<span class="comment">#条件为真执行语句1，条件为假执行语句2</span></div><div class="line"></div><div class="line"><span class="comment">#十六进制：</span></div><div class="line">SELECT 0x5045	 <span class="comment">#(这不是一个整数，而会是一个16进制字符串）</span></div><div class="line">SELECT 0x50 + 0x45	<span class="comment">#(现在这是整数了)</span></div><div class="line">select concat(<span class="string">'0x'</span>,hex(<span class="string">'c:\\boot.ini'</span>))		<span class="comment">#另类的使用十六进制方式</span></div><div class="line"></div><div class="line"><span class="comment">#字符串的串联</span></div><div class="line">||	仅在ANSI模式下的MySQL执行，其他情况下都会当成逻辑操作符并返回0，建议使用下面函数</div><div class="line">concat()	concat_ws()	group_concat()</div><div class="line"></div><div class="line"><span class="comment">#绕过MD5哈希检查的例子</span></div><div class="line">用户名：admin</div><div class="line">密码：1234 <span class="string">' AND 1=0 UNION ALL SELECT '</span>admin<span class="string">','</span>81dc9bdb52d04dc20036dbd8313ed055</div><div class="line">其中81dc9bdb52d04dc20036dbd8313ed055 = MD5(1234)</div><div class="line"></div><div class="line">grant 权限1,权限2...,权限n on 数据库名.表名 to 用户名@用户地址 identified by <span class="string">'连接口令'</span>；	赋给用户权限,权限被all privileges或all替代，表示赋给用户全部权限；数据库名.表名被*替代，表示赋给用户操作服务器上所有数据库所有表的权限；用户地址可以使ip地址、机器名、域名，也可以用%表示从任何地址连接；连接口令不能为空，否则创建失败；后面可以加with grant option对象授权，权限传递（我也不懂，就是这么说的）</div><div class="line">例：	GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span> WITH GRANT OPTION;	</div><div class="line">flush privileges;	<span class="comment">#刷新系统权限表</span></div><div class="line">show variables like <span class="string">"secure_file_priv"</span>	<span class="comment">#查看可写目录</span></div></pre></td></tr></table></figure></p>
+        <p>如题<br><a id="more"></a></p>
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p>根据官方文档进行的安装配置，以下为copy的官方安装教程。链接：<br><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#recommended-extra-packages-for-trusty-1404" target="_blank" rel="external">https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#recommended-extra-packages-for-trusty-1404</a></p>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><p>要安装Docker CE，需要64位版本的这些Ubuntu版本之一（注意，必须是64位）：</p>
+<ul>
+<li>Zesty 17.04</li>
+<li>Xenial 16.04 (LTS)</li>
+<li>Trusty 14.04 (LTS)</li>
+</ul>
+<p>Ubuntu on x86_64（或amd64）armhf，和s390x（IBM Z）体系结构支持Docker CE 。<br>s390x限制：IBM Z仅支持Ubuntu Xenial和Zesty。</p>
+<p>卸载旧版本</p>
+<p>较老版本的Docker被称为docker或docker-engine。如果这些已安装，请卸载它们：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get remove docker docker-engine docker.io</div></pre></td></tr></table></figure>
+<h3 id="Trusty-14-04推荐额外套餐"><a href="#Trusty-14-04推荐额外套餐" class="headerlink" title="Trusty 14.04推荐额外套餐"></a>Trusty 14.04推荐额外套餐</h3><p>除非你有很强的理由不要安装这些linux-image-extra-*软件包，否则 Docker可以使用aufs存储驱动程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line"></div><div class="line">$ sudo apt-get install \</div><div class="line">    linux-image-extra-$(uname -r) \</div><div class="line">    linux-image-extra-virtual</div></pre></td></tr></table></figure>
+<p>对于Ubuntu 16.04及更高版本，Linux内核包括对OverlayFS的支持，Docker CE将overlay2默认使用存储驱动程序。</p>
+<h2 id="安装Docker-CE"><a href="#安装Docker-CE" class="headerlink" title="安装Docker CE"></a>安装Docker CE</h2><p>您可以根据需要以不同的方式安装Docker CE：</p>
+<ul>
+<li>大多数用户 设置了Docker的存储库并从中安装，以方便安装和升级任务。这是推荐的方法。</li>
+<li>一些用户下载DEB软件包并 手动安装并手动完成升级。这在诸如在没有访问互联网的空中密码系统上安装Docker的情况下是有用的。</li>
+<li>在测试和开发环境中，一些用户选择使用自动化 便利脚本来安装Docker。</li>
+</ul>
+<h3 id="使用存储库进行安装"><a href="#使用存储库进行安装" class="headerlink" title="使用存储库进行安装"></a>使用存储库进行安装</h3><p>在新主机上首次安装Docker CE之前，需要设置Docker存储库。之后，您可以从存储库安装和更新Docker。</p>
+<h3 id="设置存储库"><a href="#设置存储库" class="headerlink" title="设置存储库"></a>设置存储库</h3><p>1.更新apt包索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>2.安装软件包以允许apt通过HTTPS使用存储库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install \</div><div class="line">    apt-transport-https \</div><div class="line">    ca-certificates \</div><div class="line">    curl \</div><div class="line">    software-properties-common</div></pre></td></tr></table></figure></p>
+<p>3.添加Docker的官方GPG密钥：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</div></pre></td></tr></table></figure></p>
+<p>验证键指纹是否正确9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-key fingerprint 0EBFCD88</div><div class="line"></div><div class="line">pub   4096R/0EBFCD88 2017-02-22</div><div class="line">Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88</div><div class="line">uid                  Docker Release (CE deb) &lt;docker@docker.com&gt;</div><div class="line">sub   4096R/F273FCD8 2017-02-22</div></pre></td></tr></table></figure></p>
+<p>4.使用以下命令设置稳定版本库。您始终需要稳定的存储库，即使您也想从边缘或测试存储库安装构建 。要添加边缘或 测试库，请在下面的命令中的单词后添加单词edge或test（或两者）stable。</p>
+<p>注意：以下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsb_release -cs</div></pre></td></tr></table></figure></p>
+<p>子命令返回您的Ubuntu发行版的名称，例如xenial。</p>
+<p>有时候，在像Linux Mint这样的发行版中，您可能需要更改$(lsb_release -cs) 为您的父级Ubuntu发行版。</p>
+<p>例如，如果您正在使用 Linux Mint Rafaela，可以使用trusty。</p>
+<h4 id="x86-64："><a href="#x86-64：" class="headerlink" title="x86_64："></a>x86_64：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository \</div><div class="line">	   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</div><div class="line">      $(lsb_release -cs) \</div><div class="line">     stable&quot;</div></pre></td></tr></table></figure>
+<h4 id="armhf："><a href="#armhf：" class="headerlink" title="armhf："></a>armhf：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository \</div><div class="line">   &quot;deb [arch=armhf] https://download.docker.com/linux/ubuntu \</div><div class="line">  $(lsb_release -cs) \</div><div class="line">    stable&quot;</div></pre></td></tr></table></figure>
+<h4 id="s390x："><a href="#s390x：" class="headerlink" title="s390x："></a>s390x：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository \</div><div class="line">    &quot;deb [arch=s390x] https://download.docker.com/linux/ubuntu \</div><div class="line">    $(lsb_release -cs) \</div><div class="line">   stable&quot;</div></pre></td></tr></table></figure>
+<p>注意：从Docker 17.06开始，稳定的版本也被推到了边缘，并且测试了存储库。</p>
+<h2 id="安装DOCKER-CE"><a href="#安装DOCKER-CE" class="headerlink" title="安装DOCKER CE"></a>安装DOCKER CE</h2><p>1.更新apt包索引。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>2.安装最新版本的Docker CE，或者转到下一步安装特定版本。Docker的任何现有安装都被替换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install docker-ce</div></pre></td></tr></table></figure></p>
+<p>有多个Docker存储库？</p>
+<p>如果启用了多个Docker存储库，则无需在apt-get installor或 apt-get update命令中指定版本即可安装或更新，将始终安装尽可能高的版本，这可能不适合您的稳定性需求。</p>
+<p>3.在生产系统上，您应该安装特定版本的Docker CE，而不是始终使用最新版本。此输出被截断。列出可用版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ apt-cache madison docker-ce</div><div class="line"></div><div class="line">docker-ce | 17.06.0~ce-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages</div></pre></td></tr></table></figure>
+<p>列表的内容取决于启用了哪些存储库。选择要安装的特定版本。第二列是版本字符串。第三列是存储库名称，它指示软件包所在的存储库以及其稳定性级别。要安装特定版本，请将版本字符串附加到包名称，并将其分隔为等号（=）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install docker-ce=&lt;VERSION&gt;</div></pre></td></tr></table></figure>
+<p>Docker守护程序自动启动。</p>
+<p>4.通过运行hello-world 映像验证Docker CE是否正确安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run hello-world</div></pre></td></tr></table></figure>
+<p>或者如果你在armhf上运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash $ sudo docker run armhf/hello-world</div></pre></td></tr></table></figure></p>
+<p>This command downloads a test image and runs it in a container. When the<br>container runs, it prints an informational message and exits.</p>
+<p>Docker CE已安装并运行。您需要使用sudo来运行Docker命令。继续执行Linux安装后，允许非特权用户运行Docker命令和其他可选配置步骤。</p>
+<h2 id="升级DOCKER-CE"><a href="#升级DOCKER-CE" class="headerlink" title="升级DOCKER CE"></a>升级DOCKER CE</h2><p>要升级Docker CE，首先运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>然后按照 安装说明，选择要安装的新版本。</p>
+<h3 id="从包装中安装"><a href="#从包装中安装" class="headerlink" title="从包装中安装"></a>从包装中安装</h3><p>如果您不能使用Docker的存储库来安装Docker CE，则可以下载该.deb版本的 文件并手动安装。每次要升级Docker CE时，都需要下载一个新文件。</p>
+<p>1.转到<a href="https://download.docker.com/linux/ubuntu/dists/" target="_blank" rel="external">https://download.docker.com/linux/ubuntu/dists/</a>，选择你的Ubuntu版本，浏览pool/stable/和选择amd64， armhf或s390x。下载.deb要安装的Docker版本的文件。</p>
+<p>注意：要安装边缘 包，stable请将URL中的单词更改 为edge。 了解稳定和边缘渠道。</p>
+<p>2.安装Docker CE，将下面的路径更改为您下载Docker软件包的路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i /path/to/package.deb</div></pre></td></tr></table></figure>
+<p>Docker守护程序自动启动。</p>
+<p>3.通过运行hello-world 映像验证Docker CE是否正确安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run hello-world</div></pre></td></tr></table></figure>
+<p>此命令下载测试图像并在容器中运行它。当容器运行时，它打印一条信息消息并退出。<br>Docker CE已安装并运行。您需要使用sudo来运行Docker命令。继续执行Linux的安装后步骤，以允许非特权用户运行Docker命令和其他可选配置步骤。</p>
+<h3 id="升级DOCKER-CE-1"><a href="#升级DOCKER-CE-1" class="headerlink" title="升级DOCKER CE"></a>升级DOCKER CE</h3><p>要升级Docker CE，请下载较新的软件包文件并重复 安装过程，指向新文件。</p>
+<p>使用方便脚本进行安装</p>
+<ul>
+<li><p>Docker在get.docker.com 和test.docker.com上提供了方便的脚本，用于将Docker CE的稳定和测试版本快速，非交互式安装到开发环境中。脚本的源代码位于 docker-install存储库中。 不建议在生产环境中使用这些脚本，您应该在使用这些脚本之前了解潜在的风险：</p>
+</li>
+<li><p>脚本需要root或sudo权限才能运行。因此，在运行脚本之前，应仔细检查和审核脚本。</p>
+</li>
+<li><p>该脚本尝试检测您的Linux发行版和版本，并为您配置您的软件包管理系统。此外，脚本不允许您自定义任何安装参数。这可能导致不受支持的配置，无论是从Docker的角度还是从您自己的组织的准则和标准。</p>
+</li>
+<li><p>脚本安装包管理器的所有依赖关系和建议，而不要求确认。这可能会安装大量的软件包，具体取决于您的主机的当前配置。</p>
+</li>
+<li><p>如果Docker已经使用其他机制安装在主机上，则不要使用便利脚本。</p>
+</li>
+</ul>
+<p>此示例使用get.docker.com上的脚本在Linux上安装最新的Docker CE版本。要安装最新的测试版本，请改用test.docker.com。在下面的每个命令，取代每次出现get用test。</p>
+<p>警告：</p>
+<p>始终检查从互联网下载的脚本，然后再在本地运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl -fsSL get.docker.com -o get-docker.sh</div><div class="line"></div><div class="line">$ sudo sh get-docker.sh</div></pre></td></tr></table></figure>
+<output truncated="">
 
+<p>If you would like to use Docker as a non-root user, you should now consider</p>
+<p>adding your user to the “docker” group with something like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo usermod -aG docker your-user</div></pre></td></tr></table></figure>
+<p>Remember that you will have to log out and back in for this to take effect!</p>
+<p>WARNING: Adding a user to the “docker” group will grant the ability to run</p>
+<p>containers which can be used to obtain root privileges on the</p>
+<p>docker host.</p>
+<p>Refer to <a href="https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface" target="_blank" rel="external">https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface</a></p>
+<p>for more information.</p>
+<p>Docker CE已安装。它DEB基于分布自动启动。在 RPM基于发行，则需要使用适当的手动启动它systemctl或者service命令。消息显示，非root用户默认情况下无法运行Docker命令。</p>
+<h3 id="使用方便脚本后升级DOCKER"><a href="#使用方便脚本后升级DOCKER" class="headerlink" title="使用方便脚本后升级DOCKER"></a>使用方便脚本后升级DOCKER</h3><p>如果您使用便利脚本安装Docker，则应直接使用您的程序包管理器升级Docker。重新运行方便脚本没有任何优势，如果尝试重新添加已经添加到主机的存储库，可能会导致问题。</p>
+<h1 id="卸载Docker-CE"><a href="#卸载Docker-CE" class="headerlink" title="卸载Docker CE"></a>卸载Docker CE</h1><ol>
+<li>卸载Docker CE包：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get purge docker-ce</div></pre></td></tr></table></figure>
+<ol>
+<li>主机上的图像，容器，卷或自定义配置文件不会自动删除。删除所有图像，容器和卷：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /var/lib/docker</div></pre></td></tr></table></figure>
+<p>您必须手动删除任何已编辑的配置文件。</p>
+</output>
       
     </div>
     
@@ -443,12 +542,12 @@
 	  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
 	    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
 		  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-		    <p><span>本文标题:</span><a href="/2017/08/26/mysql-basic/">MySQL数据库基础学习</a></p>
+		    <p><span>本文标题:</span><a href="/2017/09/08/dockerInstall/">docker的安装、升级与卸载</a></p>
 			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
-			    <p><span>发布时间:</span>2017年08月26日 - 08:08</p>
-				  <p><span>最后更新:</span>2017年08月26日 - 10:08</p>
-				    <p><span>原始链接:</span><a href="/2017/08/26/mysql-basic/" title="MySQL数据库基础学习">http://maplege.github.io/2017/08/26/mysql-basic/</a>
-					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/08/26/mysql-basic/"  aria-label="复制成功！"></i></span>
+			    <p><span>发布时间:</span>2017年09月08日 - 20:09</p>
+				  <p><span>最后更新:</span>2017年09月08日 - 21:09</p>
+				    <p><span>原始链接:</span><a href="/2017/09/08/dockerInstall/" title="docker的安装、升级与卸载">http://maplege.github.io/2017/09/08/dockerInstall/</a>
+					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/09/08/dockerInstall/"  aria-label="复制成功！"></i></span>
 						  </p>
 						    <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 							</div>
@@ -493,7 +592,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL基础/" rel="tag"><i class="fa fa-tag"></i> MySQL基础</a>
+            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
           
         </div>
       
@@ -506,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/25/blog-step/" rel="next" title="Ubuntu+hexo+Github博客简单搭建流程">
-                <i class="fa fa-chevron-left"></i> Ubuntu+hexo+Github博客简单搭建流程
+              <a href="/2017/09/08/NanJingYouJi/" rel="next" title="南京游记">
+                <i class="fa fa-chevron-left"></i> 南京游记
               </a>
             
           </div>
@@ -515,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/26/open3389/" rel="prev" title="开启3389命令">
-                开启3389命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,8 +665,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://img.jsqq.net/uploads/allimg/150111/1_150111080328_19.jpg"
@@ -649,6 +753,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装docker"><span class="nav-number">1.</span> <span class="nav-text">安装docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先决条件"><span class="nav-number">1.1.</span> <span class="nav-text">先决条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trusty-14-04推荐额外套餐"><span class="nav-number">1.1.1.</span> <span class="nav-text">Trusty 14.04推荐额外套餐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker-CE"><span class="nav-number">1.2.</span> <span class="nav-text">安装Docker CE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用存储库进行安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用存储库进行安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置存储库"><span class="nav-number">1.2.2.</span> <span class="nav-text">设置存储库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x86-64："><span class="nav-number">1.2.2.1.</span> <span class="nav-text">x86_64：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#armhf："><span class="nav-number">1.2.2.2.</span> <span class="nav-text">armhf：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#s390x："><span class="nav-number">1.2.2.3.</span> <span class="nav-text">s390x：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装DOCKER-CE"><span class="nav-number">1.3.</span> <span class="nav-text">安装DOCKER CE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级DOCKER-CE"><span class="nav-number">1.4.</span> <span class="nav-text">升级DOCKER CE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从包装中安装"><span class="nav-number">1.4.1.</span> <span class="nav-text">从包装中安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级DOCKER-CE-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">升级DOCKER CE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方便脚本后升级DOCKER"><span class="nav-number">1.4.3.</span> <span class="nav-text">使用方便脚本后升级DOCKER</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#卸载Docker-CE"><span class="nav-number">2.</span> <span class="nav-text">卸载Docker CE</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

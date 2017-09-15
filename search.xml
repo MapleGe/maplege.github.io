@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[msf中代理使用方法]]></title>
+    <url>%2F2017%2F09%2F15%2FmsfProxy%2F</url>
+    <content type="text"><![CDATA[有的时候我们可能得到一台肉鸡的权限（meterpreter会话），想用这台肉鸡作为跳板去攻击肉鸡内网或互联网上的其他机器，就需要我们使用肉鸡作为代理啦。 msf中代理使用方法前提：已与肉鸡建立meterpreter会话 环境：攻击机kali：192.168.20.186 肉鸡xp：192.168.86.136内网其他机器server2003：192.168.86.138 实验思路： 要使用肉鸡作为代理，首先我们要先与对方建立会话，得到相应权限 然后本地建立一个路由表，让我们可以通过session 1找到肉鸡（因为有可能对方是在内网中，我们无法直接通过IP地址找到）。 通过sock4a模块，让肉鸡开启sock4a服务。 在本地配置proxychains，配置自己的sock4a客户端，让我们可以连接到sock4a服务端。连接后，proxychains的流量都会走肉鸡，为自己增加了一层代理保护。 步骤：1、1sessions -l 查看会话列表 2、12route add 192.168.86.136 255.255.255.0 1 添加路由表命令说明： route add 肉鸡ip 子网掩码 sessionId 1route 查看路由表，可以看到刚刚添加进去的路由信息 3、1234use auxiliary/server/socks4a 使用socks4a模块set srvhost 127.0.0.1 set srvport 1080exploit -y 4、12vi /etc/proxychains.conf 打开一个新终端，配置proxychains在最后添加一条 socks4 127.0.0.1 1080 ，保存退出 5、1proxychains rdesktop 192.168.86.138 远程登录内网server2003机器 代理成功]]></content>
+      <categories>
+        <category>metasploit</category>
+        <category>代理</category>
+      </categories>
+      <tags>
+        <tag>metasploit</tag>
+        <tag>代理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[metasploit使用笔记]]></title>
     <url>%2F2017%2F09%2F14%2Fmetasploit%2F</url>
     <content type="text"><![CDATA[如题 metasploit使用笔记配置阶段123456789101112131415161718192021help 查看帮助set 设置unset 取消设置setg 设置全局show options=options 查看配置info 查看详细信息（比options详细）back 从一个模块回到msf&gt;状态reload_all 当放入自己的脚本之后需要reload_all载入search 搜索makerc 自己编译rc文件db_connect 连接数据库db_export 导出db_import 导入db_nmap 运行namp，并把输出直接记录到数据库里db_rebuild_cache 重建缓存（创建数据库之后需要重建缓存）vulns 记录某个机器曾经有过什么漏洞exploit 开始攻击exploit -j 后台攻击jobs 查看后台运行的jobjobs -i jobid 显示详情kill jobId 杀死指定job auxiliary/scanner/… 扫描模块 exploit/multi/handler 框架模块 meterpreter阶段12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364常见命令help 查看帮助background 将当前会话移至后台bgkill 杀死一个后台meterpreterbglist 查看所有后台meterpreterbgrun 后台运行channel 显示活动频道close 关闭通道exit 终止meterpreter会话getpid 查看当前进程号getuid 查看当前用户ps 查看进程列表migrate 注入到一个指定的进程中quit 终止meterpreter会话shell 获取shellgetsystem 自行尝试提权sysinfo 查看系统信息hashdump 抓取hash密码timestomp 修改文件属性**文件系统命令**cat 读取文件内容upload 上传文件download 下载文件cd 更改目录del 删除文件edit 用vim编辑文件getlwd 打印本地目录getwd 打印工作目录ls 列出文件目录mkdir 创建目录pwd 查看当前路径rm 删除文件rmdir 删除目录**网络命令**ipconfig 查看IP地址portfwd 端口转发route 查看或修改路由表**系统命令**clearav 清除事件日志drop_token 下载令牌execute 执行命令getsystem 自行尝试提权getpid 获取进程idgetuid 获取用户kill 终止指定进程ps 列出正在运行的进程reboot 重启reg 进行注册表操作shutdown 关闭计算机steal_token 窃取指定pid的令牌sysinfo 获取系统信息**用户界面命令**enumdesktops 列出所有可访问台式机getdesktop 获取当前的meterpreter桌面idletime 检查空闲进程keyscan_dump 存储键盘记录keyscan_start 开启键盘记录keyscan_stop 停止键盘记录screenshot 屏幕截图set_desktop 更改meterpreter桌面 sessions使用123456sessions -h 查看帮助sessions&lt;===&gt;sessions -l 查看会话列表sessions -i 进入指定会话sessions -K 杀死所有会话sessions -k 杀死指定会话sessions -u 提升会话为Meterpreter]]></content>
@@ -31,8 +44,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>端口转发</tag>
         <tag>代理</tag>
+        <tag>端口转发</tag>
       </tags>
   </entry>
   <entry>
@@ -43,8 +56,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>端口转发</tag>
         <tag>代理</tag>
+        <tag>端口转发</tag>
         <tag>ssocks</tag>
       </tags>
   </entry>
@@ -127,8 +140,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>端口转发</tag>
         <tag>代理</tag>
+        <tag>端口转发</tag>
       </tags>
   </entry>
   <entry>

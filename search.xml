@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[解决run vnc无法控制的问题，以及-c参数无法打开shell]]></title>
+    <title><![CDATA[run vnc遇到的问题解决]]></title>
     <url>%2F2017%2F09%2F16%2FsolveRunVnc%2F</url>
-    <content type="text"><![CDATA[解决run vnc无法进行控制的问题，以及-c参数无法打开 Meterpreter run vnc 遇到的问题打开/usr/share/metasploit-framework/scripts/meterpreter/vnc.rb添加：然后问题就解决了如果-c参数无法打开courtesy shell，解决：]]></content>
+    <content type="text"><![CDATA[解决run vnc无法进行控制的问题，以及-c参数无法打开 run vnc无法控制屏幕解决：打开/usr/share/metasploit-framework/scripts/meterpreter/vnc.rb添加：然后问题就解决了 -c参数无法打开courtesy shell：]]></content>
       <categories>
         <category>问题解决</category>
       </categories>

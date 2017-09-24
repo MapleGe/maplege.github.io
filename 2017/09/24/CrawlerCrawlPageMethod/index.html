@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="MapleGe">
 <meta property="og:description" content="如题所示">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-24T03:06:52.770Z">
+<meta property="og:updated_time" content="2017-09-24T03:11:11.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用python写网络爬虫的三种网页内容抓取方法">
 <meta name="twitter:description" content="如题所示">
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  409
+                  401
                 </span>
               
 
@@ -428,21 +428,21 @@
         <p>如题所示<br><a id="more"></a></p>
 <h1 id="用python写网络爬虫的三种网页抓取方法"><a href="#用python写网络爬虫的三种网页抓取方法" class="headerlink" title="用python写网络爬虫的三种网页抓取方法"></a>用python写网络爬虫的三种网页抓取方法</h1><h2 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h2><p>用来下载页面html源码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import urllib2</div><div class="line">def download(url,user_agent=&apos;wswp&apos;,num_retries=2):</div><div class="line">	print &apos;Downloading:&apos;,url</div><div class="line">	headers=&#123;&apos;User-agent&apos;:user_agent&#125;</div><div class="line">	request=urllib2.Request(url,headers=headers)</div><div class="line">	try:</div><div class="line">		html=urllib2.urlopen(request).read()</div><div class="line">	except urllib2.URLError as e:</div><div class="line">		print &apos;Download error:&apos;,e.reason</div><div class="line">		html=None</div><div class="line">		if num_retries &gt;0 :</div><div class="line">			if hasattr(e,&apos;code&apos;) and 500 &lt;=e.code&lt;600:</div><div class="line">				return download(url,user_agent,num_retries-1)</div><div class="line">	return html</div></pre></td></tr></table></figure>
-<h2 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h2><h3 id="方法一：正则表达式"><a href="#方法一：正则表达式" class="headerlink" title="方法一：正则表达式"></a>方法一：正则表达式</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">	import re</div><div class="line">	url=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;</div><div class="line">	html=download(url)</div><div class="line">print re.findall(&apos;&lt;tr id=&quot;places_area__row&quot;&gt;&lt;td class=&quot;.*?&quot;&gt;&lt;label class=&quot;readonly&quot; for=&quot;places_area&quot; id=&quot;places_area__label&quot;&gt;Area: &lt;/label&gt;&lt;/td&gt;&lt;td class=&quot;w2p_fw&quot;&gt;(.*?)&lt;/td&gt;&lt;td class=&quot;w2p_fc&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&apos;,html)</div></pre></td></tr></table></figure>
-</code></pre><h3 id="方法二：BeautifulSoup模块"><a href="#方法二：BeautifulSoup模块" class="headerlink" title="方法二：BeautifulSoup模块"></a>方法二：BeautifulSoup模块</h3><pre><code>BeautifulSoup模块可以解析网页，提供定位内容的便捷接口，并且能够正确解析缺失的引号并闭合标签。美中不足的是由于是python编写，速度偏慢
-
+<h2 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h2><h3 id="方法一：正则表达式"><a href="#方法一：正则表达式" class="headerlink" title="方法一：正则表达式"></a>方法一：正则表达式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import re</div><div class="line">url=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;</div><div class="line">html=download(url)</div><div class="line">print re.findall(&apos;&lt;tr id=&quot;places_area__row&quot;&gt;&lt;td class=&quot;.*?&quot;&gt;&lt;label class=&quot;readonly&quot; for=&quot;places_area&quot; id=&quot;places_area__label&quot;&gt;Area: &lt;/label&gt;&lt;/td&gt;&lt;td class=&quot;w2p_fw&quot;&gt;(.*?)&lt;/td&gt;&lt;td class=&quot;w2p_fc&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&apos;,html)</div></pre></td></tr></table></figure>
+<h3 id="方法二：BeautifulSoup模块"><a href="#方法二：BeautifulSoup模块" class="headerlink" title="方法二：BeautifulSoup模块"></a>方法二：BeautifulSoup模块</h3><p>BeautifulSoup模块可以解析网页，提供定位内容的便捷接口，并且能够正确解析缺失的引号并闭合标签。美中不足的是由于是python编写，速度偏慢</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from bs4 import BeautifulSoup</div><div class="line">url=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;</div><div class="line">html=download(url)</div><div class="line">soup=BeautifulSoup(html)</div><div class="line">tr=soup.find(attrs=&#123;&apos;id&apos;:&apos;places_area__row&apos;&#125;)</div><div class="line">td=tr.find(attrs=&#123;&apos;class&apos;:&apos;w2p_fw&apos;&#125;)</div><div class="line">area=td.text</div><div class="line">print area</div></pre></td></tr></table></figure>
-</code></pre><h3 id="方法三：Lxml"><a href="#方法三：Lxml" class="headerlink" title="方法三：Lxml"></a>方法三：Lxml</h3><pre><code>Lxml是基于libxml2解析库的python封装，因使用C语言编写，比BeautifulSoup更快，下面是使用lxml的CSS选择器抽取面积的示例代码
-
+<h3 id="方法三：Lxml"><a href="#方法三：Lxml" class="headerlink" title="方法三：Lxml"></a>方法三：Lxml</h3><p>Lxml是基于libxml2解析库的python封装，因使用C语言编写，比BeautifulSoup更快，下面是使用lxml的CSS选择器抽取面积的示例代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import lxml.html</div><div class="line">html=download(&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;)</div><div class="line">tree=lxml.html.fromstring(html)</div><div class="line">td=tree.cssselect(&apos;tr#places_area__row &gt; td.w2p_fw&apos;)[0]</div><div class="line">area=td.text_content()</div><div class="line">print area</div></pre></td></tr></table></figure>
-</code></pre><h4 id="CSS选择器示例："><a href="#CSS选择器示例：" class="headerlink" title="CSS选择器示例："></a>CSS选择器示例：</h4><pre><code>- 选择所有标签：*
-- 选择&lt;a&gt;标签：a
-- 选择所有class=&quot;link&quot;的元素：.link
-- 选择id=&quot;home&quot;的&lt;a&gt;标签：a#home
-- 选择父元素为&lt;a&gt;标签的所有&lt;span&gt;子标签：a &gt; span
-- 选择&lt;a&gt;标签内部的所有&lt;span&gt;标签：a span
-- 选择title属性为&quot;Home&quot;的所有&lt;a&gt;标签：a[title=Home]
-</code></pre>
+<h4 id="CSS选择器示例："><a href="#CSS选择器示例：" class="headerlink" title="CSS选择器示例："></a>CSS选择器示例：</h4><ul>
+<li>选择所有标签：*</li>
+<li>选择<a>标签：a</a></li>
+<li>选择所有class=”link”的元素：.link</li>
+<li>选择id=”home”的<a>标签：a#home</a></li>
+<li>选择父元素为<a>标签的所有<span>子标签：a &gt; span</span></a></li>
+<li>选择<a>标签内部的所有<span>标签：a span</span></a></li>
+<li>选择title属性为”Home”的所有<a>标签：a[title=Home]</a></li>
+</ul>
+
       
     </div>
     
@@ -728,7 +728,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-      <span class="post-count">博客全站共19.6k字</span>
+      <span class="post-count">博客全站共19.5k字</span>
   </div>  
 
 

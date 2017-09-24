@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[simpleReptile]]></title>
+    <url>%2F2017%2F09%2F24%2FsimpleReptile%2F</url>
+    <content type="text"><![CDATA[老师领着我们敲了一遍爬虫，可以爬取安全维基上的技术文章。原脚本使用了urllib2,bs4,re库，单线程，可以获取标题、链接、时间 下载链接 留给我们的作业是获取作者和文章分类，实现多线程。此外我自己改用了requests库 下载链接]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>py脚本</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ftp爆破py脚本]]></title>
     <url>%2F2017%2F09%2F24%2FftpBlastPYScript%2F</url>
     <content type="text"><![CDATA[一个py脚本，用来爆破ftp服务器的。第一次自己写脚本，很多地方不规整，记录一下自己的第一步。下载地址]]></content>

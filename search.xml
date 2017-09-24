@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[用python写网络爬虫的三种网页内容抓取方法]]></title>
+    <url>%2F2017%2F09%2F24%2FCrawlerCrawlPageMethod%2F</url>
+    <content type="text"><![CDATA[如题所示 用python写网络爬虫的三种网页抓取方法辅助函数用来下载页面html源码： 1234567891011121314import urllib2def download(url,user_agent=&apos;wswp&apos;,num_retries=2): print &apos;Downloading:&apos;,url headers=&#123;&apos;User-agent&apos;:user_agent&#125; request=urllib2.Request(url,headers=headers) try: html=urllib2.urlopen(request).read() except urllib2.URLError as e: print &apos;Download error:&apos;,e.reason html=None if num_retries &gt;0 : if hasattr(e,&apos;code&apos;) and 500 &lt;=e.code&lt;600: return download(url,user_agent,num_retries-1) return html 三种方法方法一：正则表达式1234 import re url=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos; html=download(url)print re.findall(&apos;&lt;tr id=&quot;places_area__row&quot;&gt;&lt;td class=&quot;.*?&quot;&gt;&lt;label class=&quot;readonly&quot; for=&quot;places_area&quot; id=&quot;places_area__label&quot;&gt;Area: &lt;/label&gt;&lt;/td&gt;&lt;td class=&quot;w2p_fw&quot;&gt;(.*?)&lt;/td&gt;&lt;td class=&quot;w2p_fc&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&apos;,html) 方法二：BeautifulSoup模块BeautifulSoup模块可以解析网页，提供定位内容的便捷接口，并且能够正确解析缺失的引号并闭合标签。美中不足的是由于是python编写，速度偏慢 12345678from bs4 import BeautifulSoupurl=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;html=download(url)soup=BeautifulSoup(html)tr=soup.find(attrs=&#123;&apos;id&apos;:&apos;places_area__row&apos;&#125;)td=tr.find(attrs=&#123;&apos;class&apos;:&apos;w2p_fw&apos;&#125;)area=td.textprint area 方法三：LxmlLxml是基于libxml2解析库的python封装，因使用C语言编写，比BeautifulSoup更快，下面是使用lxml的CSS选择器抽取面积的示例代码 123456import lxml.htmlhtml=download(&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;)tree=lxml.html.fromstring(html)td=tree.cssselect(&apos;tr#places_area__row &gt; td.w2p_fw&apos;)[0]area=td.text_content()print area CSS选择器示例：- 选择所有标签：* - 选择&lt;a&gt;标签：a - 选择所有class=&quot;link&quot;的元素：.link - 选择id=&quot;home&quot;的&lt;a&gt;标签：a#home - 选择父元素为&lt;a&gt;标签的所有&lt;span&gt;子标签：a &gt; span - 选择&lt;a&gt;标签内部的所有&lt;span&gt;标签：a span - 选择title属性为&quot;Home&quot;的所有&lt;a&gt;标签：a[title=Home]]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>网页内容抓取</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[linux下统计当前文件夹的文件和目录个数命令说明]]></title>
     <url>%2F2017%2F09%2F20%2FlinuxCountFiles%2F</url>
-    <content type="text"><![CDATA[如题 linux下统计当前文件夹下的文件个数、目录个数详细说明命令：1234567ls -lR|grep &quot;^-&quot;|wc -l统计文件夹下目录的个数，包括子文件夹里的ls -lR|grep &quot;^d&quot;|wc -l统计当前文件夹下文件的个数ls -l |grep &quot;^-&quot;|wc -l统计当前文件夹下目录的个数ls -l |grep &quot;^d&quot;|wc -l 说明：12345678ls -l 显示当前文件夹下的文件列表（包括目录）ls -lR 显示当前文件夹下的所有文件列表（包括子目录文件）‘|’ 在Linux中是管道符，将前面命令的输出作为后面命令的输入grep 是过滤，只显示匹配成功的结果&quot;^-&quot; 是正则表达式，表示只显示以 &apos;-&apos;开头的行，&quot;^d&quot; 表示只显示以&apos;d&apos;开头的行。Linux中文件（非目录）是以&apos;-&apos;开头的，而目录是以&apos;d&apos;开头的。wc 是统计用的。 -l 参数用来输出输入的行的数目]]></content>
+    <content type="text"><![CDATA[如题 linux下统计当前文件夹下的文件个数、目录个数详细说明命令：12345678统计文件夹下文件的个数，包括子文件夹里的ls -lR|grep &quot;^-&quot;|wc -l统计文件夹下目录的个数，包括子文件夹里的ls -lR|grep &quot;^d&quot;|wc -l统计当前文件夹下文件的个数ls -l |grep &quot;^-&quot;|wc -l统计当前文件夹下目录的个数ls -l |grep &quot;^d&quot;|wc -l 说明：12345678ls -l 显示当前文件夹下的文件列表（包括目录）ls -lR 显示当前文件夹下的所有文件列表（包括子目录文件）‘|’ 在Linux中是管道符，将前面命令的输出作为后面命令的输入grep 是过滤，只显示匹配成功的结果&quot;^-&quot; 是正则表达式，表示只显示以 &apos;-&apos;开头的行，&quot;^d&quot; 表示只显示以&apos;d&apos;开头的行。Linux中文件（非目录）是以&apos;-&apos;开头的，而目录是以&apos;d&apos;开头的。wc 是统计用的。 -l 参数用来输出输入的行的数目]]></content>
       <categories>
         <category>Linux</category>
       </categories>

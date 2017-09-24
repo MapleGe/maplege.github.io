@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ftp爆破py脚本]]></title>
+    <url>%2F2017%2F09%2F24%2FftpBlastPYScript%2F</url>
+    <content type="text"><![CDATA[一个py脚本，用来爆破ftp服务器的。第一次自己写脚本，很多地方不规整，记录一下自己的第一步。下载地址]]></content>
+      <categories>
+        <category>py脚本</category>
+      </categories>
+      <tags>
+        <tag>ftp爆破</tag>
+        <tag>py脚本</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[用python写网络爬虫的三种网页内容抓取方法]]></title>
     <url>%2F2017%2F09%2F24%2FCrawlerCrawlPageMethod%2F</url>
     <content type="text"><![CDATA[如题所示 用python写网络爬虫的三种网页抓取方法辅助函数用来下载页面html源码： 1234567891011121314import urllib2def download(url,user_agent=&apos;wswp&apos;,num_retries=2): print &apos;Downloading:&apos;,url headers=&#123;&apos;User-agent&apos;:user_agent&#125; request=urllib2.Request(url,headers=headers) try: html=urllib2.urlopen(request).read() except urllib2.URLError as e: print &apos;Download error:&apos;,e.reason html=None if num_retries &gt;0 : if hasattr(e,&apos;code&apos;) and 500 &lt;=e.code&lt;600: return download(url,user_agent,num_retries-1) return html 三种方法方法一：正则表达式1234import reurl=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;html=download(url)print re.findall(&apos;&lt;tr id=&quot;places_area__row&quot;&gt;&lt;td class=&quot;.*?&quot;&gt;&lt;label class=&quot;readonly&quot; for=&quot;places_area&quot; id=&quot;places_area__label&quot;&gt;Area: &lt;/label&gt;&lt;/td&gt;&lt;td class=&quot;w2p_fw&quot;&gt;(.*?)&lt;/td&gt;&lt;td class=&quot;w2p_fc&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&apos;,html) 方法二：BeautifulSoup模块BeautifulSoup模块可以解析网页，提供定位内容的便捷接口，并且能够正确解析缺失的引号并闭合标签。美中不足的是由于是python编写，速度偏慢 12345678from bs4 import BeautifulSoupurl=&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;html=download(url)soup=BeautifulSoup(html)tr=soup.find(attrs=&#123;&apos;id&apos;:&apos;places_area__row&apos;&#125;)td=tr.find(attrs=&#123;&apos;class&apos;:&apos;w2p_fw&apos;&#125;)area=td.textprint area 方法三：LxmlLxml是基于libxml2解析库的python封装，因使用C语言编写，比BeautifulSoup更快，下面是使用lxml的CSS选择器抽取面积的示例代码 123456import lxml.htmlhtml=download(&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;)tree=lxml.html.fromstring(html)td=tree.cssselect(&apos;tr#places_area__row &gt; td.w2p_fw&apos;)[0]area=td.text_content()print area CSS选择器示例： 选择所有标签：* 选择a标签：a 选择所有class=”link”的元素：.link 选择id=”home”的a标签：a#home 选择父元素为a标签的所有span子标签：a &gt; span 选择a标签内部的所有span标签：a span 选择title属性为”Home”的所有a标签：a[title=Home]]]></content>

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="MapleGe">
 <meta property="og:description" content="如题所示">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-24T03:11:11.532Z">
+<meta property="og:updated_time" content="2017-09-24T03:30:08.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用python写网络爬虫的三种网页内容抓取方法">
 <meta name="twitter:description" content="如题所示">
@@ -435,12 +435,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import lxml.html</div><div class="line">html=download(&apos;http://example.webscraping.com/places/default/view/Afghanistan-1&apos;)</div><div class="line">tree=lxml.html.fromstring(html)</div><div class="line">td=tree.cssselect(&apos;tr#places_area__row &gt; td.w2p_fw&apos;)[0]</div><div class="line">area=td.text_content()</div><div class="line">print area</div></pre></td></tr></table></figure>
 <h4 id="CSS选择器示例："><a href="#CSS选择器示例：" class="headerlink" title="CSS选择器示例："></a>CSS选择器示例：</h4><ul>
 <li>选择所有标签：*</li>
-<li>选择<a>标签：a</a></li>
+<li>选择\<a>标签：a</a></li>
 <li>选择所有class=”link”的元素：.link</li>
-<li>选择id=”home”的<a>标签：a#home</a></li>
-<li>选择父元素为<a>标签的所有<span>子标签：a &gt; span</span></a></li>
-<li>选择<a>标签内部的所有<span>标签：a span</span></a></li>
-<li>选择title属性为”Home”的所有<a>标签：a[title=Home]</a></li>
+<li>选择id=”home”的\<a>标签：a#home</a></li>
+<li>选择父元素为\<a>标签的所有\<span>子标签：a &gt; span</span></a></li>
+<li>选择\<a>标签内部的所有\<span>标签：a span</span></a></li>
+<li>选择title属性为”Home”的所有\<a>标签：a[title=Home]</a></li>
 </ul>
 
       

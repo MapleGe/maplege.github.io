@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[simpleReptile]]></title>
+    <title><![CDATA[爬取Nmap中文官方文档]]></title>
+    <url>%2F2017%2F09%2F28%2FCrawlerNmapDoc%2F</url>
+    <content type="text"><![CDATA[如题 爬取Nmap中文官方文档因为将要面试了，想要熟悉一下Nmap，感觉看官方文档最权威，又比较喜欢在本地查看，所以就写了一个爬虫，下载到本地保存成html，没什么技术含量，感兴趣的可以看一下。 中间也是遇到了一些坑。 在浏览器中不挂代理是可以访问的，所以一开始连接不上网页，我还以为是代码写的有问题或做了一些反爬虫机制，一行一行的去调试。后来发现是墙外的，必须挂代理才能访问。又添加了一个使用ShadowSocks代理的功能，然后就可以正常爬取了。 后来保存文件时，我想保存成中文的文件名，结果成了乱码，尝试’wb’写入对文件名无效，最后是尝试着是filename.decode(‘utf-8’)可以成功写成中文文件名。我也不知道是为什么。编码这里还是很薄弱的，以后再好好弥补。 本来以为这样就没什么问题了，后来程序运行到一半就报错了，文件也只保存了一部分，还是打开文件的位置报错，然后就一步一步的调试，发现有一个文件名是“防火墙/IDS躲避和哄骗”，因为文件名不能包含’/‘这个字符，所以报错。又补充了一下将文件名中的’/‘替换成’、’，这样程序才正常运行下来。下载链接]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[爬虫脚本]]></title>
     <url>%2F2017%2F09%2F24%2FsimpleReptile%2F</url>
     <content type="text"><![CDATA[老师领着我们敲了一遍爬虫，可以爬取安全维基上的技术文章。原脚本使用了urllib2,bs4,re库，单线程，可以获取标题、链接、时间 下载链接 留给我们的作业是获取作者和文章分类，实现多线程。此外我自己改用了requests库 下载链接]]></content>
       <categories>

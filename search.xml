@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[dockerMysqlMolve]]></title>
+    <title><![CDATA[docker的ubuntu 14.04镜像启动mysql失败的解决方法]]></title>
     <url>%2F2018%2F06%2F22%2Fdocker-mysql-solve%2F</url>
     <content type="text"><![CDATA[如题 docker的ubuntu 14.04镜像启动mysql失败的解决方法本来是要测试收到的一道题：dogcms，需要用到docker。在进行docker build时，本来一切顺利，当进展到service mysql start时，出现了错误 来看一下原版的dockerfile使用了ubuntu 14.04的系统，先update了一下，然后安装了lamp环境，然后删除了网站首页index.html，复制了几个文件到网站根目录，然后开启mysql服务，导入sql.sql文件，删除sql.sql文件，启动mysql服务和apache服务 没办法，卡在mysql服务启动，容器也无法创建成功，所以稍微修改了一下dockerfile，将mysql相关的全部删除，成功创建容器，新的dockerfile如下图 再次build，然后run一下便会成功创建容器，使用docker attach进入容器内部 成功进入容器内部后，我们需要找到mysql启动失败的原因，然后想办法解决 首先我尝试了一下在容器内部启动Mysql，果不其然又失败了 然后我们来看一下mysql的错误日志，使用命令tail /var/log/mysql/error.log发现了错误信息180621 7:57:58 [ERROR] Fatal error: Can’t open and lock privilege tables: Got error 14 可以看到，前面都进展的很顺利，结果出了一个错误，直接放到google上面搜索一番，最后还真让我找到了解决方法 RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld &amp;&amp; \ service mysql start &amp;&amp; \ mvn -q verify site 看起来貌似就是权限的问题，我就试着执行了一下修改权限的命令，然后启动mysql，居然就这样解决了。 最后，修改一下dockerfile 然后再重新build一下，这次可以看到，全部成功了 再来启动容器然后这套题就部署成功啦~]]></content>
       <categories>

@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="如何使用wireshark做数据赛序章首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是讲解显示过滤器，以及一些做题中可能用到的一些小技巧。 显示过滤器显示过滤器完整列表 简单协议说明在做题中，一般都是有http协议，其余常见协议有ssh、telnet、f">
+<meta name="description" content="简单的说一下数据赛">
 <meta name="keywords" content="wireshark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使用wireshark做数据赛">
 <meta property="og:url" content="http://maplege.github.io/2018/07/11/wireshark-and-dataGame/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="如何使用wireshark做数据赛序章首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是讲解显示过滤器，以及一些做题中可能用到的一些小技巧。 显示过滤器显示过滤器完整列表 简单协议说明在做题中，一般都是有http协议，其余常见协议有ssh、telnet、f">
+<meta property="og:description" content="简单的说一下数据赛">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T06:48:07.701Z">
+<meta property="og:updated_time" content="2018-07-11T06:56:39.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用wireshark做数据赛">
-<meta name="twitter:description" content="如何使用wireshark做数据赛序章首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是讲解显示过滤器，以及一些做题中可能用到的一些小技巧。 显示过滤器显示过滤器完整列表 简单协议说明在做题中，一般都是有http协议，其余常见协议有ssh、telnet、f">
+<meta name="twitter:description" content="简单的说一下数据赛">
 
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  906
+                  915
                 </span>
               
 
@@ -425,7 +425,8 @@
       
 
       
-        <h1 id="如何使用wireshark做数据赛"><a href="#如何使用wireshark做数据赛" class="headerlink" title="如何使用wireshark做数据赛"></a>如何使用wireshark做数据赛</h1><h2 id="序章"><a href="#序章" class="headerlink" title="序章"></a>序章</h2><p>首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是讲解显示过滤器，以及一些做题中可能用到的一些小技巧。</p>
+        <p>简单的说一下数据赛<br><a id="more"></a></p>
+<h1 id="如何使用wireshark做数据赛"><a href="#如何使用wireshark做数据赛" class="headerlink" title="如何使用wireshark做数据赛"></a>如何使用wireshark做数据赛</h1><h2 id="序章"><a href="#序章" class="headerlink" title="序章"></a>序章</h2><p>首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是说一下大致流程，以及一些做题中可能用到的一些小技巧。</p>
 <h2 id="显示过滤器"><a href="#显示过滤器" class="headerlink" title="显示过滤器"></a>显示过滤器</h2><p><a href="https://www.wireshark.org/docs/dfref/" target="_blank" rel="external">显示过滤器完整列表</a></p>
 <h3 id="简单协议说明"><a href="#简单协议说明" class="headerlink" title="简单协议说明"></a>简单协议说明</h3><p>在做题中，一般都是有http协议，其余常见协议有ssh、telnet、ftp、mysql、snmp、smtp、https、redis等。这其中http、telnet、ftp、redis是明文传输的；smtp是经过base64编码后传输，相当于明文传输；snmp 2.0及以下都是明文传输，3.0以上才是加密传输；mysql登录时密码是密文，其余均是明文；ssh及https是加密传输，https需要有密钥才能得到明文。</p>
 <h3 id="渗透套路说明"><a href="#渗透套路说明" class="headerlink" title="渗透套路说明"></a>渗透套路说明</h3><p>通常情况下，是从内网抓包，抓到黑客通过某个服务（一般是web）拿到某台服务器的shell，经过一系列操作，扫描内网并拿到内网其他机器的权限。</p>

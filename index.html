@@ -303,6 +303,240 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2018/07/11/wireshark-and-dataGame/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="暮沉沉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.jsqq.net/uploads/allimg/150111/1_150111080328_19.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapleGe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/11/wireshark-and-dataGame/" itemprop="url">如何使用wireshark做数据赛</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T14:46:50+08:00">
+                2018-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/wireshark/" itemprop="url" rel="index">
+                    <span itemprop="name">wireshark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  906
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="如何使用wireshark做数据赛"><a href="#如何使用wireshark做数据赛" class="headerlink" title="如何使用wireshark做数据赛"></a>如何使用wireshark做数据赛</h1><h2 id="序章"><a href="#序章" class="headerlink" title="序章"></a>序章</h2><p>首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是讲解显示过滤器，以及一些做题中可能用到的一些小技巧。</p>
+<h2 id="显示过滤器"><a href="#显示过滤器" class="headerlink" title="显示过滤器"></a>显示过滤器</h2><p><a href="https://www.wireshark.org/docs/dfref/" target="_blank" rel="external">显示过滤器完整列表</a></p>
+<h3 id="简单协议说明"><a href="#简单协议说明" class="headerlink" title="简单协议说明"></a>简单协议说明</h3><p>在做题中，一般都是有http协议，其余常见协议有ssh、telnet、ftp、mysql、snmp、smtp、https、redis等。这其中http、telnet、ftp、redis是明文传输的；smtp是经过base64编码后传输，相当于明文传输；snmp 2.0及以下都是明文传输，3.0以上才是加密传输；mysql登录时密码是密文，其余均是明文；ssh及https是加密传输，https需要有密钥才能得到明文。</p>
+<h3 id="渗透套路说明"><a href="#渗透套路说明" class="headerlink" title="渗透套路说明"></a>渗透套路说明</h3><p>通常情况下，是从内网抓包，抓到黑客通过某个服务（一般是web）拿到某台服务器的shell，经过一系列操作，扫描内网并拿到内网其他机器的权限。</p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ul>
+<li>黑客执行的第X条命令是啥</li>
+<li>黑客拿到XX权限的时间</li>
+<li>XXX的账号密码/密码哈希</li>
+<li>服务器或黑客的IP/主机名/MAC地址</li>
+<li>路由器IP地址/MAC地址</li>
+<li>黑客爆破次数</li>
+<li>XX文件内容</li>
+<li>黑客所使用的工具</li>
+<li>CMS名称及版本</li>
+<li>shell地址/密码</li>
+<li>………………</li>
+<li>下次出题可以问TCP序号、确认号、客户端连接端口、会话ID，将路由器放在一个不常见IP上，问路由器IP及MAC地址。感觉网络相关的东西还是蛮重要的，顺便略微提升一下难度。</li>
+</ul>
+<h3 id="常见坑"><a href="#常见坑" class="headerlink" title="常见坑"></a>常见坑</h3><ul>
+<li>由于服务器有内网地址和外网地址之说，所以提交答案时两个都尝试一次</li>
+<li>若是询问到登录时间等与时间有关的问题时，要注意时间有两个时间，一个是请求包时间，一个是响应包时间，两个也可以都提交一次</li>
+<li>提交答案时左右两侧不要有空格</li>
+<li>前面的问题或答案有可能与后面问题有关，要收集整理</li>
+<li>看清楚问题，例：端口分为公认端口、注册端口、动态/私有端口，范围不同</li>
+</ul>
+<h3 id="做题技巧"><a href="#做题技巧" class="headerlink" title="做题技巧"></a>做题技巧</h3><p>简单的介绍一些显示过滤器的使用</p>
+<ul>
+<li>过滤url中包含ctf的请求</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http.request.uri contains ctf</div><div class="line">http.request.uri matches &quot;ctf&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>CMS及其版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http contains &quot;Powered by&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>寻找菜刀包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http.request.method==POST</div></pre></td></tr></table></figure>
+</li>
+<li><p>寻找菜刀返回结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http contains &quot;-&gt;|&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>寻找redis传输内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tcp.port eq 6379</div></pre></td></tr></table></figure>
+</li>
+<li><p>寻找反弹shell的传输内容，例：弹回6666端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tcp.port eq 6666</div></pre></td></tr></table></figure>
+</li>
+<li><p>mysql进行管理员相关查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql matches &quot;select.*?user|admin&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>其余的小技巧请自行发掘</p>
+</li>
+</ul>
+<h2 id="做题思路"><a href="#做题思路" class="headerlink" title="做题思路"></a>做题思路</h2><p>首先需要找到题目入口，即找到黑客IP、服务器IP、常见服务等。可以从wireshark的统计中查找大流量，也可以从日志中寻找攻击相关行为。</p>
+<p>找到上面信息之后，可以使用如下显示过滤器来只显示黑客相关数据分组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip.addr eq 黑客IP</div></pre></td></tr></table></figure>
+<p>个人认为应以题目答案为导向，但还需要探寻黑客攻击轨迹，进行要点记录，当后面遇到相关题目时，可以从要点中寻找。</p>
+<p>前面有说明渗透套路，基本可以按照该顺序寻找黑客攻击线索。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+	
+
+
+    
+
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2018/06/22/docker-mysql-solve/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1928,188 +2162,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2017/09/24/CrawlerCrawlPageMethod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="暮沉沉">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img.jsqq.net/uploads/allimg/150111/1_150111080328_19.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapleGe">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/24/CrawlerCrawlPageMethod/" itemprop="url">用python写网络爬虫的三种网页内容抓取方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T10:54:10+08:00">
-                2017-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  406
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>如题所示<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/24/CrawlerCrawlPageMethod/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-	
-
-
-    
-
-	
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2162,7 +2214,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2173,7 +2225,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2184,7 +2236,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2263,7 +2315,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-      <span class="post-count">博客全站共24.9k字</span>
+      <span class="post-count">博客全站共25.8k字</span>
   </div>  
 
 

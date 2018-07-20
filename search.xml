@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[安装操作系统的那些事儿（Nvme SSD）]]></title>
+    <url>%2F2018%2F07%2F20%2FInstall-operating-system%2F</url>
+    <content type="text"><![CDATA[主要写了一些安装操作系统的说明 安装操作系统的那些事儿（Nvme SSD）前情提要前几天买了一个比较满意的笔记本，8800+RMB。配置如下： 型号：Dell G3 5379 定制版 CPU：i7-8750H RAM：16G DDR4 硬盘：256G Nvme SSD + 1T HD 显卡：GTX 1060MAXQ 6G独显 显示器：15.6英寸 1920*1080 IPS显示屏 笔记本上预装win10家庭版操作系统和正版office 配置方面是很满意的，不满意的就是操作系统是家庭版。除此之外，右击进行刷新时，画面会卡顿一下。挺烦这点的，就想着重装一个win10专业版。以前用的一直都是老版的优启通，这次本来还想继续用这个来装系统的。结果发现PE识别不到固态硬盘！！！ 后来重启N次，也是不行。上网搜索一番之后，发现Nvme的固态硬盘需要win10内核的PE才能识别，而我装的优启通版本过老，最高只到win8内核，所以无法识别到Nvme固态。 找到原因了，那么解决问题就好了。 解决方法 使用UltraISO，将操作系统写入U盘 下载一个内核为win10的PE 直接将操作系统解压到U盘中，双击setup安装 ………… 方法1 使用UltraISO –&gt; 可行具体操作步骤： 1.使用UltraISO打开win10镜像 2.启动–&gt;写入硬盘映像 3.选择要写入的U盘，然后点击’格式化’后，再点击’写入’ 4.写入完成后，重启电脑，进入BIOS，选择从U盘启动，开始windows安装。能够成功识别到Nvme固态 方法2 下载win10内核的PE –&gt; 可行具体操作步骤 去下载优启通最新版/微PE，这两个是我比较喜欢的PE，下面以优启通为例 打开优启通，制作U盘启动盘 制作完成后，将win10镜像放入U盘 重启并选择从U盘启动（不要选择UEFI模式的启动，选择Legacy）启动界面如下，选择Win10PE 这里提一嘴==UEFI==和==Legacy==，这是两种不同的引导方式，win8之后支持快速启动，是新式BIOS即UEFI，同时也支持Legacy；之前是传统BIOS即Legacy。 现在新版电脑都支持UEFI+Legacy双启动模式。UEFI比Legacy开机速度快上不止一倍 原因： 传统Legacy运行流程：新式UEFI运行流程： 两种模式对应的硬盘分区格式 在Legacy启动模式中，硬盘分区格式应该为MBR格式 在UEFI启动模式中，硬盘分区格式应该为GUID(GPT)格式 能识别到Nvme固态，安装win10操作系统 方法3 镜像解压到U盘，直接安装 –&gt; 可行这个可行有一个条件，要求必须有一个激活码，输入激活码的步骤不可跳过。]]></content>
+      <categories>
+        <category>安装系统</category>
+      </categories>
+      <tags>
+        <tag>安装系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何使用wireshark做数据赛]]></title>
     <url>%2F2018%2F07%2F11%2Fwireshark-and-dataGame%2F</url>
     <content type="text"><![CDATA[简单的说一下数据赛 如何使用wireshark做数据赛序章首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是说一下大致流程，以及一些做题中可能用到的一些小技巧。 显示过滤器显示过滤器完整列表 简单协议说明在做题中，一般都是有http协议，其余常见协议有ssh、telnet、ftp、mysql、snmp、smtp、https、redis等。这其中http、telnet、ftp、redis是明文传输的；smtp是经过base64编码后传输，相当于明文传输；snmp 2.0及以下都是明文传输，3.0以上才是加密传输；mysql登录时密码是密文，其余均是明文；ssh及https是加密传输，https需要有密钥才能得到明文。 渗透套路说明通常情况下，是从内网抓包，抓到黑客通过某个服务（一般是web）拿到某台服务器的shell，经过一系列操作，扫描内网并拿到内网其他机器的权限。 常见问题 黑客执行的第X条命令是啥 黑客拿到XX权限的时间 XXX的账号密码/密码哈希 服务器或黑客的IP/主机名/MAC地址 路由器IP地址/MAC地址 黑客爆破次数 XX文件内容 黑客所使用的工具 CMS名称及版本 shell地址/密码 ……………… 下次出题可以问TCP序号、确认号、客户端连接端口、会话ID，将路由器放在一个不常见IP上，问路由器IP及MAC地址。感觉网络相关的东西还是蛮重要的，顺便略微提升一下难度。 常见坑 由于服务器有内网地址和外网地址之说，所以提交答案时两个都尝试一次 若是询问到登录时间等与时间有关的问题时，要注意时间有两个时间，一个是请求包时间，一个是响应包时间，两个也可以都提交一次 提交答案时左右两侧不要有空格 前面的问题或答案有可能与后面问题有关，要收集整理 看清楚问题，例：端口分为公认端口、注册端口、动态/私有端口，范围不同 做题技巧简单的介绍一些显示过滤器的使用 过滤url中包含ctf的请求 12http.request.uri contains ctfhttp.request.uri matches &quot;ctf&quot; CMS及其版本号 1http contains &quot;Powered by&quot; 寻找菜刀包 1http.request.method==POST 寻找菜刀返回结果 1http contains &quot;-&gt;|&quot; 寻找redis传输内容 1tcp.port eq 6379 寻找反弹shell的传输内容，例：弹回6666端口 1tcp.port eq 6666 mysql进行管理员相关查询 1mysql matches &quot;select.*?user|admin&quot; 其余的小技巧请自行发掘 做题思路首先需要找到题目入口，即找到黑客IP、服务器IP、常见服务等。可以从wireshark的统计中查找大流量，也可以从日志中寻找攻击相关行为。 找到上面信息之后，可以使用如下显示过滤器来只显示黑客相关数据分组 1ip.addr eq 黑客IP 个人认为应以题目答案为导向，但还需要探寻黑客攻击轨迹，进行要点记录，当后面遇到相关题目时，可以从要点中寻找。 前面有说明渗透套路，基本可以按照该顺序寻找黑客攻击线索。]]></content>

